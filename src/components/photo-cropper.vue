@@ -141,8 +141,6 @@ import {
   RefreshRight as ElIconRefreshRight
 } from '@element-plus/icons-vue'
 import VueCropper from 'vue-cropper/src/vue-cropper.vue'
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
 import { getBlob, blobToBase64, getBlobByGET } from '@/utils/common/download'
 
 export default {
@@ -200,7 +198,7 @@ export default {
     // 弹出层标题
     title: {
       type: String,
-      default: i18n.t('photoCropper.uploadPic')
+      default: this.$t('photoCropper.uploadPic')
     },
     // 过滤格式
     accept: {

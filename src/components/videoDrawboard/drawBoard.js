@@ -1,7 +1,5 @@
 import { fabric } from 'fabric-pure-browser'
 import { ElMessage as Message } from 'element-plus'
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
 import { generateUuid } from '@/utils/common/utils'
 import { min, max } from 'lodash'
 import {
@@ -250,7 +248,7 @@ export default class {
             } else {
               this.fCanvas.remove(maxTargetObj)
             }
-            Message.error(`${i18n.t('analysisTask.objectAreaPrompt')}`)
+           
           }
         }
       }

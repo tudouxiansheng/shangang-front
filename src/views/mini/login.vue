@@ -5,9 +5,9 @@
     <div class="login">
       <!-- title -->
       <div class="login-title">
-        {{ systemName ? systemName : $t('public.title') }}
+         山港一体化可视平台
         <!--语言切换-->
-        <div class="language">
+        <!-- <div class="language">
           <el-select
             v-model="locale"
             :popper-append-to-body="false"
@@ -17,7 +17,7 @@
             <el-option label="简体中文" value="zh" />
             <el-option label="English" value="en" />
           </el-select>
-        </div>
+        </div> -->
       </div>
       <!-- login -->
       <el-form :model="ruleForm" status-icon ref="loginForm" class="demo-ruleForm">
@@ -66,7 +66,7 @@
             class="rememberPwd-btn"
           ></el-checkbox>
         </el-form-item>
-        <div class="agencyChecked" v-if="false">
+        <div class="agencyChecked" >
           <el-checkbox v-model="agencyChecked" @change="agencyCheckedFn">{{ $t('login.proxy') }}</el-checkbox>
         </div>
         <div class="button-form">
@@ -182,10 +182,13 @@
 <script>
 import { download } from '@/utils/download'
 import CryptoJS from 'crypto-js'
+import { getClientNonce } from '@/utils/common/getClientNonce'
+import { lStorage, sStorage } from '@/utils/common/store'
 import { crypto } from '@/utils/crypto'
 import {
   selectMenus,
   getFlavor,
+  selectUserPermissions ,
   selectMenuPerms,
   getOrganizationSubType,
   xgIpInRedis,
@@ -194,7 +197,7 @@ import {
   getProductInfo,
 } from '@/utils/api.js'
 import { generateMixed } from '@/utils/mutil'
-import { mapActions } from 'vuex'
+import { mapActions ,mapState} from 'vuex'
 export default {
   data() {
     return {
@@ -212,7 +215,6 @@ export default {
       flag_pwd: true,
       showimg: JSON.parse(localStorage.getItem('showimg')),
       value: '',
-
       ruleForm: {
         username: JSON.parse(localStorage.getItem('userInfo'))
           ? JSON.parse(localStorage.getItem('userInfo')).username
@@ -266,6 +268,11 @@ export default {
       }
     })
   },
+  computed: {
+    ...mapState({
+      clientNonce: state => state.auth.clientNonce
+    }),
+  },
   watch: {
     // 监听语言切换
     '$i18n.locale'() {
@@ -281,24 +288,24 @@ export default {
     this.agencyChecked = JSON.parse(localStorage.getItem('agencyChecked'))
       ? JSON.parse(localStorage.getItem('agencyChecked'))
       : false
-    this.$api.getSysInfo({ systemType: 2 }).then((res) => {
-      if (res.resultCode === 0) {
-        this.systemName = res.systemName
-        document.title = res.systemName
-        this.loginBackgroundUrl = res.loginBackgroundUrl
-      }
-    })
+    // this.$api.getSysInfo({ systemType: 2 }).then((res) => {
+    //   if (res.resultCode === 0) {
+    //     this.systemName = res.systemName
+    //     document.title = res.systemName
+    //     this.loginBackgroundUrl = res.loginBackgroundUrl
+    //   }
+    // })
     this.getFlavors()
     this.changeVerifyImg()
-    let cuType = '5'
-    if (window.webkitProc) {
-      cuType = '4'
-    } else {
-      cuType = '5'
-    }
-    const clientNonce = generateMixed(4)
-    sessionStorage.setItem('cuType', cuType)
-    sessionStorage.setItem('clientNonce', clientNonce)
+    let cuType = '4'
+    // if (window.webkitProc) {
+    //   cuType = '4'
+    // } else {
+    //   cuType = '5'
+    // }
+    const clientNonces = getClientNonce(4)
+      sessionStorage.setItem('cuType', cuType)
+      this.$store.dispatch('auth/setClientNonce', clientNonces)
     if (this.userId) {
       this.$fetch('/uas/v1/api/scs/screen/user/info', {
         userId: this.userId,
@@ -314,7 +321,7 @@ export default {
               .then((res) => {
                 console.log(res)
                 if (res.resultCode == 0) {
-                  this.redictIndex(res)
+                  this.redictIndex()
                   sessionStorage.setItem('username', res.userInfo.userName)
                   sessionStorage.setItem('account', res.userInfo.account)
                 } else {
@@ -366,22 +373,35 @@ export default {
       })
     },
     // 获取菜单
+    // 获取菜单
     async getMenuList() {
-      await selectMenus({ type: 12 }).then((res) => {
-        if (res.resultCode === 0) {
-          sessionStorage.setItem('menuList', JSON.stringify(res.menuList))
-          this.menus = res.menuList
-          // if (this.menus[0].children) {
-          if (this.menus[0]) {
-            //   this.$router.push(this.menus[0].children[0].path);
-            // } else {
-            this.$router.push(this.menus[0].path)
-          }
+      const res = await selectMenus({})
+      if (res.resultCode === 0) {
+        sStorage.set('menuList', res.menuList)
+        this.menus = res.menuList
+      } else if (res.resultCode === 100021) {
+        this.$api.logout({}).then(() => {
+          this.refreshPage()
+        })
+      }
+    },
+    refreshPage() {
+      sStorage.clear()
+      this.$store.dispatch('auth/setClientNonce', '')
+      this.$store.dispatch('auth/setRefreshToken', '')
+      this.$store.dispatch('auth/setAccessToken', '')
+      window.location.reload()
+    },
+        //用户权限列表
+        async getUserPermissions() {
+     await selectUserPermissions({}).then(res => {
+        if (res.resultCode == 0) {
+          sStorage.set('userPermList', res.permList)
         }
       })
     },
     // 获取菜单权限列表
-    async getMenuPermsList() {
+    async  getMenuPermsList() {
       await selectMenuPerms({}).then((res) => {
         if (res.resultCode === 0) {
           console.log('res.menuPermList', res)
@@ -403,7 +423,7 @@ export default {
     // 获取平台
     async getPlatType() {
       // 获取对接的是1800还是3800
-      let res = await getSysPlatType({})
+      let res = await this.$api.getSysPlatType({})
       if (res && res.resultCode == 0) {
         // 设为全局平台值
         if (typeof res.accessPlat !== 'undefined') this.set_global_platType(res.accessPlat)
@@ -426,37 +446,32 @@ export default {
       // localStorage.setItem("showimg", this.showimg)
       // this.flag_pwd = !this.flag_pwd;
     },
+        // 初始化获取水印是否开启
+    //     async getWatermarkList() {
+    //   const res = await getContentWatermarkInfo({})
+    //   if (res.resultCode !== 0 || !res.watermarkInfo) return
+    //   this.getCanvasInfo(res.watermarkInfo)
+    // },
     //跳转客户端登录方法
-    async redictIndex(res) {
-      sessionStorage.setItem('token', res.accessToken)
-      sessionStorage.setItem('token1', res.accessToken)
-
-      // 第一时间将Token发送给PC客户端
-      let loginInfo = {
-        agentType: this.agencyChecked ? 1 : 0, //0-内网，1-公网
-        loginType: 1, // 登录类型：0-token登录，1-账号密码登录
-        ip: window.location.host.substring(0, window.location.host.length - 6), // 登录ip
-        port: 10000, // 登录端口  端口默认10000
-        token: res.accessToken, // Token登录就返回token,否则为NULL
-        userName: this.ruleForm.username,
-        passWord: this.ruleForm.password,
-        userId: res.userInfo.userId,
-      }
-
-      try {
-        if (window.webkitProc) {
-          window.webkitProc('web_login', JSON.stringify(loginInfo))
-        }
-      } catch (e) {
-        console.log('send token to PcClient is fail, ===>', e)
-      }
-
-      sessionStorage.setItem('refreshToken', res.refreshToken)
-      await this.getPlatType()
-      await this.getMenuPermsList()
+    async redictIndex() {
+      // await this.getPlatType()
       await this.getMenuList()
+
+      //用户权限列表
+      await this.getUserPermissions()
+
+      // await this.getWatermarkList()
+      this.$store.commit('menu/set_options')
+      this.$store.commit('menu/clear_cached_views')
+      this.$router.push({
+        path: '/homepage'
+      })
+
+    
+
     },
     submitForm(formName) {
+      console.log('123');
       if (!this.ruleForm.username) {
         this.$notify({
           title: this.$t('login.waring'),
@@ -483,10 +498,11 @@ export default {
       }
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          let { username, password } = this.ruleForm
+          let { username, password ,agentType,captcha} = this.ruleForm
           this.userLogin({
             username,
             password,
+            agentType: this.agencyChecked ? 1 : 0, //0-内网，1-公网
             captcha: this.ruleForm.verifyCode,
           })
           /*
@@ -531,23 +547,44 @@ export default {
     },
     // 用户登录
     userLogin(data) {
-      sessionStorage.setItem('password', data.password)
       sessionStorage.setItem('account', data.username)
-      sessionStorage.setItem('key', CryptoJS.MD5(data.password).toString())
-      sessionStorage.setItem('password', crypto(data.password, CryptoJS.MD5(data.password).toString()))
       this.$store
         .dispatch('user/Login', data)
-        .then((res) => {
-          const { resultCode, userInfo, accountStatus, accessToken } = res
+        .then(async res => {
+          const {
+            resultCode,
+            userInfo,
+            accountStatus,
+            accessToken,
+            refreshToken,
+            sessionId,
+            licenseExpired,
+            privacyAgreed,
+            lastLoginHistoryInfo,
+            waitOperateLimit,
+            heartBeatInterval,
+            version
+          } = res
           if (resultCode == 0) {
-            sessionStorage.setItem('token', res.accessToken)
-            sessionStorage.setItem('refreshToken', res.refreshToken)
+            console.log(1);
+            this.$store.dispatch('auth/setClientNonce', sessionId)
+            console.log(2);
+            this.$store.dispatch('auth/setRefreshToken', refreshToken)
+            console.log(3);
+            this.$store.dispatch('auth/setAccessToken', accessToken)
+            console.log(4);
+            this.$store.dispatch('user/setUserInfo', userInfo)
+            sessionStorage.setItem('clientNonce', sessionId)
+            console.log(5);
+            sessionStorage.setItem('refreshToken', refreshToken)
+            sessionStorage.setItem('token', accessToken)
             sessionStorage.setItem('userId', userInfo.userId)
             sessionStorage.setItem('username', userInfo.userName)
             sessionStorage.setItem('organizationId', userInfo.organizationId)
-            sessionStorage.setItem('organizationName', userInfo.organizationName)
+            sessionStorage.setItem('belongTenantId', userInfo.belongTenantId)
+            console.log(6);
             if (userInfo.avatarFileId) sessionStorage.setItem('avatarFileId', userInfo.avatarFileId)
-            console.log(222, res)
+
             //过期时间
             // this.$store.commit('init_time/SET_EXPIRETIME', res.expireTime)
             //心跳保活周期
@@ -561,66 +598,74 @@ export default {
             // )
             //修改密码专用
             this.$store.state.modifyToken = accessToken
-            this.redictIndex(res)
+            this.redictIndex()
+            console.log(7);
             // 账户锁定
             if (userInfo.isLocked && userInfo.isLocked == 1) {
               this.$alert(this.$t('login.accountLocked'), this.$t('login.waring'), {
                 confirmButtonText: this.$t('public.confirm'),
-                type: 'warning',
+                type: 'warning'
               })
               return
             }
 
-            // if (userInfo.isActive == 0) {
-            //   sessionStorage.setItem('firstLogin', true)
-            // } else if (res.userInfo.isActive == 1) {
-            //   sessionStorage.setItem('firstLogin', false)
-            // }
-            if (userInfo.isInitializePwd == 1) {
-              sessionStorage.setItem('firstLogin', 1)
-            } else {
-              sessionStorage.setItem('firstLogin', 0)
+            if (userInfo.firstLogin == 1) {
+              sStorage.set('firstLogin', true)
+              if (this.modifyOnFirstLogin == 1 && accountStatus.remindModifyPwd == 2) {
+                this.$message({
+                  type: 'error',
+                  message: this.$t('changePwd.firstLoginTips'),
+                  duration: 5 * 1000
+                })
+                this.changeVerifyImg('changePwd')
+                this.frontToBack()
+                return
+              }
+            } else if (res.userInfo.firstLogin == 0) {
+              sStorage.set('firstLogin', false)
             }
 
             if (accountStatus) {
               if (accountStatus.remindModifyPwd != 0) {
-                sessionStorage.setItem('remindModifyPwd', accountStatus.remindModifyPwd)
-                sessionStorage.setItem('pwdLeftDays', accountStatus.pwdLeftDays)
+                sStorage.set('remindModifyPwd', accountStatus.remindModifyPwd)
+                sStorage.set('pwdLeftDays', accountStatus.pwdLeftDays)
               }
 
               // 密码过期
               if (accountStatus.remindModifyPwd == 2) {
                 this.$message({
                   type: 'error',
-                  message: this.$t('changePwd.detectionMustChangePwdAlert'),
+                  message: this.$t('changePwd.detectionMustChangePwdAlert')
                 })
-                this.getComplexity_rules()
-                // this.frontToBack()
+                this.changeVerifyImg('changePwd')
+                this.frontToBack()
                 return
               }
             }
+            
           } else {
             this.changeVerifyImg()
           }
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response) {
             const { resultCode, resultDesc } = error.response.data
             if (resultCode == 100002) {
               this.$alert(this.$t('login.userNameOrPwdWrong'), this.$t('login.waring'), {
                 confirmButtonText: this.$t('public.confirm'),
-                type: 'warning',
+                type: 'warning'
               })
             } else {
               this.$alert(`${resultDesc}`, this.$t('login.waring'), {
                 confirmButtonText: this.$t('public.confirm'),
-                type: 'warning',
+                type: 'warning'
               })
             }
           }
           this.changeVerifyImg()
         })
     },
+
     resetForm(formName) {
       this.$refs[formName].resetFields()
       this.ruleForm.username = ''
@@ -630,10 +675,10 @@ export default {
       this.ruleForm.verifyCode = ''
     },
     getFlavors() {
-      getFlavor({}).then((res) => {
-        console.log(res)
-        this.loginTitle = res.flavorName
-      })
+      // getFlavor({}).then((res) => {
+      //   console.log(res)
+      //   this.loginTitle = res.flavorName
+      // })
     },
   },
 }

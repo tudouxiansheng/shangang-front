@@ -1,30 +1,39 @@
 import api from '@/api'
 import { lStorage, sStorage } from '@/utils/store'
 const MD5 = require('@/utils/md5')
-
+import { encryBySha256 } from '@/utils/common/crypto'
 const user = {
   namespaced: true,
-  state: {},
+  state: {
+    lastLoginInfo: {},
+    version:'',
+    userInfo:{}
+  },
 
   mutations: {
-    SET_LOGIN_NAME: (state, name) => {
-      state.username = name
+    SET_LAST_LOGIN_INFO(state, lastLoginInfo) {
+      state.lastLoginInfo = lastLoginInfo
     },
-
-    SET_PASSWORD: (state, password) => {
-      state.password = password
+    SET_VERSION(state, version) {
+      state.version = version
     },
+    SET_USER_INFO(state,userInfo){
+      state.userInfo = userInfo
+    }
   },
 
   actions: {
     // 登录
     Login({ state, commit }, userInfo) {
-      const { username, password, captcha } = userInfo
+      const { username, password, captcha, agentType } = userInfo
       return new Promise((resolve, reject) => {
         api
           .login(
             {
-              captcha,
+              captcha: userInfo.captcha,
+              agentType: agentType,
+              username: username,
+              password: password
             },
             {
               headers: {
@@ -34,6 +43,9 @@ const user = {
               },
             }
           )
+          .then(async res => {
+            resolve(res)
+          })
           .catch((error) => {
             const res = error.response
             const url = res.config.url
@@ -45,13 +57,23 @@ const user = {
             const nonces = Authenticate[2].split('=')
             const nonce = nonces[1] // 获取nonce
             // response算法：response = MD5.md5(MD5.md5(userName+":"+realm+":"+password)+":"+nonce+":"+nc+":"+cnonce+":"+qop+":"+MD5.md5("POST:"+url))
-            const response = MD5.hexMD5(
-              `${MD5.hexMD5(`${username}:realm@host.com:${password}`)}:${nonce}:::auth:${MD5.hexMD5(`POST:${url}`)}`
+            const response = encryBySha256(
+              encryBySha256(username + ':' + 'realm@host.com' + ':' + password) +
+                ':' +
+                nonce +
+                ':' +
+                '' +
+                ':' +
+                '' +
+                ':' +
+                'auth' +
+                ':' +
+                encryBySha256('POST:' + url)
             )
-            const urlAuth = `${header},response=${response},username=${username},,uri=${url},`
+            const urlAuth =  header + ',response=' + response + ',username=' + username + ',' + ',uri=' + url + ','
             api
               .login(
-                { captcha },
+                { captcha: captcha, agentType: agentType, username: username, password: password  },
                 {
                   headers: {
                     isToken: false,
@@ -68,6 +90,9 @@ const user = {
               })
           })
       })
+    },
+    setUserInfo({ commit }, data) {
+      commit('SET_USER_INFO', data)
     },
   },
 }

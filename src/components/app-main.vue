@@ -37,9 +37,7 @@
         <el-dropdown class="el-dropdown-main" @command="handleCommand">
           <span class="el-dropdown-link">
             <span>{{ loginName }}</span>
-            <el-icon>
-              <CaretBottom />
-            </el-icon>
+            <i class="el-icon-caret-bottom"></i>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
@@ -61,9 +59,7 @@
           @click="pageRefresh"
           :class="cuType == 4 ? 'pageRefresh refresh1' : 'pageRefresh refresh2'"
         >
-          <el-icon>
-            <Refresh />
-          </el-icon>
+        <i class="el-icon-refresh"></i>
         </div>
         <div
           v-if="thirdMenuList.length"
@@ -160,8 +156,6 @@ export default {
     'app-footer': appFooter,
     'login-out': loginOut,
     'logo-upload': logoUpload,
-    CaretBottom,
-    Refresh
   },
   data() {
     return {

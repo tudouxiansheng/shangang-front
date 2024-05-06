@@ -102,6 +102,7 @@ export default {
         '/facepass',
         '/traffic-statistics',
         '/myTask',
+        '/gatewayCluster/manage'
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },
@@ -230,7 +231,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-wrapper {
-  background: url('../assets/login/Login.png');
+  background:#051b2c;
   background-size: 100% 100%;
   box-sizing: border-box;
   overflow: hidden;

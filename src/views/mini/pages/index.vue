@@ -750,7 +750,7 @@ export default {
 }
 
 .popup-wrapper {
-  background-image: url('/AIV-MP/static/images/popup_bg.png');
+  background-image: url('/AISW/static/images/popup_bg.png');
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center center;

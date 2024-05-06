@@ -68,3 +68,14 @@ input{
 input:focus{
 	border:none;
 }
+.base {
+    background-color: transparent;
+    box-sizing: border-box;
+    width: 1700px;
+    height: 100%;
+    margin: 20px auto;
+    position: relative;
+}
+.search-form {
+    margin-top:18px;
+}

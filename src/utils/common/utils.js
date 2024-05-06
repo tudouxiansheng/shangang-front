@@ -1,8 +1,8 @@
 /**
  * 通用js方法封装处理
  */
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
+// import { i18n as i18nn } from '@/i18n'
+// const i18n = i18nn.global
 import api from '@/api'
 
 // 回显数据字典
@@ -22,7 +22,7 @@ export function selectDictLabel(datas, value, fieldObj) {
     ) {
       currentFieldObj = fieldObj
     } else {
-      throw new Error(i18n.t('public.fieldObjError'))
+      // throw new Error(i18n.t('public.fieldObjError'))
     }
   }
   Object.keys(datas).some(key => {

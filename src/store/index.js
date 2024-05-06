@@ -1,17 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import menu from './modules/menu'
+import dict from './modules/dict'
 import state from './state'
 import getters from './getters'
 import actions from './actions'
 import mutations from './mutations'
 import map from './modules/map'
 import mapSet from './modules/mapSet'
-import dict from './modules/dict'
 import user from './modules/user'
 import init_time from './modules/init_time'
 import personApplicationModule from './modules/personApplicationModule'
 //   ./就是代表同层级
-
+import auth from './modules/auth'
 // vuex-persistedstate默认持久化所有state，指定需要持久化的state
 import createPersistedState from 'vuex-persistedstate'
 
@@ -22,12 +23,14 @@ const store = new Vuex.Store({
   actions,
   mutations,
   modules: {
+    menu,
     mapSet,
     map,
     dict,
     user,
     init_time,
     personApplicationModule,
+    auth
   },
   plugins: [
     createPersistedState({

@@ -32,7 +32,8 @@ router.beforeEach((to, from, next) => {
       // window.location.reload(true)
       sessionStorage.clear()
       // window.location.reload()
-
+      store.dispatch('auth/setRefreshToken', '')
+      store.dispatch('auth/setAccessToken', '')
       setTimeout(() => {
         store.commit('set_options')
       }, 200)

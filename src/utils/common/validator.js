@@ -1,5 +1,4 @@
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
+
 //不允许输入特殊字符
 const validateSpecialWord = async (rule, value, callback) => {
   var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/gim,

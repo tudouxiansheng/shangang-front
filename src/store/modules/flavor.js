@@ -1,6 +1,4 @@
 import api from '@/api'
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
 // 局点信息
 const flavor = {
   namespaced: true,
@@ -8,7 +6,7 @@ const flavor = {
     flavorFlag: false,
     flavorObj: {
       flavorId: '',
-      flavorName: i18n.t('login.loginTitle'),
+      flavorName: '',
       mainLogo: '',
       copyright: '',
       registration: '',
@@ -36,7 +34,7 @@ const flavor = {
         const res = await api.getFlavor({})
         flavorObj = {
           flavorId: res.flavorId || '',
-          flavorName: res.flavorName || i18n.t('login.loginTitle'),
+          flavorName: res.flavorName ,
           mainLogo: res.mainLogo || '',
           // 版权&备案
           copyright: res.copyright || '',

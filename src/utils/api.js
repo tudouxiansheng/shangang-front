@@ -24,7 +24,7 @@ export const getAgreements = (data) => fetch('/uas/v1/api/oba/agreement/get', da
 // 获取产品信息
 export const getProductInfo = (data) => fetch('/uas/v1/api/scs/system/product/info', data)
 // 获取全局平台信息
-export const getSysPlatType = (data) => fetch('/uas/v1/api/scs/system/accessPlat/info', data)
+export const getSysPlatType = (data) => fetch('/uas/v1/api/udc/system/accessPlat/info', data)
 
 //获取验证码
 // export const captcha = (data) => digestFetch('/uas/v1/api/captcha', data);
@@ -34,10 +34,10 @@ export const getLoginUserInfo = (data) => fetch('/uas/v1/api/udc/login/user', da
 
 // 查询菜单
 // export const selectMenus = (data) => fetch('/uas/v1/api/udc/management/menus', data);
-export const selectMenus = (data) => fetch('/uas/v1/api/ais/management/menus', data)
+export const selectMenus = (data) => fetch('/uas/v1/api/udc/management/menus', data)
 // 查询菜单权限
 // export const selectMenuPerms = (data) => fetch('/uas/v1/api/udc/management/perms', data);
-export const selectMenuPerms = (data) => fetch('/uas/v1/api/ais/management/perms', data)
+export const selectMenuPerms = (data) => fetch('/uas/v1/api/udc/management/perms', data)
 // 查询用户权限列表
 export const selectUserPermissions = (data) => fetch('/uas/v1/api/udc/management/use/perms', data)
 

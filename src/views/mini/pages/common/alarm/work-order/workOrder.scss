@@ -1,0 +1,240 @@
+@import '~@/assets/style/color.scss';
+
+#work-order {
+  width: 100%;
+  height: 100%;
+
+  .search-form {
+    position: relative;
+    margin: 30px 0 2px;
+
+    .flex {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .flex-item {
+      width: 42%;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 0;
+      bottom: 41px;
+    }
+  }
+
+  span.disposeColor {
+    color: $color21;
+  }
+
+  span.auditColor {
+    color: $color30;
+  }
+
+  span.closeColor {
+    color: $color7;
+  }
+
+  .cell-btn {
+    color: $color52;
+    cursor: pointer;
+    margin-right: 7px;
+  }
+
+  .del-btn {
+    color: $color20;
+  }
+
+  .cell-btn:last-child {
+    margin-right: 0;
+  }
+
+  .el-dialog__body {
+    padding: 0px 105px;
+    max-height: 100vh;
+
+    .step {
+      width: 90px;
+      height: 90px;
+      background: $color6;
+      border-radius: 50%;
+    }
+
+    .step-text {
+      font-size: 18px;
+      font-weight: 400;
+      color: $color8;
+      line-height: 90px;
+      text-align: center;
+    }
+
+    .step-blue {
+      background: $color51;
+    }
+
+    .line {
+      width: 143px;
+      height: 2px;
+      border-top: 2px solid $color31;
+      margin: 45px 0px 0;
+    }
+
+    .ticket-content {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0px;
+    }
+
+    .title {
+      max-width: 380px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .image {
+      width: 200px;
+      height: 150px;
+    }
+
+    .ticket-content-item {
+      line-height: 23px;
+    }
+
+    .ticket-content-title {
+      height: 17px;
+      padding-left: 10px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #4d4d4d;
+    }
+
+    .ticketContent {
+      height: 20px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .workImage {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 10px;
+      width: 87%;
+      margin-left: 11%;
+    }
+
+    .workImage img {
+      margin-left: 10px;
+    }
+
+    .audit {
+      margin-top: 10px;
+    }
+
+    .work-order {
+      padding: 10px 0 15px;
+    }
+
+    .overflow {
+      max-height: 500px;
+      overflow: auto;
+      margin-top: 30px;
+    }
+
+    span {
+      display: inline-block;
+    }
+
+    .el-form-item__label {
+      font-size: 16px;
+    }
+
+    .el-textarea__inner {
+      height: 103px;
+    }
+
+    // 上传图片
+    .upload-imgs li {
+      position: relative;
+      width: 122px;
+      height: 122px;
+      display: inline-block;
+      margin-right: 25px;
+    }
+
+    .upload-imgs li .upload {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 122px;
+      height: 122px;
+      opacity: 0;
+    }
+
+    .upload-imgs .imgs img {
+      width: 120px;
+      height: 120px;
+      border: 1px solid $color5;
+    }
+
+    .add img {
+      width: 122px;
+      height: 122px;
+    }
+
+    .help-block {
+      color: #f56c6c;
+      font-size: 12px;
+    }
+
+    // 单选按钮
+    .el-radio__inner {
+      border: 1px solid $color5;
+      background: transparent;
+      width: 20px;
+      height: 20px;
+    }
+
+    .el-radio__input.is-checked .el-radio__inner {
+      background: transparent;
+    }
+
+    .el-radio__inner::after {
+      width: 9px;
+      height: 9px;
+      background: $color35;
+    }
+
+    .el-radio__input.is-disabled .el-radio__inner {
+      background-color: transparent;
+      border-color: $color5;
+    }
+  }
+
+  .el-dialog__body .el-form-item--mini.el-form-item,
+  .el-dialog__body .el-form-item--small.el-form-item {
+    margin-left: -46px;
+  }
+
+  // 日期选择器
+  .el-date-editor--daterange.el-input__inner {
+    width: 300px;
+  }
+
+  .v-modal {
+    opacity: 0.2;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  .flex-item {
+    width: 40%;
+  }
+
+  .el-form--inline .el-form-item {
+    margin-right: 0px;
+  }
+}

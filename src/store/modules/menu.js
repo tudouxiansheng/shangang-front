@@ -1,5 +1,6 @@
-import router from '@router'
+// import router from '@router'
 import { sStorage } from '@/utils/common/store'
+import Router from 'vue-router'
 // 菜单
 const menu = {
   namespaced: true,
@@ -95,7 +96,7 @@ const menu = {
         const menus = JSON.parse(sStorage.get('menuList'))
         const menu = findMenuItem(menuId, menus)
         const addCachedView = view => {
-          const resolveRoute = router.resolve(view.path)
+          const resolveRoute = Router.resolve(view.path)
           if (!resolveRoute) return
           commit('add_cached_view', resolveRoute)
         }
@@ -126,7 +127,7 @@ const menu = {
         const menus = JSON.parse(sStorage.get('menuList'))
         const menu = findMenuItem(menuId, menus)
         const delCachedView = view => {
-          const resolveRoute = router.resolve(view.path)
+          const resolveRoute = Router.resolve(view.path)
           if (!resolveRoute) return
           commit('del_cached_view', resolveRoute)
         }

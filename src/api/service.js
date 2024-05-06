@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Vue from 'vue'
 import router from '../router'
-
+import store from '@/store'
 import i18n from '@/i18n/'
 import { get, merge } from 'lodash'
 // import store from '@/store'
@@ -52,19 +52,19 @@ service.interceptors.request.use(
     const url = get(config, 'url')
     if (token && !isToken && !url.includes('/uas/v1/api/user/token') && !url.includes('/file/fss/upload/permanent')) {
       config.headers.Authorization = 'Bearer ' + token
-      config.url = `${url}?token=${token}`
+      config.url = `${url}`
     }
     if (url.includes('/file/fss/upload/permanent')) {
       config.url = url
     }
     if (token && !isToken && url.includes('/uas/v1/api/user/token')) {
       config.headers.Authorization = 'Bearer ' + refreshToken
-      config.url = `${url}?token=${refreshToken}`
+      config.url = `${url}`
     }
 
     const Key = config.method.toLowerCase() === 'post' ? 'data' : 'params'
     config[Key] = merge(config[Key], {
-      clientNonce: sessionStorage.getItem('clientNonce'),
+      clientNonce: store.state.auth.clientNonce,
       cuType: sessionStorage.getItem('cuType'),
       // cuType: 2,
     })
@@ -374,7 +374,7 @@ export const formFetch = function (url, formData) {
 }
 
 export function fetch(url, param = {}, config = {}, timeout = 30000) {
-  param.clientNonce = sStorage.get('clientNonce')
+  param.clientNonce = store.state.auth.clientNonce
   param.cuType = sStorage.get('cuType')
   const query = {
     url: url,

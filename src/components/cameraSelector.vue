@@ -267,8 +267,6 @@ import { LocationFilled as ElIconLocationOutline } from '@element-plus/icons-vue
 import GiantTree from 'vue-giant-tree'
 import devIcon from '@/utils/common/dev-icon'
 const { getDevIcon } = devIcon()
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
 const checkType = {
   multiple: 'checkbox',
   single: 'radio'
@@ -286,7 +284,7 @@ export default {
     },
     title: {
       type: String,
-      default: i18n.t('public.cameraChoosePrompt')
+      default: this.$t('public.cameraChoosePrompt')
     },
     api: {
       type: String,

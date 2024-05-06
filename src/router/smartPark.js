@@ -244,4 +244,16 @@ export default [
             },
         ],
     },
+
+    //新增
+    {
+        path: '/gatewayCluster/manage',
+        name: 'GatewayClusterManagement',
+        meta: {
+          ref: 'gatewayClusterManage',
+          methods: ['getAccessTypeList', 'getList'],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/common/gatewayCluster/manage')
+      }
 ]

@@ -45,8 +45,6 @@
 
 <script>
 import treeStyle from '@/mixin/tree-style'
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
 import devIcon from '@/utils/common/dev-icon.js'
 
 const { getDevIcon } = devIcon()
@@ -85,7 +83,7 @@ export default {
     },
     placeholderTitle: {
       type: String,
-      default: i18n.t('public.pleaseEnterOrgOrDev')
+      default: this.$t('public.pleaseEnterOrgOrDev')
     },
     iconColor: {
       type: Boolean,

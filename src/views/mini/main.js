@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import HappyScroll from 'vue-happy-scroll'
 import 'vue-happy-scroll/docs/happy-scroll.css'
 
@@ -26,9 +26,14 @@ import i18n from '@/i18n/'
 import VideoPlay from '@/utils/VideoPlay'
 import { fetch, postFetch, formFetch } from '@/api/service'
 import CusDialog from '@/components/CusDialog'
+import '@/style/element-variables.scss'
+Vue.use(i18n)
 Vue.use(ElementUI, {
   size: 'small',
 })
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  Vue.component(key, component)
+}
 Vue.use(flvjs)
 Vue.use(HappyScroll)
 Vue.use(Print)
@@ -64,6 +69,8 @@ Viewer.setDefaults({
   title: false,
 })
 Vue.use(Viewer)
+
+// Vue.prototype.$t = i18n.global.t
 Vue.prototype.$formFetch = formFetch
 Vue.prototype.$postFetch = postFetch
 Vue.prototype.$api = api
@@ -93,6 +100,8 @@ microApp.start({
     },
   },
 })
+import { setDialogCssMixin } from '../../mixin/setDialogCss'
+Vue.mixin(setDialogCssMixin)
 // 浏览器内核提供的调用方法
 Vue.prototype.vuewebkitProc = function (fun, message) {
   // 浏览器内核提供的调用方法

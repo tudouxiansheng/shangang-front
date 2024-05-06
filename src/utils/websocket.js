@@ -1,6 +1,5 @@
-import { i18n as i18nn } from '@/i18n'
+
 import store from '@/store'
-const i18n = i18nn.global
 var url = 'ws://' + window.location.host + '/wsapp/client'
 var url1 = 'wss://' + window.location.host + '/wsapp/client'
 var ws
@@ -76,13 +75,13 @@ var websocket = {
   },
   getStatus() {
     if (ws.readyState == 0) {
-      return i18n.t('public.unconnected')
+      return $t('public.unconnected')
     } else if (ws.readyState == 1) {
-      return i18n.t('public.connected')
+      return $t('public.connected')
     } else if (ws.readyState == 2) {
-      return i18n.t('public.connectClosing')
+      return $t('public.connectClosing')
     } else if (ws.readyState == 3) {
-      return i18n.t('public.connectClosed')
+      return $t('public.connectClosed')
     }
   }
 }

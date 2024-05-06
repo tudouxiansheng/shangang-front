@@ -1,6 +1,5 @@
 import dayjs from 'dayjs'
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
+
 /*
 将毫秒数转换成如“2019-04-15 12：00：00”格式的日期
 */

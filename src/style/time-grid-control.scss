@@ -1,0 +1,95 @@
+/* 网格时间选择控件 */
+.plug-timer-grid td,
+.plug-timer-grid th {
+  border: 1px solid #97B4D1;
+  text-align: center;
+  /*cursor:pointer;*/
+}
+
+.time-grid-control .Selected {
+  background-color: rgb(102, 162, 243);
+  opacity: 0.5;
+}
+
+.table_time_selected {
+  min-width: 980px;
+  width: 100%;
+  padding-right: 10px;
+}
+
+.plug-timer-grid {
+  width: 100%;
+  border-collapse: collapse;
+  z-index: 4;
+}
+
+.plug-timer-grid thead tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.plug-timer-grid tbody th {
+  width: 4%;
+}
+
+.plug-timer-grid tbody tr td {
+  width: 2%;
+}
+
+.time-grid-control .clear {
+  margin: 20px 0px 0px;
+  width: 90px;
+  /* height: 36px; */
+  height: 32px;
+  border-radius: 4px;
+  background: #3085CB;
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  /* position: absolute;
+    left: -96px;
+    bottom: 59px; */
+  cursor: pointer;
+}
+
+.time-grid-control table td {
+  height: 30px;
+  max-width: 5px;
+  border: 1px solid #97b4d1;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: background .5s;
+  -webkit-transition: background .5s;
+  cursor: pointer;
+}
+
+/*
+.el-select-dropdown {
+  border: 1px solid #595959 !important;
+  background: #595959 !important;
+}
+
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
+  background: #3085CB;
+}
+
+.el-select-dropdown__item {
+  color: #fff;
+} */
+
+/* //白色 */
+/* .time-grid-control table th,
+.time-grid-control table td {
+  cursor: pointer;
+  color: #4d4d4d;
+}
+*/
+#table_time_selected_time_seled {
+  overflow: auto;
+  padding-right: 20px;
+  box-sizing: border-box;
+}

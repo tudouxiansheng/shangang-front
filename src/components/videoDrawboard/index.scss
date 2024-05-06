@@ -1,0 +1,33 @@
+.video_board {
+  display: flex;
+  flex-direction: column;
+  .video_board_control {
+    svg.svg-icon {
+      display: inline-block;
+    }
+  }
+  .video_board_wrapper {
+    position: relative;
+    .video_board_canvas,
+    .video_board_player {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .video_board_player {
+      background: rgba(13, 14, 27, 0.7);
+    }
+    .video_board_canvas {
+      z-index: 1;
+    }
+    .link-class {
+      margin-right: 30px;
+    }
+  }
+}
+
+.task-form-wrapper {
+  .video_board_canvas {
+    background: rgba(13, 14, 27, 0.7);
+  }
+}

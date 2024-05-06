@@ -1,0 +1,19 @@
+.amap-logo {
+    opacity: 0 !important;
+}
+
+.amap-copyright {
+    opacity: 0;
+}
+
+.auto-item {
+    color: #404040;
+}
+
+.amap-scale-text {
+    color: #404040;
+}
+
+.amap-sug-result {
+    z-index: 9999 !important;
+}

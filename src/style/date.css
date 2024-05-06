@@ -1,0 +1,13 @@
+.el-time-panel {
+  width: 160px;
+}
+/*.el-time-panel__content::after, .el-time-panel__content::before{*/
+/*    margin-top: -5px;*/
+/*}*/
+.el-form-item__label {
+  color: #fff;
+}
+
+.el-progress__text {
+  color: #fff;
+}

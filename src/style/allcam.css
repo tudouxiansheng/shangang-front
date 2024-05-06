@@ -1,0 +1,70 @@
+@import "iconfont.css";
+.screen {
+  pointer-events: none;
+  position: fixed;
+  z-index: 1002;
+  width: 100%;
+  height: calc(100vh - 80px);
+  top: 80px;
+}
+.screen.full{
+  height: 100vh;
+  top: 0px;
+}
+.ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    /*文字超出宽度则显示ellipsis省略号*/
+    text-overflow: ellipsis;
+}
+.el-select .el-input.is-disabled .el-input__inner{
+    border-color: #E4E7ED;
+    color: #fff;
+}
+.el-input.is-disabled .el-input__inner{
+    color: #fff;
+}
+.amap-copyright,.amap-logo{
+    display: none!important;
+}
+.el-form--inline .el-form-item__label{
+    float: left;
+}
+.el-button--small{
+    height: 32px;
+    /*line-height: normal;*/
+}
+.el-input.is-disabled .el-input__inner{
+    background: transparent;
+}
+#table_time_selected_time_seled {
+    overflow: auto;
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+#table_time_selected_time_seled div{
+    /*overflow: hidden;*/
+    width: 100%;
+}
+/*.screen > -webkit-scrollbar-track {*/
+/*  background-color: #1e2c45 !important;*/
+/*}*/
+
+/*.screen > -webkit-scrollbar-thumb {*/
+/*  background-color: #2e4c90 !important;*/
+/*  border-radius: 3px;*/
+/*}*/
+
+/*.screen > -webkit-scrollbar {*/
+/*  width: 6px;*/
+/*  height: 0px;*/
+/*}*/
+input{
+	background:none;
+	outline:none;
+  border: none;
+  color: #ffff;
+}
+input:focus{
+	border:none;
+}

@@ -1,0 +1,63 @@
+/* 网格时间选择控件 */
+.plug-timer-grid td,
+.plug-timer-grid th {
+  border: 1px solid #97b4d1;
+  text-align: center;
+}
+
+.time-grid-control .Selected {
+  background-color: rgb(102, 162, 243);
+  opacity: 0.5;
+}
+
+.table_time_selected {
+  min-width: 980px;
+  width: 100%;
+}
+
+.plug-timer-grid {
+  width: 100%;
+  border-collapse: collapse;
+  z-index: 4;
+}
+
+.plug-timer-grid thead tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.plug-timer-grid tbody th {
+  width: 4%;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.plug-timer-grid tbody tr td {
+  width: 1%;
+}
+
+.time-grid-control .clear {
+  margin: 20px 0px 0px;
+  width: 90px;
+  height: 32px;
+  border-radius: 4px;
+  background: #3085cb;
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.time-grid-control table td {
+  height: 30px;
+  max-width: 5px;
+  border: 1px solid #97b4d1;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: background 0.5s;
+  -webkit-transition: background 0.5s;
+  cursor: pointer;
+}

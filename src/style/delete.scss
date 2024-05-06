@@ -1,0 +1,215 @@
+.el-cascader-menu {
+  background: #595959 !important;
+  color: #fff !important;
+  border-right: 1px solid #4d4d4d;
+}
+
+.el-cascader-menus {
+  border: 1px solid #595959 !important;
+  border-radius: 6px;
+
+}
+
+/* .el-popper[x-placement^=bottom] .popper__arrow {
+  border-bottom-color: #595959 !important;
+} */
+
+/* .el-popper[x-placement^=bottom] .popper__arrow::after {
+  border-bottom-color: #595959 !important;
+  border-top-color: #595959 !important;
+} */
+
+.el-cascader-menu__item {
+  color: #fff !important;
+}
+
+.el-cascader-menu__item:focus:not(:active),
+.el-cascader-menu__item:hover {
+  background: #3085CB !important;
+  color: #fff !important;
+}
+
+.el-cascader-node:not(.is-disabled):focus,
+.el-cascader-node:not(.is-disabled):hover {
+  background: #3085CB !important;
+  color: #fff !important;
+}
+
+
+.el-cascader__dropdown {
+  border: none;
+}
+
+.el-cascader-node__label {
+  color: #fff;
+}
+
+
+.el-popper {
+  border: 2px #4d4d4d solid !important;
+  margin-top: 0;
+  background: #4d4d4d;
+  color: #ccc;
+}
+
+.el-autocomplete-suggestion__wrap {
+  padding: 0;
+}
+
+.el-scrollbar {
+  background: #4d4d4d;
+}
+
+.el-autocomplete-suggestion__list li:hover {
+  background: #3085CB !important;
+}
+
+.el-autocomplete-suggestion__list li {
+  color: #fff;
+}
+
+.el-picker-panel__shortcut {
+  color: #ccc;
+}
+
+.el-picker-panel__sidebar {
+  background-color: #4d4d4d;
+}
+
+.el-date-picker__header button,
+.el-date-picker__header span {
+  color: #ccc;
+}
+
+.el-picker-panel__content th {
+  color: #ccc;
+}
+
+.el-date-table td.disabled div {
+  background: #4d4d4d;
+}
+
+/* 告警统计日期选框 */
+.el-icon-d-arrow-left:before {
+  color: #fff;
+}
+
+.el-icon-arrow-left:before {
+  color: #fff;
+}
+
+.el-icon-d-arrow-right:before {
+  color: #fff;
+}
+
+.el-icon-arrow-right:before {
+  color: #fff;
+}
+
+.el-date-table td.in-range div {
+  background-color: #404040;
+}
+
+.el-date-table td.in-range div:hover {
+  background-color: #409eff;
+  color: #fff;
+}
+
+.el-picker-panel__footer {
+  background-color: #4d4d4d;
+}
+
+/* cd */
+.el-month-table td .cell {
+  color: #fff;
+}
+
+.el-month-table td.disabled .cell {
+  background-color: transparent;
+  color: #fff;
+}
+
+.el-month-table td.in-range div,
+.el-month-table td.in-range div:hover {
+  background-color: transparent;
+}
+
+.el-month-table td.end-date div {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.el-month-table td.start-date div {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* 时间选择期 */
+.el-time-spinner__item {
+  color: #c0c4cc;
+}
+
+.el-time-spinner__item:hover {
+  background: #409eff;
+}
+
+.el-time-spinner__item:hover:not(.disabled):not(.active) {
+  background: #409eff;
+}
+
+
+.el-message-box {
+  background-color: #333;
+  border: none;
+
+  .el-message-box__title {
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .el-message-box__status::before {
+    display: none;
+
+  }
+
+  .el-message-box__message {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(245, 108, 108, 1);
+  }
+
+  .el-message-box__status+.el-message-box__message {
+    padding-left: 12px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(245, 108, 108, 1);
+  }
+
+  .el-message-box__btns {
+    text-align: center;
+  }
+
+  .el-button {
+    height: 32px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 28px;
+  }
+}
+
+
+.el-button.is-disabled.is-plain,
+.el-button.is-disabled.is-plain:focus,
+.el-button.is-disabled.is-plain:hover {
+  background: transparent;
+  border-color: transparent;
+}
+
+.el-date-range-picker__editor .el-input__inner {
+  border-color: #C0C4CC;
+}

@@ -1,0 +1,48 @@
+.normalBgc {
+  ::v-deep .cusDialog {
+    background: url('../img/normal.png') no-repeat;
+    background-size: 100% 100%;
+  }
+}
+.smallBgc {
+  ::v-deep .cusDialog {
+    background: url('../img/small.png') no-repeat;
+    background-size: 100% 100%;
+  }
+}
+.bigBgc {
+  ::v-deep .cusDialog {
+    background: url('../img/big.png') no-repeat;
+    background-size: 100% 100%;
+  }
+}
+::v-deep .cusDialog {
+  color: #fff;
+  overflow: hidden;
+  .el-dialog__header {
+    height: 60px;
+  }
+
+  .el-dialog__title {
+    color: #0cd8fa;
+  }
+
+  .el-icon-close {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .el-dialog__body {
+    max-height: calc(70vh - 62px);
+    overflow: auto;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    // color:#fff;
+  }
+
+  .el-dialog__footer {
+    text-align: center;
+    max-height: 70px;
+    border-radius: 0 0 50px 50px;
+  }
+}

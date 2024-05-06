@@ -1,0 +1,405 @@
+.leftContent {
+  pointer-events: auto;
+  width: 450px;
+  height: calc(100% - 40px);
+  position: absolute;
+  left: 21px;
+  margin-top: 16px;
+  background: url('../../../../../assets/buildingSeting/background.png')
+  no-repeat;
+  background-size: 100% 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  .fxc {
+    display: flex;
+    flex-direction: column;
+  }
+  /*头部的标题 */
+  .firstTiltle {
+    display: flex;
+    color: #ffffff;
+    font-size: 15px;
+    .img {
+      width: 28px;
+      margin-left: 5px;
+    }
+  }
+  .firstmodule {
+    .showOnlineNum {
+      display: flex;
+      margin-top: 30px;
+      .box1 {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        font-size: 16px;
+        align-items: center;
+        .box1img {
+          width: 89px;
+          height: 84px;
+        }
+        .num {
+          margin-top: 14px;
+        }
+      }
+      .box2 {
+        display: flex;
+        flex: 1;
+        margin-top: 30px;
+        .fxc {
+          align-items: center;
+          flex: 1;
+          position: relative;
+          .myimg {
+            width: 100px;
+            height: 84px;
+          }
+          .line {
+            color: #ffffff;
+            opacity: 0.6;
+            margin-top: 11px;
+            font-size: 14px;
+          }
+          .bili {
+            position: absolute;
+            top: 23px;
+            color: #00e5ff;
+            .size {
+              font-size: 24px;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .secondModule {
+    margin-top: 30px;
+    #pie {
+      height: 260px;
+      width: 100%;
+    }
+  }
+  .thirleModule {
+    position: relative;
+    height: 320px;
+    .tuli {
+      z-index: 10000;
+      width: 60%;
+      display: flex;
+      position: absolute;
+      color: white;
+      line-height: 28px;
+      border-radius: 4px;
+      border: 1px solid #00ccff;
+      margin-top: 23px;
+      cursor: pointer;
+      font-size: 14px;
+      .yue {
+        flex: 1;
+        text-align: center;
+      }
+      .zhou {
+        flex: 1;
+
+        text-align: center;
+      }
+      .tian {
+        flex: 1;
+        text-align: center;
+      }
+    }
+    #facetrend {
+      height: calc(100% - 20px);
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+  .color-blue {
+    background: #3696e5;
+  }
+}
+.rightContent {
+  pointer-events: auto;
+  width: 500px;
+  min-height: 90%;
+  height: 89.8vh;
+  position: absolute;
+  right: 21px;
+  margin-top: 16px;
+  background: url('../../../../../assets/buildingSeting/background.png')
+  no-repeat;
+  background-size: 100% 100%;
+  .noListData {
+    color: white;
+    font-size: 22px;
+    margin-top: 20px;
+  }
+  .centerItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /*搜索条件 */
+  .topContent {
+    padding: 22px 0px 0 22px;
+    .mytitleName {
+      font-size: 16px;
+      font-family: Microsoft YaHei;
+      font-weight: bold;
+      color: #1efffc;
+    }
+    .box {
+      display: flex;
+      margin-top: 17px;
+      .name {
+        color: white;
+        // margin-right: 8px;
+        font-size: 14px;
+        line-height: 40px;
+        width: 80px;
+        text-align: right;
+      }
+      .input {
+        width: 360px;
+      }
+      .boxbtn {
+        display: flex;
+        font-size: 16px;
+        .jiansuo {
+          width: 160px;
+          background: #00ccff;
+          border-radius: 4px;
+          height: 40px;
+          color: white;
+
+          cursor: pointer;
+        }
+        .reset {
+          margin-left: 21px;
+          background: none;
+          border: 1px solid #b5bdbf;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  /* 列表*/
+  .listItem {
+    margin-top: 41px;
+    overflow-y: scroll;
+    min-height: 566px;
+    .ul-item {
+      width: 96%;
+      height: 36px;
+      line-height: 36px;
+      background: rgba(0, 204, 255, 0.2);
+      display: flex;
+      padding: 0 22px 0 37px;
+      margin: 0 auto;
+      font-size: 14px;
+      .photoMytitle {
+        flex: 0.8;
+        color: white;
+        text-align: center;
+      }
+      .photoMytitle1 {
+        padding-left: 5px;
+        flex: 0.7;
+        color: white;
+      }
+      .photoMytitle2 {
+        flex: 0.8;
+        color: white;
+      }
+      .time {
+        flex: 2;
+      }
+      .deviceName {
+        line-height: 36px;
+      }
+    }
+    .listContent {
+      max-height: 566px;
+      .list {
+        &:hover {
+          background: rgba(32, 75, 116, 0.65);
+        }
+        display: flex;
+        padding: 10px 22px 10px 37px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        .snapPhoto {
+          width: 60px;
+          height: 50px;
+        }
+        .flxName {
+          margin-left: 3px;
+          width: 42px;
+          color: white;
+          text-align: center;
+          line-height: 50px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          cursor: pointer;
+        }
+        .flxName:hover {
+          overflow: visible;
+        }
+        .flx1 {
+          flex: 0.7 !important;
+          // width: 40px;
+          color: white;
+          text-align: center;
+          line-height: 50px;
+        }
+        .flx2 {
+          color: white;
+          text-align: center;
+          line-height: 50px;
+          flex: 2;
+        }
+        .flx3 {
+          width: 80px;
+          color: white;
+          text-align: center;
+          line-height: 50px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          cursor: pointer;
+        }
+        .flx3:hover {
+          overflow: visible;
+        }
+      }
+    }
+  }
+  .lookhistory {
+    text-align: right;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #1efffc;
+    cursor: pointer;
+    margin-right: 21px;
+  }
+  /*单个人员搜索条件 */
+  .searchContent {
+    width: 400px;
+    padding: 30px;
+    height: 90%;
+    background: rgba(20, 47, 72, 0.6);
+    border-radius: 10px;
+    position: absolute;
+    right: 473px;
+    top: 5%;
+    .closebtn {
+      font-size: 18px;
+      color: white;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+    .userInfo {
+      display: flex;
+      align-items: center;
+      .userimg {
+        width: 100px;
+        height: 100px;
+      }
+      .rightUserInfo {
+        margin-left: 19px;
+        display: flex;
+        flex-direction: column;
+
+        .userName {
+          color: white;
+          font-size: 14px;
+        }
+        .sex {
+          color: white;
+          font-size: 14px;
+          margin-top: 12px;
+        }
+      }
+    }
+    .activityTrack {
+      .title {
+        color: #1efffc;
+        font-size: 14px;
+        margin-top: 31px;
+      }
+      .wrapper {
+        margin-top: 27px;
+        list-style: none;
+        position: relative;
+        max-height: 600px;
+        overflow-y: scroll;
+
+        .itemTrack {
+          display: flex;
+          color: white;
+          pointer-events: auto;
+          .timeline-item__tail {
+            position: absolute;
+            left: 7px;
+            height: 95%;
+            border-left: 2px dashed #1efffc;
+            top: 17px;
+          }
+          .time-blue {
+            width: 16px;
+            height: 16px;
+          }
+          .eventTime {
+            margin-left: 10px;
+          }
+          .numtrack {
+            margin-left: 11px;
+          }
+          .play {
+            width: 22px;
+            height: 16px;
+            cursor: pointer;
+            margin-left: 20px;
+          }
+          .playTrack {
+            color: #ffffff;
+            margin-left: 10px;
+            font-size: 12px;
+          }
+        }
+        .pointInfo {
+          display: flex;
+          flex-direction: column;
+          margin-left: 28px;
+          .playTrackinfo {
+            display: flex;
+            color: white;
+            margin-top: 11px;
+            cursor: pointer;
+            .time {
+              margin-left: 5px;
+            }
+            .time-white {
+              width: 16px;
+              height: 16px;
+            }
+            .location {
+              margin-left: 10px;
+              margin-right: 10px;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+#deviceTools {
+  .el-dialog__body {
+    .button.radio_true_full:after {
+      left: 2px !important;
+      top: 2px !important;
+    }
+    padding: 5px 15px;
+
+    .tabBox {
+      height: 510px;
+      background: #f2f2f2;
+
+      .title {
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        text-align: center;
+        background-color: #e5e5e5;
+      }
+
+      .clientBox {
+        padding: 10px 8px 10px 15px;
+        height: 450px;
+        background: #f2f2f2;
+
+        .el-input {
+          width: calc(100% - 70px);
+
+          .el-input__inner {
+            height: 36px;
+            line-height: 36px;
+            background: #f2f2f2 !important;
+            border: 1px solid #f2f2f2 !important;
+          }
+        }
+
+        .searchBtn {
+          margin-left: 5px;
+          min-width: 60px;
+          height: 36px;
+        }
+
+        .ztree {
+          height: 400px;
+          margin-top: 10px;
+          overflow-y: auto;
+
+          .curSelectedNode .node_name {
+            background-color: #389ed8;
+          }
+        }
+      }
+    }
+
+    .cameraBox {
+      background: #f2f2f2;
+
+      .checkTitle {
+        height: 40px;
+        line-height: 40px;
+        background-color: #e5e5e5;
+        text-align: center;
+      }
+
+      .el-checkbox__label {
+        color: #2d2d2d;
+      }
+
+      .checkList {
+        padding: 10px 8px 10px 15px;
+
+        .el-checkbox-group {
+          height: 450px;
+          overflow-x: hidden;
+          overflow-y: auto;
+
+          .el-checkbox {
+            display: block;
+            padding-bottom: 20px;
+
+            &:last-child {
+              padding-bottom: 0px;
+            }
+          }
+
+          .checkbox-item-text {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+            width: 190px;
+            display: inline-block;
+            vertical-align: bottom;
+          }
+        }
+      }
+    }
+  }
+
+  .dialog-footer {
+    .el-button {
+      min-width: 100px;
+      margin: 0px 90px;
+    }
+  }
+}
+

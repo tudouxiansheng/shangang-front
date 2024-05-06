@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=no"
+    />
+
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+
+    <!--物图样式-->
+    <link rel="stylesheet" href="./static/libs/map/Cesium/Widgets/widgets.css">
+    <link rel="stylesheet" href="./static/libs/map/cesium-wutu/wutu3d.css">
+    <!--物图依赖-->
+    <!-- <script src="./static/libs/map/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript">
+      var $ = jQuery.noConflict(true);
+    </script> -->
+    <!-- <script src="./static/libs/map/Cesium/Cesium.js"></script>
+    <script src="./static/libs/map/cesium-plugins/navigation/viewerCesiumNavigationMixin.min.js"></script>
+    <script src="./static/libs/map/turf/turf.min.js"></script>
+    <script src="./static/libs/map/echarts.min.js"></script>
+    <script src="./static/libs/map/cesium-wutu/wutu3d.js"></script> -->
+
+    <script src="./static/libs/map/jquery.min.js"></script>
+    <script src="./static/libs/map/Cesium/Cesium.js"></script>
+    <script src="./static/libs/map/cesium-wutu/wutu3d.js"></script>
+    <script src="./static/libs/map/cesium-plugins/navigation/viewerCesiumNavigationMixin.min.js"></script>
+    <script src="./static/libs/map/turf/turf.min.js"></script>
+    <script src="./static/libs/map/echarts.min.js"></script>
+    <script src="./static/libs/map/anime.min.js"></script>
+    <!-- 引入ckplayer -->
+    <script src="./static/ckplayer/ckplayer.js"></script>
+    <!-- 局点信息 -->
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <script src="/static/js/api.js"></script>
+    <script src="./static/js/echarts-auto-tooltip.js"></script>
+
+    <!-- <script src="./static/js/swiper.min.js"></script> -->
+    <!-- 百度离线地图 -->
+    <!-- <link href='http://124.71.174.84:3000/bigemap.js/v2.1.0/bigemap.css' rel='stylesheet' />
+    <script src='http://124.71.174.84:3000/bigemap.js/v2.1.0/bigemap.js'></script> -->
+    <title></title>
+  </head>
+
+  <body>
+    <div id="app" style="background-color: #0f9694"></div>
+    <!-- built files will be auto injected -->
+  </body>
+
+  <script>
+    // getFlavor({}).then(res => {
+    //   console.log("---------", res);
+    //   // document.title = res.flavorName || "智能社区安防平台";
+    //   // document.getElementById('mainLogo').href = res.mainLogo
+    //   // mainLogo: "http://124.71.160.18:10000/icon/logo.png"
+    //   // 使用正则表达式，获取mainLogo中的id地址
+    //   let rex = "^((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})(\\.((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})){3}:[\\d]{2,5}$";
+
+    //   if (res.mainLogo) {
+    //     let serviceIp = res.mainLogo.match(rex);
+    //     console.log("get server ip and port：", serviceIp);
+    //     let ipPort = (serviceIp || "").split(":");
+    //     console.log("login --------***----------", serviceIp, ipPort)
+    //     sessionStorage.setItem("serverIp", ipPort[0] || "");
+    //     sessionStorage.setItem("serverPort", ipPort[1] || null);
+    //   }
+
+    //   sessionStorage.setItem("mainLogo", res.mainLogo);
+    // });
+    // let data = {systemType: 2}
+    // getName(data).then((res) => {
+    //   if (res.resultCode === 0) {
+    //     document.title = res.systemName;
+    //     console.log(res.systemName);
+    //     sessionStorage.setItem("flavorName", res.systemName);
+    //   }
+    // });
+
+  </script>
+</html>

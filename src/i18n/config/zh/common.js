@@ -506,7 +506,7 @@ export default {
     T_Code_Abnormal: '体温和健康码\n异常',
     test_Abnormal: '核酸异常',
     empty: '暂无数据',
-    noData: '未检索到数据',
+    noData: '暂无数据',
     expand: '展开',
     fold: '收起',
     play: '播放',

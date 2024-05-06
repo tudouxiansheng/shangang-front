@@ -79,3 +79,88 @@ input:focus{
 .search-form {
     margin-top:18px;
 }
+.el-dialog {
+    position: relative;
+    margin: 0 auto 0.26042rem;
+    background: #051b2c!important;
+
+    border-radius: 0.01042rem;
+    box-shadow: 0 0.00521rem 0.01563rem rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    width: 50%;
+}
+.el-dialog__title {
+    line-height: 0.125rem;
+    font-size: 0.09375rem;
+    color:#fff!important;
+}
+.el-dialog__body {
+    padding: 0.15625rem 0.10417rem;
+    color:#fff!important;
+    font-size: 0.07292rem;
+    word-break: break-all;
+}
+.el-input.is-disabled .el-input__inner {
+    background-color: transparent!important;
+    border-color: #E4E7ED;
+    color: #C0C4CC;
+    cursor: not-allowed;
+}
+.el-table {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent!important;
+    font-size: 0.07292rem;
+    color: #606266;
+}
+.el-table tr {
+    background-color: transparent!important;
+}
+.el-table th.el-table__cell {
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent!important;
+}
+.el-loading-mask {
+    position: absolute;
+    z-index: 2000;
+    background-color: transparent!important;
+    margin: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.3s;
+}
+.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+    background: #0a3251!important;
+}
+
+.form-flex {
+  display: flex;
+  padding: 0 40px;
+
+  .form-left {
+    width: 50%;
+    padding-right: 20px;
+  }
+
+  .form-right {
+    width: 50%;
+    padding-left: 20px;
+  }
+}
+.tableNOdata {
+    margin-left: 50%;
+    text-align: center;
+    /* display: flex; */
+    /* align-content: flex-end; */
+    /* flex-direction: column; */
+    transform: translateX(-50%);
+}

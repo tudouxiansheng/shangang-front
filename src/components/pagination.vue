@@ -1,18 +1,5 @@
 <template>
   <div class="pagination">
-    <div class="paging">
-      <span>{{ $t('public.everyPageShows') }}</span>
-      <el-select v-model="pageSize" @change="handleSizeChange">
-        <el-option
-          v-for="(item, index) in pageSizes"
-          :key="index"
-          :label="item"
-          :value="item"
-        ></el-option>
-      </el-select>
-      <span>{{ $t('public.records') }}</span>
-    </div>
-
     <div>
       <el-pagination
         @current-change="handleCurrentChange"
@@ -88,6 +75,8 @@ export default {
 </script>
 <style lang="scss">
 .pagination {
+  margin-top:10px;
+float:right;
  .el-pagination__editor.el-input{
   width: 56px !important;
 } 

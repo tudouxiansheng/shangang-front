@@ -7,6 +7,16 @@ const dict = {
     'device-type': [], // 摄像机类型
     'alarm-video-type': [], //联动动作名称
     'ecs-alarm-type-scene': [], //场景分类
+    allocation_status: [
+      {
+        name: '未分配',
+        code: 0
+      },
+      {
+        name: '已分配',
+        code: 1
+      }
+    ]
   },
   mutations: {
     SET_DICT_DATA(state, data) {

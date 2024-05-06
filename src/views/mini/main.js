@@ -16,6 +16,7 @@ import Viewer from 'v-viewer'
 import 'viewerjs/dist/viewer.css'
 import App from './App'
 import router from '@/router'
+import Pagination from '@/components/pagination'
 import '@/style/allcam.css'
 import directive from '@/directive/index'
 import '@/utils/directives' //弹框拖拽
@@ -38,6 +39,8 @@ Vue.use(flvjs)
 Vue.use(HappyScroll)
 Vue.use(Print)
 Vue.use(directive)
+Vue.component('Pagination', Pagination)
+
 Vue.use(VueClipboard)
 Vue.use(vueSeamlessScroll)
 Viewer.setDefaults({

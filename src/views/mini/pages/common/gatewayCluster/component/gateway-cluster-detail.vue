@@ -1,12 +1,12 @@
 <template>
   <el-dialog
     :title="$t('gatewayCluster.gatewayClusterDetail')"
-    v-model="$parent.gatewayClusterDetailVisible"
+    :visible.syn="$parent.gatewayClusterDetailVisible"
     top="10vh"
     :width="$parent.locale == 'en' ? '1300px' : '1000px'"
-    :close-on-click-modal="false"
     class="gatewayClusterDetailDialog"
     :modal="false"
+    :before-close="dialogClosed"
     draggable
     @closed="dialogClosed"
     @open="dialogOpen"

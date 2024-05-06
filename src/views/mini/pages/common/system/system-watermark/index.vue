@@ -721,7 +721,7 @@ export default {
     },
 
     watermarkTypeData() {
-      this.$api.getDictionary({ type: 'watermark-rule' }).then(res => {
+      this.getDictionary({ type: 'watermark-rule' }).then(res => {
         this.watermarkRuleArray = res.dictionaryList
       })
     },

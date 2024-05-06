@@ -316,7 +316,7 @@ export default {
     // 获取行业类型
     getIndustry_type() {
       let data = { type: 'industry-type' }
-      this.$api.getDictionary(data).then(res => {
+      this.getDictionary(data).then(res => {
         if (res.dictionaryList) {
           this.industryTypeList = res.dictionaryList
         }

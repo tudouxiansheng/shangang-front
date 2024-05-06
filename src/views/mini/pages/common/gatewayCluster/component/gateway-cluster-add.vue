@@ -9,9 +9,9 @@
        :visible.sync="$parent.dialogFormVisible"
       top="10vh"
       width="1000px"
-      :close-on-click-modal="false"
-      :modal="false"
-      draggable
+
+      :draggable="false"
+    
       @closed="dialogClosed"
       @open="dialogOpen"
     >

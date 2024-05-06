@@ -70,20 +70,23 @@
     </div>
 
     <div style="height: 600px" v-loading="loading" :element-loading-text="$t('public.loading')">
+      <div v-if="!loading && !tableData.length" class="tableNOdata">
+        <img src="@/assets/img/common/NOdata.png" alt style="margin-top: 0px" />
+        <p>{{ $t('public.noData') }}</p>
+      </div>
       <!-- 表格 -->
       <el-table
+      v-if="!loading && tableData.length"
         :max-height="tableHeight"
-        v-if="!loading"
+        :loading="loading"
         :row-class-name="tableRowClassName"
         ref="multipleTable"
         :data="tableData"
         @selection-change="handleSelectionChange"
         border
-        :span-method="spanMethod"
+        :span-method="objSpanMethod"
       >
-        <template #empty>
-          <span>{{ dataText }}</span>
-        </template>
+      
         <el-table-column label width="50" type="selection" />
         <el-table-column
           :label="$t('gatewayCluster.multipleIvsGroupName')"
@@ -130,25 +133,25 @@
         </el-table-column>
         <el-table-column :label="$t('public.operating')" min-width="90">
           <template #default="{ row }">
-            <span v-has-permi="[92]" class="cell-operate" @click="handleView(row)">
+            <el-button type="text" v-has-permi="[92]" class="cell-operate" @click="handleView(row)">
               {{ $t('public.particulars') }}
-            </span>
-            <span v-has-permi="[93]" class="cell-operate" @click="handleUpdate(row)">
+            </el-button>
+            <el-button type="text" v-has-permi="[93]" class="cell-operate" @click="handleUpdate(row)">
               {{ $t('public.modify') }}
-            </span>
+            </el-button>
             <el-dropdown trigger="click" @command="handleCommand">
-              <span v-has-permi="[93]" style="color: #10a9ff; cursor: pointer; font-size: 12px">
+              <el-button type="text" v-has-permi="[93]" style="color: #10a9ff; cursor: pointer; font-size: 12px">
                 {{ $t('public.moreActions') }}
-              </span>
+              </el-button>
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item :command="beforeHandleCommand(row, 'ena')">
-                    <span :style="row.enableStatus == '0' ? 'color:#10a9ff;' : 'color:#ff6b6b;'">
+                    <el-button type="text" :style="row.enableStatus == '0' ? 'color:#10a9ff;' : 'color:#ff6b6b;'">
                       {{ row.enableStatus == 0 ? $t('public.enable') : $t('public.deactivate') }}
-                    </span>
+                    </el-button>
                   </el-dropdown-item>
                   <el-dropdown-item :command="beforeHandleCommand(row, 'del')">
-                    <span style="color: #ff6b6b">{{ $t('public.delete') }}</span>
+                    <el-button type="text" style="color: #ff6b6b">{{ $t('public.delete') }}</el-button>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </template>
@@ -523,7 +526,7 @@ export default {
       })
       return formattedData
     },
-    spanMethod({ row, columnIndex }) {
+    objSpanMethod({ row, columnIndex }) {
       if (columnIndex === 0 || columnIndex === 1 || columnIndex === 2) {
         if (row.total) {
           return [row.total, 1]
@@ -671,11 +674,9 @@ export default {
         })
     },
     setAllocationStatus(val) {
-      return this.selectDictLabel(this.allocationStatusList, val, {
-        key: 'name',
-        value: 'code'
-      })
+      return this.allocationStatusList.find((t) => t.code == val)?.name
     }
+
   }
 }
 </script>

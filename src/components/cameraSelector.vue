@@ -1,14 +1,14 @@
 <template>
   <el-dialog
     :title="title"
-    v-model="dialogVisible"
+    :visible.sync="dialogVisible"
     :top="showFavorites ? '2vh' : '10vh'"
     :width="showFavorites ? '900px' : '850px'"
     :close-on-click-modal="false"
     @open="dialogOpen"
     @closed="dialogClosed"
     :modal="false"
-    draggable
+    :draggable="false" 
     id="camera-selector"
   >
     <div class="selector-container">
@@ -284,7 +284,7 @@ export default {
     },
     title: {
       type: String,
-      default: this.$t('public.cameraChoosePrompt')
+      default: '请选择镜头'
     },
     api: {
       type: String,

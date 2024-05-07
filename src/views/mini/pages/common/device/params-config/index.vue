@@ -1,5 +1,5 @@
 <template>
-  <div id="paramsConfig">
+  <div id="paramsConfig" class='base' style=margin-top:60px;>
     <template v-if="isMainDevPage">
       <template v-if="isRouterAlive && !loading">
         <VPaasMainDevParamsConfig

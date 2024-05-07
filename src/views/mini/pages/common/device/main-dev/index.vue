@@ -39,7 +39,7 @@
             </el-button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item v-if="!$projectEnv.includes('SIOP')" :command="1">
+                <el-dropdown-item  :command="1">
                   <span v-hasPermi="[19]">{{ $t('primaryDevice.batchAccess') }}</span>
                 </el-dropdown-item>
                 <el-dropdown-item :command="2">
@@ -61,17 +61,17 @@
             </el-button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item v-if="$projectEnv.includes('SIOP')" :command="1">
+                <el-dropdown-item  :command="1">
                   {{ $t('primaryDevice.DownloadIVS') }}
                 </el-dropdown-item>
-                <el-dropdown-item v-if="$projectEnv.includes('SIOP')" :command="5">
+                <el-dropdown-item :command="5">
                   {{ $t('primaryDevice.DownloadADS') }}
                 </el-dropdown-item>
-                <el-dropdown-item v-if="$projectEnv == 'AVS'" :command="4">
+                <el-dropdown-item  :command="4">
                   {{ $t('primaryDevice.DownloadAVS') }}
                 </el-dropdown-item>
 
-                <el-dropdown-item v-if="$projectEnv.includes('SIOP')" :command="16">
+                <el-dropdown-item  :command="16">
                   {{ $t('primaryDevice.DownloadvPaaS') }}
                 </el-dropdown-item>
               </el-dropdown-menu>
@@ -85,28 +85,28 @@
             </el-button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item v-if="$projectEnv.includes('SIOP')">
+                <el-dropdown-item >
                   <div class="upload">
                     <Excel @success="batchImportIVS">
                       <div>{{ $t('primaryDevice.importIVS') }}</div>
                     </Excel>
                   </div>
                 </el-dropdown-item>
-                <el-dropdown-item v-if="$projectEnv.includes('SIOP')">
+                <el-dropdown-item >
                   <div class="upload">
                     <Excel @success="batchImportADS">
                       <div>{{ $t('primaryDevice.importADS') }}</div>
                     </Excel>
                   </div>
                 </el-dropdown-item>
-                <el-dropdown-item v-if="$projectEnv == 'AVS'">
+                <el-dropdown-item >
                   <div class="upload">
                     <Excel @success="batchImportAVS">
                       <div>{{ $t('primaryDevice.importAVS') }}</div>
                     </Excel>
                   </div>
                 </el-dropdown-item>
-                <el-dropdown-item v-if="$projectEnv.includes('SIOP')">
+                <el-dropdown-item >
                   <div class="upload">
                     <Excel @success="batchImportIVS">
                       <div>{{ $t('primaryDevice.importvPaaS') }}</div>
@@ -128,7 +128,7 @@
           <el-form
             :inline="true"
             class="demo-form-inline"
-            :label-width="locale == 'en' ? '170px' : '127px'"
+            :label-width="locale == 'en' ? '170px' : '137px'"
             ref="form"
             :model="searchForm"
             label-position="left"
@@ -320,15 +320,13 @@
               </div>
             </div>
 
-            <div class="search-btn">
+            <div class="search-btn" style="margin-bottom:18px;">
               <el-button type="primary" @click="handleFind" class="miniBtn">
                 {{ $t('public.search') }}
               </el-button>
-              <div @click="manyCondition" class="manyCondition inputMiddle">
-                <span>{{ $t('public.manyCondition') }}</span>
-                <span :class="iconName"></span>
-              </div>
-            </div>
+             
+                <el-button  @click="manyCondition">{{ $t('public.manyCondition') }}</el-button>
+                </div>
           </el-form>
         </div>
         <!-- //面包屑 -->
@@ -434,12 +432,7 @@
                       : ''
                   "
                 >
-                  {{
-                    selectDictLabel(deviceRegisterStatusListFormattered, row.status, {
-                      key: 'name',
-                      value: 'value'
-                    })
-                  }}
+                  {{ deviceRegister(row.status) }}
                 </span>
               </template>
             </el-table-column>
@@ -468,14 +461,14 @@
 
             <el-table-column :label="$t('public.operating')" min-width="150">
               <template #default="{ row }">
-                <span
+                <el-button type='text'
                   class="cell-operate"
                   style="word-break: break-word"
                   @click="handleEdits(row)"
                   v-if="PermissionInfo"
                 >
                   {{ $t('public.particulars') }}
-                </span>
+                </el-button>
                 <span
                   style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
                   @click="handleDelete(row)"
@@ -518,10 +511,9 @@
     <device-video-channel></device-video-channel>
     <!-- 参数配置弹框 -->
     <el-dialog
-      v-if="baseInfoShow"
-      draggable
+      
       :title="$t('public.editFrontInfo')"
-      v-model="baseInfoShow"
+      :visible.sync="baseInfoShows"
       :width="locale == 'en' ? '1500px' : '1200px'"
       class="baseInfoDialog"
       :close-on-click-modal="false"
@@ -682,6 +674,7 @@ export default {
   mixins: [tableCopy, judgeWindow],
   data() {
     return {
+      baseInfoShows:false,
       locale: localStorage.getItem('locale'),
       isRouterAlive: true,
       //用户权限判断
@@ -825,14 +818,6 @@ export default {
       imgTypeAll: state => state.dict['camera-img-type'], // 智能属性
       deviceRegisterStatusList: state => state.dict['device-register-status']
     }),
-    baseInfoShow: {
-      get() {
-        return this.$store.state.config.baseInfoShow
-      },
-      set(v) {
-        this.$store.commit('config/set_baseInfoShow', v)
-      }
-    },
     deviceRegisterStatusListFormattered() {
       let arr = []
       this.deviceRegisterStatusList.forEach(item => {
@@ -848,13 +833,6 @@ export default {
       this.pageResize()
       this.setData()
     },
-    baseInfoShow: {
-      handler(val) {
-        if (val == false) {
-          this.getMainDevList()
-        }
-      }
-    }
   },
   created() {
     this.getPermissions()
@@ -910,42 +888,21 @@ export default {
             mainDevNetworkInfo,
             mainDevConfigInfo
           } = item
-          let mainDevTypeName = this.selectDictLabel(this.mainDevTypeData, mainDevType, {
-            key: 'mainDevName',
-            value: 'AmainDev'
-          })
-          let platName = this.selectDictLabel(this.platNameList, platId, {
-            key: 'platName',
-            value: 'platId'
-          })
+          let mainDevTypeName =  this.mainDevTypeData.find((t) => t.value == mainDevType)?.key
+          let platName = this.platNameList.find((t) => t.value == platId)?.key
           let accessInterconnectCode = ''
           if (mainDevAccessInfo && mainDevAccessInfo.accessInterconnectCode != undefined) {
             accessInterconnectCode = mainDevAccessInfo.accessInterconnectCode
           }
-          manufacturer = this.selectDictLabel(this.manufacturerData, manufacturer, {
-            key: 'name',
-            value: 'value'
-          })
-          drive = this.selectDictLabel(this.driveTypeAll, drive)
-          applicationType = this.selectDictLabel(this.applicationData, applicationType, {
-            key: 'name',
-            value: 'value'
-          })
-          status = this.selectDictLabel(this.deviceRegisterStatusListFormattered, status, {
-            key: 'name',
-            value: 'value'
-          })
+           manufacturer= this.manufacturerData.find((t) => t.value == manufacturer)?.name
+     
+          drive = this.driveTypeAll.find((t) => t.code == drive)?.name
+          applicationType =this.applicationData.find((t) => t.value == applicationType)?.key
+          status = this.deviceRegisterStatusListFormattered.find((t) => t.value == status)?.name
           installLocate = installLocate == undefined ? '' : installLocate
-          let networkType = this.selectDictLabel(
-            this.networkTypeData,
-            mainDevNetworkInfo?.networkType == 'undefined'
+          let networkType =this.networkTypeData.find((t) => t.value ==  mainDevNetworkInfo?.networkType == 'undefined'
               ? ''
-              : mainDevNetworkInfo?.networkType + '',
-            {
-              key: 'name',
-              value: 'value'
-            }
-          )
+              : mainDevNetworkInfo?.networkType + '',)?.key
           let puIp = mainDevConfigInfo?.puIp == undefined ? '' : mainDevConfigInfo.puIp
           longitude = longitude == undefined ? '' : longitude
           latitude = latitude == undefined ? '' : latitude
@@ -1156,7 +1113,9 @@ export default {
         'device-register-status'
       ])
     },
-
+deviceRegister(val){
+  return this.deviceRegisterStatusListFormattered.find((t) => t.value == val)?.name
+},
     setmainDevType(val) {
       if (val == 0) {
         return this.$t('public.mainDevName0')
@@ -1811,7 +1770,6 @@ export default {
       this.$store.commit('config/set_frontDevId', row.mainDevId)
       this.$store.commit('config/set_frontPlatType', row.platType)
       this.$store.commit('config/set_frontDrive', row.drive)
-      this.$store.commit('config/set_baseInfoShow', true)
     },
 
     // nvr800设备同步
@@ -1835,11 +1793,13 @@ export default {
     },
 
     dialogOpen() {
+      this.baseInfoShows=true
       this.$nextTick(() => {
         
       })
     },
     dialogClosed() {
+      this.baseInfoShows=false
       this.$store.commit('config/set_baseInfoShow', false)
     },
 
@@ -1965,5 +1925,10 @@ export default {
   .el-dialog__body {
     padding: 15px 28px 0px !important;
   }
+}
+.search-btn {
+  position:absolute;
+  top:78px;
+  right:28px;
 }
 </style>

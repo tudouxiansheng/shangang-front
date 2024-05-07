@@ -3,14 +3,13 @@
     <!-- 设备视频通道信息 -->
     <el-dialog
       :title="$t('primaryDevice.dialogVEquipmentChannel')"
-      v-model="$parent.videoChannelDialogVisible"
+      :visible.sync="$parent.videoChannelDialogVisible"
       width="1200px"
       id="cameraInfo"
       :close-on-click-modal="false"
       @closed="dialogClosed"
       @open="dialogOpen"
-      :modal="false"
-      draggable
+            :draggable="false"  
     >
       <div style="height: 40px" v-if="$parent.PermissionCameraManage">
         <el-button type="primary" :icon="ElIconCheck" :disabled="startBtn" @click="handelStart">

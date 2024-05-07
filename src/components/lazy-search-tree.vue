@@ -9,7 +9,7 @@
       :fetch-suggestions="querySearchAsync"
       :trigger-on-focus="false"
       :debounce="300"
-      :placeholder="placeholderTitle"
+      :placeholder="$t('public.pleaseEnterOrgOrDev')"
       clearable
       @select="handleFilterNode"
     ></el-autocomplete>
@@ -83,7 +83,7 @@ export default {
     },
     placeholderTitle: {
       type: String,
-      default: this.$t('public.pleaseEnterOrgOrDev')
+      default: ''
     },
     iconColor: {
       type: Boolean,

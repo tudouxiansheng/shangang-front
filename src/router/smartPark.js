@@ -306,6 +306,7 @@ export default [
         },
         component: () => import('@/views/mini/pages/common/device/params-config')
       },
+<<<<<<< Updated upstream
     //   {
     //     path: '/device/main-dev-params-config/:mainDevId',
     //     name: 'MainDeviceFrontEndParameterConfiguration',
@@ -316,4 +317,6 @@ export default [
     //     },
     //     component: () => impor('@/views/mini/pages/common/device/params-config')
     //   },
+=======
+>>>>>>> Stashed changes
 ]

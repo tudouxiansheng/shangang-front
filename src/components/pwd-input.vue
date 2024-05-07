@@ -7,6 +7,7 @@
       :size="size"
       :type="getIptType"
       autocomplete="off"
+      v-model="modelValue"
       :model-value="modelValue"
       @input="handleInput"
       :placeholder="placeholder"

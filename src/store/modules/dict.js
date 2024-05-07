@@ -9,6 +9,55 @@ const dict = {
     'ecs-alarm-type-scene': [], //场景分类
     'access-plat-auth-type': [],
     'access-plat-protocol-type': [],
+<<<<<<< Updated upstream
+=======
+    'stream-type': [], //码流类型
+    'application-type': [], //应用类型
+    'camera-img-type': [], // 智能属性
+    'dev-access-mode': [], // 网络类型
+    camera_manufacturer: [], // 设备厂商类型
+    //所有平台的设备协议类型
+    drive_type_all: [
+      {
+        name:'T28181',
+        code: 'T28181'
+      },
+      {
+        name: 'EHOME',
+        code: 'EHOME'
+      },
+      {
+        name: 'ONVIF',
+        code: 'ONVIF'
+      },
+      {
+        name: 'HIKSDK',
+        code: 'HIKSDK'
+      },
+      {
+        name: 'HWSDK',
+        code: 'HWSDK'
+      },
+      {
+        name: 'HWSDK-ACREG',
+        code: 'HWSDK-ACREG'
+      },
+      {
+        name: 'DHSDK',
+        code: 'DHSDK'
+      },
+      {
+        name:'ABSDK',
+        code: 'ABSDK'
+      },
+      {
+        name: 'ONVIF1',
+        code: 'ONVIF1'
+      }
+    ],
+    'device-register-status': [],
+
+>>>>>>> Stashed changes
     allocation_status: [
       {
         name: '未分配',

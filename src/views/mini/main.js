@@ -28,6 +28,7 @@ import VideoPlay from '@/utils/VideoPlay'
 import { fetch, postFetch, formFetch } from '@/api/service'
 import CusDialog from '@/components/CusDialog'
 import '@/style/element-variables.scss'
+import PwdInput from '@/components/pwd-input'
 Vue.use(i18n)
 Vue.use(ElementUI, {
   size: 'small',
@@ -40,7 +41,7 @@ Vue.use(HappyScroll)
 Vue.use(Print)
 Vue.use(directive)
 Vue.component('Pagination', Pagination)
-
+Vue.component('PwdInput', PwdInput)
 Vue.use(VueClipboard)
 Vue.use(vueSeamlessScroll)
 Viewer.setDefaults({
@@ -79,6 +80,7 @@ Vue.prototype.$formFetch = formFetch
 Vue.prototype.$postFetch = postFetch
 Vue.prototype.$api = api
 Vue.prototype.$fetch = fetch
+Vue.prototype.$projectEnv = process.env.VUE_APP_ENV_NAME
 Vue.prototype.$echarts = echarts
 Vue.prototype.$EventBus = new Vue()
 Vue.prototype.$VideoPlay = new VideoPlay()

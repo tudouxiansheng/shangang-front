@@ -3,7 +3,7 @@
   <div>
     <el-dialog
       :title="$t('primaryDevice.modifyMainDev')"
-      v-model="$parent.modifyMainDevVisible"
+      :visible.sync="$parent.modifyMainDevVisible"
       top="10vh"
       :width="locale == 'en' ? '1200px' : '1050px'"
       :close-on-click-modal="false"

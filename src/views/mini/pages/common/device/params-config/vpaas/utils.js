@@ -1,30 +1,29 @@
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
+
 import { PLATFORM_TYPE } from '@/enums/platformEnum'
 // 主设备参数配置tab列表
 const mainDevTabs = [
   {
-    name: i18n.t('mainDevConfiguration.systemParam'),
+    name: '系统参数',
     value: 'system'
   },
   {
-    name: i18n.t('mainDevConfiguration.videoChannel'),
+    name: '视频通道',
     value: 'video'
   },
   {
-    name: i18n.t('mainDevConfiguration.audioChannel'),
+    name: '音频通道编码',
     value: 'audio'
   },
   {
-    name: i18n.t('mainDevConfiguration.serialChannel'),
+    name: '串口通道',
     value: 'serial'
   },
   {
-    name: i18n.t('frontParameterConfiguration.cameraPTZConfig'),
+    name: '云台参数设置',
     value: 'ptz'
   },
   {
-    name: i18n.t('mainDevConfiguration.alarmChannel'),
+    name: '告警通道',
     value: 'alarm'
   }
 ]
@@ -86,11 +85,11 @@ const mainDevTabRuleMapVpaas = {
 // 镜头配置菜单tab列表
 const cameraTabs = [
   {
-    name: i18n.t('mainDevConfiguration.video'),
+    name: '视频通道详情',
     value: 'video'
   },
   {
-    name: i18n.t('mainDevConfiguration.severRecordPlan'),
+    name: '服务器录像计划',
     value: 'severRecordPlan'
   }
 ]
@@ -124,27 +123,27 @@ const cameraTabRuleMap = {
 // 视频通道菜单tab列表
 const channelTabs = [
   {
-    name: i18n.t('mainDevConfiguration.videoSettings'),
+    name: '视频设置',
     value: '0'
   },
   {
-    name: i18n.t('mainDevConfiguration.imageSettings'),
+    name:'图像设置',
     value: '1'
   },
   {
-    name: i18n.t('mainDevConfiguration.moveSettings'),
+    name: '移动侦测设置',
     value: '2'
   },
   {
-    name: i18n.t('mainDevConfiguration.videoMaskingSettings'),
+    name: '视频遮挡设置',
     value: '3'
   },
   {
-    name: i18n.t('frontParameterConfiguration.cameraSnapConfig'),
+    name: '前端抓拍参数设置',
     value: '4'
   },
   {
-    name: i18n.t('mainDevConfiguration.privacySettings'),
+    name: '隐私保护设置',
     value: '5'
   }
 ]
@@ -229,11 +228,11 @@ function getAvailableTabs(availableTabRules, tabsArray, defaultTab) {
 export function getMainDevAvailableTabs(mainDevType, drive, platType) {
   const defaultTab = [
     {
-      name: i18n.t('mainDevConfiguration.systemParam'),
+      name: '系统参数',
       value: 'system'
     },
     {
-      name: i18n.t('mainDevConfiguration.videoChannel'),
+      name: '视频通道',
       value: 'video'
     }
   ]
@@ -253,7 +252,7 @@ export function getMainDevAvailableTabs(mainDevType, drive, platType) {
 export function getCameraAvailableTabs(mainDevType, drive) {
   const defaultTab = [
     {
-      name: i18n.t('mainDevConfiguration.video'),
+      name:'视频通道',
       value: 'video'
     }
   ]
@@ -270,7 +269,7 @@ export function getCameraAvailableTabs(mainDevType, drive) {
 export function getChannelAvailableTabs(mainDevType, drive, platType) {
   const defaultTab = [
     {
-      name: i18n.t('mainDevConfiguration.videoSettings'),
+      name: '视频设置',
       value: '0'
     }
   ]

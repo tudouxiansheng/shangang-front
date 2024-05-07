@@ -65,6 +65,16 @@ module.exports = {
     },
   },
   chainWebpack(config) {
+      // 添加别名
+      config.resolve.alias
+      .set('@', resolve('src'))
+      .set('@assets', resolve('src/assets'))
+      .set('@components', resolve('src/components'))
+      .set('@views', resolve('src/views'))
+      .set('@router', resolve('src/router'))
+      .set('@store', resolve('src/store'))
+      .set('vue-giant-tree', resolve('src/components/vue3-giant-tree'))
+      .set('vue-count-to', resolve('src/components/vue3-count-to'))
     // set svg-sprite-loader
     config.module.rule('svg').exclude.add(resolve('src/assets/icons')).end()
     config.module

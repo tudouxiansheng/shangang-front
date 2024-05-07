@@ -2,13 +2,13 @@
   <!-- 设备详情 -->
   <el-dialog
     :title="$t('primaryDevice.detailsMainDev')"
-    v-model="$parent.mainDevDetailVisible"
+    :visible.sync="$parent.mainDevDetailVisible"
     top="10vh"
     :width="locale == 'en' ? '1300px' : '1200px'"
     :close-on-click-modal="false"
     class="deviceDetailDialog"
     :modal="false"
-    draggable
+    :draggable="false"
     @closed="dialogClosed"
     @open="dialogOpen"
   >
@@ -120,12 +120,7 @@
           </el-form-item>
           <el-form-item :label="$t('public.state') + '：'" prop="status">
             <span>
-              {{
-                $parent.selectDictLabel($parent.deviceRegisterStatusListFormattered, form.status, {
-                  key: 'name',
-                  value: 'value'
-                })
-              }}
+              {{setAllocationStatus(form.status)}}
             </span>
           </el-form-item>
 
@@ -231,6 +226,10 @@ export default {
         }
       })
       return name
+    },
+
+    setAllocationStatus(val) {
+      return this.$parent.deviceRegisterStatusListFormattered.find((t) => t.value == val)?.name
     },
     setNetworkType(val) {
       let name = ''

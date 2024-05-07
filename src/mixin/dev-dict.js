@@ -11,7 +11,7 @@ var getDevIcon = {
     }),
   },
   mounted() {
-    this.getDevFlag && this.getDeviceType()
+    
   },
   methods: {
     // 设备状态

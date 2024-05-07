@@ -1,12 +1,12 @@
 <template>
   <!-- 镜头经纬度选择 -->
   <el-dialog
-    v-model="$parent.echartDialogVisible"
+    :visible.sync="$parent.echartDialogVisible"
     top="10vh"
     width="1000px"
     :close-on-click-modal="false"
     :modal="false"
-    draggable
+          :draggable="false"  
     @closed="dialogClosed"
     @open="dialogOpen"
     id="echartDialog"

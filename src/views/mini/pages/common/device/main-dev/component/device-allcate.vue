@@ -3,7 +3,7 @@
     <!-- 调拨主设备 -->
     <el-dialog
       :title="$t('primaryDevice.AllocatingEquipment')"
-      v-model="$parent.allcateDialogVisible"
+      :visible.sync="$parent.allcateDialogVisible"
       top="10vh"
       width="1000px"
       :close-on-click-modal="false"
@@ -11,7 +11,7 @@
       @open="dialogOpen"
       :modal="false"
       class="deviceDialog"
-      draggable
+      :draggable="false"  
       :show-close="!allLoading"
     >
       <el-form
@@ -19,7 +19,7 @@
         :model="allcateDeviceForm"
         :rules="rules"
         :validate-on-rule-change="false"
-        :label-width="locale == 'en' ? '160px' : '86px'"
+        :label-width="locale == 'en' ? '160px' : '96px'"
         label-position="left"
         v-loading="allLoading"
         :element-loading-text="$t('primaryDevice.transferLoading')"
@@ -48,7 +48,7 @@
             :placeholder="$t('primaryDevice.pleaseInputplat')"
             @change="platChange"
           >
-            <template v-for="(item, index) in $parent.platNameLists" :key="index">
+            <template v-for="(item, index) in $parent.platNameLists" >
               <el-option
                 v-if="item.platType != 15 && item.platType != 16"
                 :label="item.platName"

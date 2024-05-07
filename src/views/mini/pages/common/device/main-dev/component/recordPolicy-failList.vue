@@ -2,12 +2,12 @@
   <!-- 录像信息添加失败列表 -->
   <el-dialog
     :title="$t('primaryDevice.failedToAddRecordInfoList')"
-    v-model="$parent.recordPolicyDialogVisible"
+    :visible.sync="$parent.recordPolicyDialogVisible"
     :close-on-click-modal="false"
     width="1000px"
     class="allcate-error-dialog"
     @closed="dialogClosed"
-    draggable
+     :draggable="false"  
   >
     <el-table
       max-height="769"

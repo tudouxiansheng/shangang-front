@@ -105,7 +105,13 @@ export default {
         '/gatewayCluster/manage',
         '/accessPlatform/manage',
         '/vPaasAccessPlatform/manage',
+<<<<<<< Updated upstream
         '/accessCamera/allocate'
+=======
+        '/accessCamera/allocate',
+        '/device/main-dev',
+        '/device/main-dev-params-config/:mainDevId'
+>>>>>>> Stashed changes
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },

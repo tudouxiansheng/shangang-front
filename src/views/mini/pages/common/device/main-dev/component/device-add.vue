@@ -2,16 +2,16 @@
   <div>
     <el-dialog
       :title="$t('primaryDevice.addDevice')"
-      v-model="$parent.addMainDevVisible"
+      :visible.sync="$parent.addMainDevVisible"
       top="10vh"
       :width="locale == 'en' ? '1350px' : '1050px'"
       @closed="dialogClosed"
       @open="dialogOpen"
-      :modal="false"
       :close-on-click-modal="false"
-      draggable
+      :draggable="false"  
       class="addDeviceDialog"
     >
+
       <el-steps :active="addActive" align-center finish-status="success" style="text-align: left">
         <template v-for="item in stepList">
           <el-step :title="item.name"></el-step>
@@ -92,7 +92,7 @@
                 :placeholder="$t('public.pleaseInputplatName')"
                 @change="platChange"
               >
-                <template v-for="(item, index) in $parent.AddplatNameLists" :key="index">
+                <template v-for="(item, index) in $parent.AddplatNameLists" >
                   <el-option
                     v-if="item.platType != 16"
                     :label="item.platName"
@@ -206,11 +206,17 @@
               prop="puAccessPasswd"
               v-if="puAccessPasswdShow"
             >
-              <pwd-input
+              <el-input
+              show-password
                 v-model="form.puAccessPasswd"
                 :placeholder="$t('public.puAccessPasswdPrompt')"
-                strength
+                
               />
+                  <strength-meter
+                    :password="form.puAccessPasswd"
+                    :minLength="minLength"
+                    class="password"
+                  ></strength-meter>
             </el-form-item>
           </div>
           <div class="form-right">
@@ -405,18 +411,24 @@
               ></el-input>
             </el-form-item>
           </div>
-
+          
           <div class="form-right">
             <el-form-item
               :label="$t('primaryDevice.puPasswd') + '：'"
               prop="puPasswd"
               v-show="puAccountPwdShow"
             >
-              <pwd-input
+              <el-input
+              show-password
                 v-model="form.puPasswd"
                 :placeholder="$t('public.puPasswdPrompt')"
-                strength
+                
               />
+             <strength-meter
+                    :password="form.puPasswd"
+                    :minLength="minLength"
+                    class="password"
+                  ></strength-meter>
             </el-form-item>
 
             <el-form-item
@@ -827,7 +839,7 @@ import {
   Delete as ElIconDelete
 } from '@element-plus/icons-vue'
 import { mapActions, mapState } from 'vuex'
-
+import StrengthMeter from '@/components/strength-meter'
 import longlatmap from '@/components/long-lat-map'
 import { validateDeviceName } from '@/utils/common/validator'
 import { PLATFORM_TYPE } from '@/enums/platformEnum'
@@ -837,7 +849,7 @@ import TimeGridControl from "@components/time-grid-control.vue"
 import echartDialog from "./echart-dialog"
 
 export default {
-  components: {TimeGridControl, 'long-lat-map': longlatmap, 'echart-dialog': echartDialog },
+  components: {TimeGridControl,StrengthMeter, 'long-lat-map': longlatmap, 'echart-dialog': echartDialog },
   data() {
     let reg = /^(0|[1-9]\d*)$/ //非负整数
     let validatePic = (rule, value, callback) => {
@@ -850,6 +862,7 @@ export default {
       }
     }
     return {
+      minLength:16,
       planType: 0,
       timeOperation: 0,
       timeSpanList: [],
@@ -1353,12 +1366,19 @@ export default {
           this.$refs.form.resetFields()
         })
       }
+<<<<<<< Updated upstream
       this.$nextTick(() => {
         
         Object.assign(this.form, {
           organizationName: this.$parent.organizationName
         })
+=======
+          this.form.organizationName= this.$parent.organizationName
+>>>>>>> Stashed changes
         this.organizationId = this.$parent.organizationId
+      this.$nextTick(() => {
+        console.log(this.$parent.organizationName,'12322')
+    
       })
     },
     dialogClosed() {

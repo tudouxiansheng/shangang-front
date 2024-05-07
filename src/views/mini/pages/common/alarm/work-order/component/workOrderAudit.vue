@@ -253,7 +253,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.auditData = this.$parent.auditData
         this.auditForm = {
           isPass: 1,

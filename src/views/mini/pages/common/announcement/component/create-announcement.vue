@@ -189,7 +189,7 @@ export default {
         this.$refs.ruleForm.resetFields()
       }
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

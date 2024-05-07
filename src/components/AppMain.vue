@@ -103,7 +103,8 @@ export default {
         '/traffic-statistics',
         '/myTask',
         '/gatewayCluster/manage',
-        '/accessPlatform/manage'
+        '/accessPlatform/manage',
+        '/vPaasAccessPlatform/manage'
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },

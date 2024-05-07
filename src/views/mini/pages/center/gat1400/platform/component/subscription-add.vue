@@ -295,7 +295,7 @@ export default {
       }
 
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (this.$parent.$parent.choosedType == 1) {
           //手动订阅
           this.form.resourceUri = this.$parent.choosedInternetCode

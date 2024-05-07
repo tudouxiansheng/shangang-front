@@ -87,7 +87,7 @@ export default {
     },
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     }
   }

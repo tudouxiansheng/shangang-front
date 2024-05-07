@@ -1160,7 +1160,7 @@ export default {
       }
 
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         Object.assign(this.form, {
           organizationName: this.$parent.organizationName
         })

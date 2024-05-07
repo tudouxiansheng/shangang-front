@@ -840,7 +840,7 @@ export default {
     this.setData()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     setData() {

@@ -246,7 +246,7 @@ export default {
     this.dateChange(this.dateValue)
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   methods: {

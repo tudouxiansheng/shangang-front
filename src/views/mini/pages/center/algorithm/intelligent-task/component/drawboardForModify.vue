@@ -273,7 +273,7 @@ export default {
           this.lineDirection = this.directionList[0].value
         }
       }
-      this.setDialogCss()
+      
       this.processedData = this.processData()
       this.createPlayer()
     })
@@ -742,7 +742,7 @@ export default {
     },
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.processedData = this.processData()
         this.draw(this.url)
       })

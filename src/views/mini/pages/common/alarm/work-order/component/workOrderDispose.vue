@@ -238,7 +238,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.disposeData = this.$parent.disposeData
         this.disposeForm = {
           eventType: '',

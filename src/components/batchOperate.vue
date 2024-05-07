@@ -232,7 +232,7 @@ export default {
     async dialogOpen() {
       if (!this.fullScreen) {
         this.$nextTick(() => {
-          this.setDialogCss()
+          
         })
       } else {
       }

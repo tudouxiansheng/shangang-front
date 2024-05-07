@@ -175,7 +175,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.dataForm
         this.form.alarmTypes.forEach(element => {
           this.checkList.push(element.alarmType)

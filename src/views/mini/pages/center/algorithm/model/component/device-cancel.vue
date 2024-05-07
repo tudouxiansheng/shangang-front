@@ -132,7 +132,7 @@ export default {
     this.algorithmList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
 
   methods: {

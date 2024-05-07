@@ -135,7 +135,7 @@ export default {
     async dialogOpen() {
       this.process = 0
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
       this.batchErrorList = []
       this.multipleSelection = this.$parent.checkedCopyDate

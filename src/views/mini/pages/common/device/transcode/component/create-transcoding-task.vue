@@ -414,7 +414,7 @@ export default {
         })
       }
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {
@@ -573,7 +573,7 @@ export default {
         })
       }
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
       })
     },
     tipsconfirm() {

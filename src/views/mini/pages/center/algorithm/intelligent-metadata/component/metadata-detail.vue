@@ -120,7 +120,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         // 避免缓存问题
         this.form = Object.assign({}, this.rawForm, this.$parent.dataForm)
         let attr = []

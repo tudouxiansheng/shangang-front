@@ -499,7 +499,7 @@ export default {
     this.EventTypeList() // 获取事件类型
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   watch: {

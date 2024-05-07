@@ -143,7 +143,7 @@ export default {
     this.getAreaChildAll()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     //用户权限判断

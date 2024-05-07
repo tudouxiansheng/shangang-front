@@ -866,7 +866,7 @@ export default {
     this.applicationTypeData()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   methods: {
@@ -1837,7 +1837,7 @@ export default {
 
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

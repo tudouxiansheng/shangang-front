@@ -104,7 +104,7 @@ export default {
     // 展开闭合
     showMenus() {
       this.longNav = !this.longNav
-      this.setDialogCss()
+      
     },
     // 跳转菜单
     showName(data) {

@@ -85,7 +85,7 @@ export default {
     async dialogOpen() {
       if (this.$refs.form) {
         this.$nextTick(() => {
-          this.setDialogCss()
+          
           this.$refs.form.resetFields()
         })
       }

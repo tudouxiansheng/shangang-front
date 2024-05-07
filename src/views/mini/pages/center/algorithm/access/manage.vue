@@ -278,7 +278,7 @@ export default {
     await this.getAlgorithmAccessList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     ...mapActions('dict', ['getSysDictData']),

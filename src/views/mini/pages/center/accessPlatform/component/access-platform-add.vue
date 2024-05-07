@@ -10,7 +10,6 @@
       top="10vh"
       :width="locale == 'en' ? '1400px' : '1000px'"
       :close-on-click-modal="false"
-      :modal="false"
       @open="dialogOpen"
       :draggable="false"
     >
@@ -1228,7 +1227,6 @@ export default {
         })
       }
       this.$nextTick(async () => {
-        this.setDialogCss()
         if (!this.$parent.operation) {
           this.form = Object.assign({}, this.form, this.$parent.dataForm)
           this.sendGatewayGroup = this.form.gatewayGroup

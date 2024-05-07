@@ -274,7 +274,7 @@ export default {
     await this.getSearchTypeList() //获取检索类型
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     //用户权限判断

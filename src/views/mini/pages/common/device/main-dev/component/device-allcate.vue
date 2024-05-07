@@ -196,7 +196,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.allcateDeviceForm = this.$parent.allcateForm
       })
     },

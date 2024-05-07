@@ -70,7 +70,7 @@ export default {
         if (this.isAppendBody) {
           sessionStorage.setItem('leftTop', true) //用于弹框拖拽判断
         } else {
-          this.setDialogCss()
+          
         }
         this.licenseData.serviceId ? (this.form.serviceId = this.licenseData.serviceId) : null
 

@@ -487,7 +487,7 @@ export default {
       this.$nextTick(() => {
         let path = this.$route.path
         if (path.indexOf('/turning') == -1) {
-          this.setDialogCss()
+          
         } else {
           let el_dialog_wrapper = document.getElementsByClassName('el-overlay-dialog')[0]
           el_dialog_wrapper.style.width = '100%'

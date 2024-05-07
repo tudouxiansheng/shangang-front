@@ -225,7 +225,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
          this.getwhiteForm('open')
         this.clickVonfirm =false
       })

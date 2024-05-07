@@ -135,7 +135,7 @@ export default {
     },
     async dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
       this.taskUUID = generateUuid()
       this.$store.dispatch('app/addBatchTaskID', this.taskUUID)

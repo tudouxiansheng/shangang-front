@@ -249,7 +249,7 @@ export default {
     },
     dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         this.getTranscodeNodes()
       })
     },

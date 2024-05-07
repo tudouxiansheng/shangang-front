@@ -227,7 +227,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.alarmData = this.$parent.currentRowData
         this.url = this.alarmData.alarmUrl
         this.url ? (this.uploadLen = 2) : (this.uploadLen = 3)

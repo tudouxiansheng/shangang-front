@@ -170,7 +170,7 @@ export default {
   methods: {
     async dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
       this.attributeTags = this.generateAttributeTag()
       if (this.searchMode === 'picture' && this.searchImage) {

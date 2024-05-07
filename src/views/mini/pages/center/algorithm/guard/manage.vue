@@ -355,7 +355,7 @@ export default {
     this.getAlgorithmModelList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     setData() {

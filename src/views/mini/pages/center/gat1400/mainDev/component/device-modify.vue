@@ -202,7 +202,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.modifyMainForm
         //弹框取消前提示
         this.operator_modify_form = this.$parent.modifyMainOperatorForm

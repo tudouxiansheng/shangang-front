@@ -135,7 +135,7 @@ export default {
         }
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (!this.$parent.operationRight) {
           this.form = this.$parent.addDataFormRight
         }

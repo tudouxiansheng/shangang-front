@@ -147,7 +147,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         // 批量关联的时候水印必填
         if (this.correlationOperate === 1) {
           this.watermarkNameRequired = true

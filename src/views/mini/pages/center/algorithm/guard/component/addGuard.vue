@@ -593,7 +593,7 @@ export default {
       this.showTools = false
       this.$nextTick(async () => {
         this.showTools = true
-        this.setDialogCss()
+        
 
         if (this.$parent.operation == 0) {
           this.form0 = this.$parent.dataForm0

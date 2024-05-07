@@ -209,7 +209,7 @@ export default {
     this.getRoleList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   computed: {
     selectPreSet() {

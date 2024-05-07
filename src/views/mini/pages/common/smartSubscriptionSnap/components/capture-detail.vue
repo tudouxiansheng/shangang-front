@@ -195,7 +195,7 @@ export default {
     ...mapActions('dict', ['getSysDictData']),
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.attributeList = this.generateAttributeList()
       })
     },

@@ -480,7 +480,7 @@ export default {
         this.getRepositoryItemInfo()
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (this.initialFile instanceof File) {
           this.initialFileObjectUrl = URL.createObjectURL(this.initialFile)
           this.initialUploadFiles = [

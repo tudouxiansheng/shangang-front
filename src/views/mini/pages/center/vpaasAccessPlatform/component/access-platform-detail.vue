@@ -177,7 +177,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         this.form = Object.assign({}, this.form, this.$parent.dataForm)
         await this.$parent.getVpaasPlatIdList(this.form.organizationId, '')
         await this.getDomainQueryList()

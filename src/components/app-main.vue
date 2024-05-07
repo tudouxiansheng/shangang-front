@@ -637,7 +637,7 @@ export default {
     },
     showThirdMenu() {
       this.thirdMenuShow = !this.thirdMenuShow
-      this.setDialogCss()
+      
     },
 
     // tab切换时，动态的切换路由

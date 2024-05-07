@@ -170,7 +170,7 @@ export default {
 
   created() {},
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     /** 判断是否禁用行勾选 */

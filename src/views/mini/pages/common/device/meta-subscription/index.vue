@@ -203,7 +203,7 @@ export default {
     this.queryAlgorithmPlatList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     closeDialog() {

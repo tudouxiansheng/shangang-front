@@ -165,7 +165,7 @@ export default {
     this.getTemplateList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     // 获取模板列表

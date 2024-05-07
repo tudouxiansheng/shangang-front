@@ -122,7 +122,7 @@ export default {
         ]
       }
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

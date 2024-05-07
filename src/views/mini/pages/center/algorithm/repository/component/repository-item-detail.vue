@@ -256,7 +256,7 @@ export default {
         this.getRepositoryItemInfo()
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

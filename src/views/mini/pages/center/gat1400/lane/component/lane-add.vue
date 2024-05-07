@@ -288,7 +288,7 @@ export default {
 
       this.$nextTick(() => {
         this.showTools = true
-        this.setDialogCss()
+        
         if (!this.$parent.operation) {
           this.form = this.$parent.modifyMainForm
           this.choosedCameras = this.form.apeName

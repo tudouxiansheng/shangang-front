@@ -195,7 +195,7 @@ export default {
     // 打开窗口
     detailOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.detailData = this.$parent.detailData
         this.detailList = this.$parent.detailList
         this.stepStatus = this.$parent.stepStatus

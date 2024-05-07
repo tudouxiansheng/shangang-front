@@ -232,7 +232,7 @@ export default {
     this.getAlgorithmList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     //用户权限判断

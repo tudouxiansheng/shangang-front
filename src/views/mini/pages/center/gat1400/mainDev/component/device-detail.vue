@@ -174,7 +174,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.mainDevDetailForm
         this.$parent.platNameList.forEach(item => {
           if (item.platId == this.form.platId) {

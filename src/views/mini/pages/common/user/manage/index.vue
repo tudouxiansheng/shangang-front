@@ -526,7 +526,7 @@ export default {
     await this.getPermissions()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     //用户权限判断

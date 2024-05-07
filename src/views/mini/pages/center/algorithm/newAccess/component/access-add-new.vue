@@ -904,7 +904,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (!this.$parent.operation) {
           this.form = { ...this.form, ...this.$parent.dataForm }
           this.choosedAccessPlatType =

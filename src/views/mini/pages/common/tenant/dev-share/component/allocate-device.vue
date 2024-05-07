@@ -213,7 +213,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (this.tenantId != this.$parent.newTenantId && this.$refs.treeList) {
           this.tenantId = this.$parent.newTenantId
           let rootNode = this.$refs.treeList.getNode(this.currentDefaultKey)

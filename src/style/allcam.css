@@ -245,3 +245,20 @@ input:focus{
     justify-content: space-between;
     align-items: center;
 }
+ .el-input__inner {
+    height: 0.1875rem;
+    border-radius: 0.02083rem;
+    background: transparent;
+    color: #eee!important;
+}
+.el-card {
+    border-radius: 0.02083rem;
+    border: 0.00521rem solid #0c3c60!important;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    color: #303133;
+    transition: 0.3s;
+}
+.el-form-item__content span {
+    color:#fff;
+}

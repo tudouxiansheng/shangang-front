@@ -333,7 +333,7 @@ export default {
     },
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (this.tableData.length) {
           this.setChecked(this.ids.length ? this.ids : [])
         }

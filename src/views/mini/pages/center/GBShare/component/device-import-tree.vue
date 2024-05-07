@@ -167,7 +167,7 @@ export default {
       this.isFlag = false
       this.showOrgTree = false
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.isFlag = true
         this.showOrgTree = true
       })

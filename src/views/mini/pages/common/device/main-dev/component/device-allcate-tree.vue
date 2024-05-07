@@ -68,7 +68,7 @@ export default {
   methods: {
     async dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
       await this.loadNode()
     },

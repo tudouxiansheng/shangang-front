@@ -394,7 +394,7 @@ export default {
     await this.getMetadataList() // 获取元数据列表
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     //用户权限判断

@@ -836,7 +836,7 @@ export default {
     this.applicationTypeData()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   methods: {

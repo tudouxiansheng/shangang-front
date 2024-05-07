@@ -134,7 +134,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
       this.$emit('open')
       if (this.policyId) {

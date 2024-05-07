@@ -245,7 +245,7 @@ export default {
     await this.getStatusList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
 
   methods: {

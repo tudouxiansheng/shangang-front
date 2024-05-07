@@ -74,6 +74,7 @@ Viewer.setDefaults({
 Vue.use(Viewer)
 
 // Vue.prototype.$t = i18n.global.t
+Vue.prototype.$maxPageSize = 500
 Vue.prototype.$formFetch = formFetch
 Vue.prototype.$postFetch = postFetch
 Vue.prototype.$api = api

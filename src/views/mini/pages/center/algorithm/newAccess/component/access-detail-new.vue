@@ -427,7 +427,7 @@ export default {
     },
     async dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.dataForm
       })
 

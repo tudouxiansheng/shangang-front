@@ -207,7 +207,7 @@ export default {
     dialogOpen() {
       this.getDictionaryLists()
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

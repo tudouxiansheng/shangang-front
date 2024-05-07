@@ -162,7 +162,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.batchForm = this.$parent.batchDataForm
       })
     },

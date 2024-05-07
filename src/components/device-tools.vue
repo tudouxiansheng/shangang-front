@@ -311,7 +311,7 @@ export default {
       this.$nextTick(async () => {
         let path = this.$route.path
         if (path.indexOf('/turning') == -1) {
-          this.setDialogCss()
+          
         } else {
           let el_dialog_wrapper = document.getElementsByClassName('el-dialog__wrapper')[0]
           el_dialog_wrapper.style.width = '100%'

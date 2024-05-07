@@ -402,7 +402,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         this.form = this.data
         if (this.form.recordStartTime && this.form.recordEndTime) {
           this.recordTimeRange = [this.form.recordStartTime, this.form.recordEndTime]

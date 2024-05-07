@@ -103,7 +103,7 @@ export default {
     },
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.apsDetailForm
       })
     },

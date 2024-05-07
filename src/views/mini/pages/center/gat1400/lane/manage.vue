@@ -482,7 +482,7 @@ export default {
     this.setFormRules()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
 

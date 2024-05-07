@@ -115,7 +115,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.addDataForm
         this.form.parentName = this.$parent.dataForm.organizationName
       })

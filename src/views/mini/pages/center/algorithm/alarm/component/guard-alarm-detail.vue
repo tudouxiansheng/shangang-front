@@ -438,7 +438,7 @@ export default {
       this.getDictionaryLists()
       this.getHitTargetInfo()
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
 

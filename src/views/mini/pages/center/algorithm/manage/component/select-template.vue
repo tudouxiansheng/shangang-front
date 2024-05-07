@@ -272,7 +272,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.selectTemplate = this.$parent.selectRow
         this.getGroupList()
       })

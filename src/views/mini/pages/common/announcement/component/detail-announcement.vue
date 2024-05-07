@@ -100,7 +100,7 @@ export default {
     //打开弹框
     dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         this.announceInfo()
       })
     },

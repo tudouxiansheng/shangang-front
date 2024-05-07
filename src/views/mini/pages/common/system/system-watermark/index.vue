@@ -311,7 +311,7 @@ export default {
     this.watermarkTypeData()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     getGbWatermarkEnable () {

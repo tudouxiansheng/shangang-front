@@ -209,7 +209,7 @@ export default {
     this.pageResize()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   watch: {

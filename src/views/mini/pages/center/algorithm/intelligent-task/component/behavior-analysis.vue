@@ -256,7 +256,7 @@ export default {
   },
   created() {
     this.$nextTick(() => {
-      this.setDialogCss()
+      
       this.processData()
     })
   },
@@ -307,7 +307,7 @@ export default {
     },
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.processData()
       })
     },
@@ -514,7 +514,7 @@ export default {
     },
     globalAlarmDialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
       this.globalAlarmFormTemp = JSON.parse(JSON.stringify(this.globalAlarmForm))
     },

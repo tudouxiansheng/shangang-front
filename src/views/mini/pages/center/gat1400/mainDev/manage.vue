@@ -638,7 +638,7 @@ export default {
     this.getDictionary()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   methods: {
@@ -1190,7 +1190,7 @@ export default {
     },
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
 

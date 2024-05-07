@@ -111,7 +111,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         await this.getList()
       })
     },

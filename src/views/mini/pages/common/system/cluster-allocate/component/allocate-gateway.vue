@@ -302,7 +302,7 @@ export default {
   methods: {
     clusterOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.getClusterList()
       })
     },
@@ -355,7 +355,7 @@ export default {
 
     gatewayOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.getGatewayList()
       })
     },

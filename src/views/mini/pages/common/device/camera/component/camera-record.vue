@@ -143,7 +143,7 @@ export default {
       this.getSysDictData(['stream-type'])
       if (this.$refs.form) {
         this.$nextTick(() => {
-          this.setDialogCss()
+          
           this.$refs.form.resetFields()
         })
       }

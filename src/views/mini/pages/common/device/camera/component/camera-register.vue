@@ -117,7 +117,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.registerInfoForm
         this.channelList = this.$parent.channelList
       })

@@ -203,7 +203,7 @@ export default {
     dialogOpen() {
       this.getLogoInfo()
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

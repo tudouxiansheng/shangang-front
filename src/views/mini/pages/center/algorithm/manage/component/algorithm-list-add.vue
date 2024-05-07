@@ -232,7 +232,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.$parent.dataForm.ruleConfigInfo
           ? (this.selectRow = this.$parent.dataForm.ruleConfigInfo)
           : (this.selectRow = {})

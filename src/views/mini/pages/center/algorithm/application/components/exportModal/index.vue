@@ -240,7 +240,7 @@ export default {
     dialogOpen() {
       this.reset()
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     reset() {

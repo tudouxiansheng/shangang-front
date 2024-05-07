@@ -205,7 +205,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.dataForm
         this.cameraList = this.$parent.cameraInfos
         this.datevalue = this.form.startDay ? [this.form.startDay, this.form.endDay] : ''

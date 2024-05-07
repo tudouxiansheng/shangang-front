@@ -9,9 +9,9 @@
           v-if="!hideCollapse"
           :class="[show ? 'arrow-up' : 'arrow-down', 'card-header-tool']"
           class="card-header-tool"
-          @click="show = !show"
+          @click="show=!show"
         >
-          {{ show ? $t('public.collapse') : $t('public.unfold') }}
+          {{ show ? $t('public.collapse') : $t('public.unfold') }} 
         </span>
         <div class="operate">
           <slot name="operate"></slot>
@@ -49,7 +49,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      show:true
+    }
   },
   computed: {
     show: {
@@ -59,6 +61,11 @@ export default {
       set(val) {
         this.$emit('update:collapse', val)
       }
+    }
+  },
+  method:{
+    showIt(){
+      
     }
   }
 }

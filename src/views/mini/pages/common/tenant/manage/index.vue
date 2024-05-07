@@ -518,7 +518,7 @@ export default {
     this.getIndustry_type()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   methods: {

@@ -100,7 +100,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (this.$parent.nodeOperation == 2) {
           if (this.$parent.rightClickNode.parent.data) {
             this.form.parentName = this.$parent.rightClickNode.parent.data.label

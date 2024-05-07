@@ -403,7 +403,7 @@ export default {
   methods: {
     async dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = Object.assign({}, this.form, this.$parent.dataForm)
         if (this.$parent.industryTypeList.length) {
           this.rules.industryType[0].required = true

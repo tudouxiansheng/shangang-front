@@ -63,7 +63,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

@@ -68,7 +68,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (this.$refs.treeList) {
           let node = this.$refs.treeList.getNode(this.$parent.rootId)
           node.loaded = false

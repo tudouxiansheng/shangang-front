@@ -365,7 +365,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.dataForm
       })
     },

@@ -376,7 +376,7 @@ export default {
     //打开弹框
     dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
       })
     },
     //关闭弹框

@@ -126,7 +126,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
       this.taskEndFlag = false
       this.totalNum = 0

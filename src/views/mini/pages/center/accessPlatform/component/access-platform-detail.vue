@@ -534,7 +534,7 @@ export default {
     },
     async dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         this.form = Object.assign({}, this.form, this.$parent.dataForm)
         this.isShowConfig = this.form.platformType[1] == PLATFORM_TYPE.AVS ? true : false
         this.isShowAuthType =

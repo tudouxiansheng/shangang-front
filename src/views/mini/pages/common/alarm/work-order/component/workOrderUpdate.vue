@@ -137,7 +137,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.updateForm = Object.assign(this.updateForm, this.$parent.updateForm)
       })
       this.updateRule = {

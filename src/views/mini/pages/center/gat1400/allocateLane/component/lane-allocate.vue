@@ -283,7 +283,7 @@ export default {
     async dialogOpen() {
       this.showOrgTree = false
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.showOrgTree = true
       })
       await this.getTreeDialog()

@@ -212,7 +212,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.isUserManage = this.$route.path === '/user/manage'
         if (this.userId != this.$parent.newUserId && this.$refs.treeList) {
           this.userId = this.$parent.newUserId

@@ -328,7 +328,7 @@ export default {
     this.setData()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
 
@@ -344,7 +344,7 @@ export default {
     },
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

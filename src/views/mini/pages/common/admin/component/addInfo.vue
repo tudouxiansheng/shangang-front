@@ -379,7 +379,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = Object.assign({}, this.form, this.$parent.dataForm)
         if (this.$parent.operation) {
           this.rules.password[0].required = true

@@ -536,7 +536,7 @@ export default {
     this.getDictionary()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
 

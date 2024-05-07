@@ -481,7 +481,7 @@ export default {
     this.getTemplateList()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   methods: {

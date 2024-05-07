@@ -349,7 +349,7 @@ export default {
     await this.getPlatformList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   watch: {
     //监听语言切换

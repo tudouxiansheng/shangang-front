@@ -147,7 +147,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.form = this.$parent.mainDevDetailForm
       })
     },

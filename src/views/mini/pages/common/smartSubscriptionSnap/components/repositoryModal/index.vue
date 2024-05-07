@@ -133,7 +133,7 @@ export default {
       this.resetForm()
       this.getRepositoryList()
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     resetForm() {

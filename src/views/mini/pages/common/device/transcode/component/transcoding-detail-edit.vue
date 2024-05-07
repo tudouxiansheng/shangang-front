@@ -275,7 +275,7 @@ export default {
     //打开静态转码任务(详情/修改)
     dialogOpen() {
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         //获取详细信息
         this.$api
           .getCameraTranscodeTaskInfo({

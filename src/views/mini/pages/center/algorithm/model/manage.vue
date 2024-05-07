@@ -249,7 +249,7 @@ export default {
     await this.getAlgorithmModelList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     ...mapActions('dict', ['getSysDictData']),

@@ -352,7 +352,7 @@ export default {
         })
       }
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         this.form = Object.assign({}, this.form, this.$parent.dataForm)
         switch (this.form.roleType) {
           case 1:

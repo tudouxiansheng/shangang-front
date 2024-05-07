@@ -164,7 +164,7 @@ export default {
     this.getIotPlatformList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     // 字典表查询

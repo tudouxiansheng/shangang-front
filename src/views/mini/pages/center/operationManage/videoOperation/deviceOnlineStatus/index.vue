@@ -618,7 +618,7 @@ export default {
         this.$nextTick(() => {})
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     OnOfflineCheckExport() {

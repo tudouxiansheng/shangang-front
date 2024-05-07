@@ -521,7 +521,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (this.algorithmPlatList.length) {
           this.searchForm.platForm = this.algorithmPlatList[0]
           this.fetchTreeData()

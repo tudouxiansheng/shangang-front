@@ -265,5 +265,15 @@ export default [
           keepAlive: true
         },
         component: () => import('@/views/mini/pages/center/accessPlatform/manage')
+      },
+      {
+        path: '/vPaasAccessPlatform/manage',
+        name: 'VpaasAccessPlatformManagement',
+        meta: {
+          ref: 'vpaasAccessPlatform',
+          methods: [],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/center/vpaasAccessPlatform/manage')
       }
 ]

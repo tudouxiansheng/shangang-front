@@ -67,7 +67,7 @@ export default {
     dialogOpen() {
       this.form.mapId = this.data[0]?.mapId
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
       })
     },
     submitForm() {

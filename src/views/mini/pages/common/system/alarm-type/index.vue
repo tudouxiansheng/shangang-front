@@ -305,7 +305,7 @@ export default {
     this.getGroups()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     //用户权限判断

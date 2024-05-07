@@ -287,7 +287,7 @@ rules:{},
     this.setFormRules()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
 

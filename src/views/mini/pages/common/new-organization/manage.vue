@@ -281,7 +281,7 @@ export default {
     await this.getPermissions()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   watch: {
     //监听语言切换

@@ -330,7 +330,7 @@ export default {
       }
 
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         if (!this.$parent.operation) {
           this.form = this.$parent.modifyMainForm
         } else {

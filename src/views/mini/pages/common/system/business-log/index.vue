@@ -361,7 +361,7 @@ export default {
     this.get_OperationType_List()
   },
   activated() {
-    this.setDialogCss()
+    
     this.pageResize()
   },
   methods: {

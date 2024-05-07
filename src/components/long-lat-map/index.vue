@@ -144,7 +144,7 @@ export default {
         })
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.get_gis_config()
         let form1 = this.$parent.form
         this.status = form1.status || 1

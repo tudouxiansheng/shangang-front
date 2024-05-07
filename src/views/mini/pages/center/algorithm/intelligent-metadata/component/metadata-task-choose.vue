@@ -278,7 +278,7 @@ export default {
     this.getList()
   },
   activated() {
-    this.setDialogCss()
+    
   },
   methods: {
     setData() {

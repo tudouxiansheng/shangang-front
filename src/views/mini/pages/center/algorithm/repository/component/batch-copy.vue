@@ -79,7 +79,7 @@ export default {
     dialogOpen() {
       this.getRepositoryList()
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

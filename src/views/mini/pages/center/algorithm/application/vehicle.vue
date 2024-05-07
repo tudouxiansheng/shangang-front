@@ -1138,7 +1138,7 @@ export default {
     dialogClosed() {},
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     getAccessPlatList() {

@@ -105,7 +105,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
       this.form = JSON.parse(JSON.stringify(this.$parent.choosedCameraInfo))
     },

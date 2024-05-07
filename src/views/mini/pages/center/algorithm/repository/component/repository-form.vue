@@ -178,7 +178,7 @@ export default {
         this.form.repositoryType = this.isPersonRepo ? 2 : 0
       }
       this.$nextTick(() => {
-        this.setDialogCss()
+        
       })
     },
     dialogClosed() {

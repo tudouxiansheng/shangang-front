@@ -226,7 +226,7 @@ export default {
   methods: {
     dialogOpen() {
       this.$nextTick(() => {
-        this.setDialogCss()
+        
         this.$refs.timeGridControl1.time_initialize(this.planType, 1, this.timeSpanList)
       })
     },

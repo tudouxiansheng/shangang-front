@@ -2,13 +2,12 @@
   <div id="vpaasAccessPlatformAddDialog">
     <el-dialog
       :title="$parent.operation ? $t('accessPlatform.addVpaas') : $t('accessPlatform.editVpaas')"
-      v-model="$parent.dialogFormVisible"
+      :visible.sync="$parent.dialogFormVisible"
       top="10vh"
       :width="locale == 'en' ? '1575px' : '1150px'"
       :close-on-click-modal="false"
-      :modal="false"
       @open="dialogOpen"
-      draggable
+      :draggable="false"
     >
       <el-form
         ref="form"
@@ -407,7 +406,7 @@ export default {
         })
       }
       this.$nextTick(async () => {
-        this.setDialogCss()
+        
         if (!this.$parent.operation) {
           this.form = Object.assign({}, this.form, this.$parent.dataForm)
           await this.$parent.getVpaasPlatIdList(this.form.organizationId)

@@ -619,7 +619,7 @@ import cameraDetail from './component/camera-detail'
 import cameraRecord from './component/camera-record'
 import cameraOnenet from './component/camera-onenet'
 import cameraRegister from './component/camera-register' //镜头接入配置生成
-import importFailList from '@/views/common/component/import-fail-list'
+import importFailList from '@/views/mini/pages/common/component/import-fail-list'
 import batchMoveCamera from './component/batch-move-camera'
 import breadcrumb from '@/components/breadcrumb' //面包屑
 import batchOperate from '@/components/batchOperate' //批量操作

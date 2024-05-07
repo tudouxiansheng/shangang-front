@@ -275,5 +275,35 @@ export default [
           keepAlive: true
         },
         component: () => import('@/views/mini/pages/center/vpaasAccessPlatform/manage')
-      }
+      },
+      {
+        path: '/accessCamera/allocate',
+        name: 'AccessCameraAllocate',
+        meta: {
+          ref: 'accessCameraAllocate',
+          methods: ['setData'],
+          keepAlive: true
+        },
+        component:  () => import('@/views/mini/pages/center/accessCamera/allocate')
+      },
+      {
+        path: '/device/main-dev',
+        name: 'MainDeviceManagement',
+        meta: {
+          ref: 'deviceMainDev',
+          methods: ['getPermissions', 'pageResize', 'setData', 'applicationTypeData'],
+          keepAlive: true
+        },
+        component:() => import('@/views/mini/pages/common/device/main-dev')
+      },
+    //   {
+    //     path: '/device/main-dev-params-config/:mainDevId',
+    //     name: 'MainDeviceFrontEndParameterConfiguration',
+    //     meta: {
+    //       ref: 'deviceParamsConfig',
+    //       methods: ['initialFunction'],
+    //       keepAlive: false
+    //     },
+    //     component: () => impor('@/views/mini/pages/common/device/params-config')
+    //   },
 ]

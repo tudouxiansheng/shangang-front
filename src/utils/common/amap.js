@@ -1,4 +1,4 @@
-import app from '@/main.js'
+import Vue from 'vue'
 import store from '@/store'
 let _createScript = url => {
   var tmp = document.createElement('script')
@@ -27,14 +27,14 @@ const httpRequest = () => {
             }
             _createScript(jsApi)
             window.aMapInitCallback = () => {
-              app.config.globalProperties.$AMap = window.AMap
+              Vue.prototype.$AMap = window.AMap
               _createLink('./static/css/gdMap.css')
               _createScript(uiLibraryAddress)
               // 创建定时器 当AMapUI有值的时候 清除定时器 并resolve
               let interval = setInterval(() => {
                 if (window.AMapUI) {
                   clearInterval(interval)
-                  app.config.globalProperties.$AMapUI = window.AMapUI
+                  Vue.prototype.$AMapUI = window.AMapUI
                   resolve({
                     AMap: window.AMap,
                     AMapUI: window.AMapUI
@@ -50,8 +50,8 @@ const httpRequest = () => {
           reject(err)
         })
     } else {
-      app.config.globalProperties.$AMap = window.AMap
-      app.config.globalProperties.$AMapUI = window.AMapUI
+      Vue.prototype.$AMap = window.AMap
+      Vue.prototype.$AMapUI = window.AMapUI
       resolve({
         AMap: window.AMap,
         AMapUI: window.AMapUI

@@ -2,13 +2,12 @@
   <!-- 调拨设备树 -->
   <el-dialog
     :title="$t('accessAllocate.allocatingEquipment')"
-    v-model="$parent.allcateTreeDialogVisible"
+    :visible.sync="$parent.allcateTreeDialogVisible"
     top="10vh"
     width="1000px"
     class="accessDeviceAllocateDialog"
     :close-on-click-modal="false"
-    :modal="false"
-    draggable
+    :draggable="false"  
     @closed="dialogClosed"
     @open="dialogOpen"
     v-loading="maskloading"
@@ -73,7 +72,7 @@
           ref="lazyTree"
           @initList="initData"
           @nodeClick="treeNodeClick"
-          style="height: 500px; background: #f2f2f2; overflow-y: auto"
+          style="height: 500px; background: transparent; overflow-y: auto"
           v-if="showOrgTree"
           :withTenant="true"
           :iconColor="true"

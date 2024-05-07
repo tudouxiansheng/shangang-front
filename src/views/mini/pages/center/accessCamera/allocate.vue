@@ -1,5 +1,5 @@
 <template>
-  <div id="access-camera-allocate" ref="accessCameraAllocate" v-if="isRouterAlive">
+  <div id="access-camera-allocate" class="base" ref="accessCameraAllocate">
     <el-row>
       <el-col :span="4" class="el-row4">
         <el-scrollbar style="border-radius: 6px">
@@ -37,7 +37,6 @@
             v-show="platformType != '15'"
             :loading="loadingData"
             type="primary"
-            :icon="ElIconRefresh"
             @click="handleData"
           >
             {{ $t('accessAllocate.synchronousData') }}
@@ -48,7 +47,7 @@
           <el-form
             :inline="true"
             class="demo-form-inline"
-            :label-width="locale == 'en' ? '184px' : '84px'"
+            :label-width="locale == 'en' ? '194px' : '94px'"
             ref="form"
             :model="queryParams"
             label-position="left"
@@ -143,9 +142,9 @@
 
             <el-table-column :label="$t('public.operating')" min-width="90">
               <template #default="{ row }">
-                <span class="cell-operate" @click="handleView(row)">
+                <el-button type="text" class="cell-operate" @click="handleView(row)">
                   {{ $t('public.particulars') }}
-                </span>
+                </el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -169,12 +168,11 @@
 </template>
 
 <script>
-import { Refresh as ElIconRefresh } from '@element-plus/icons-vue'
 import getLazyTree from '@/mixin/getLazyTree.js'
 import devDict from '@/mixin/dev-dict.js'
 import deviceAllcateTree from './component/device-allcate-tree'
 import accessCameraAllocateDetail from './component/allocate-detail'
-import deviceAllcateErrorList from '@/views/common/device/component/device-allcate-error-list'
+import deviceAllcateErrorList from '@/views/mini/pages/common/device/component/device-allcate-error-list'
 export default {
   data() {
     return {
@@ -210,7 +208,7 @@ export default {
       allcateErrorDialogVisible: false,
       platformType: '',
       resultlist: [],
-      ElIconRefresh
+      
     }
   },
   mixins: [getLazyTree, devDict],
@@ -407,7 +405,7 @@ export default {
 
 <style lang="scss">
 #access-camera-allocate {
-  height: 100%;
+
   .search-btn {
     position: absolute;
     right: 0;

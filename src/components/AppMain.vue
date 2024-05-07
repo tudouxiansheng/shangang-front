@@ -114,7 +114,10 @@ export default {
         '/organization/manage',
         '/role/manager',
         '/admin/manage',
-        '/alarm/handlePlan'
+        '/alarm/handlePlan',
+        '/alarm/management',
+        '/system/alarm-type',
+        '/linkage/config'
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },

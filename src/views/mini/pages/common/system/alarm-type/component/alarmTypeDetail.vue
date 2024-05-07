@@ -1,13 +1,12 @@
 <template>
   <el-dialog
     :title="$t('alarmTypeManage.alarmTypeDetail')"
-    v-model="$parent.alarmTypeDetailVisible"
+    :visible.sync="$parent.alarmTypeDetailVisible"
     top="10vh"
     :width="locale == 'en' ? '1100px' : '1000px'"
     :close-on-click-modal="false"
     class="alarmTypeDetailDialog"
-    :modal="false"
-    draggable
+    :draggable='false'
     @closed="dialogClosed"
     @open="dialogOpen"
   >

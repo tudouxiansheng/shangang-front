@@ -1,6 +1,6 @@
 <template>
   <!-- 告警联动 -->
-  <div id="linkage-config" v-if="isRouterAlive" ref="linkageConfig">
+  <div id="linkage-config" class='base' v-if="isRouterAlive" ref="linkageConfig">
     <el-row>
       <el-col :span="4" class="el-row4">
         <el-scrollbar style="border-radius: 6px">
@@ -14,7 +14,7 @@
       </el-col>
 
       <el-col :span="20" class="el-row20">
-        <div class="btnMargin">
+        <div class="btnMargin" style='margin-bottom:18px;'>
           <el-button type="primary" @click="handleAdd" v-if="PermissionManage">
             {{ $t('alarmLinkage.addLinkage') }}
           </el-button>
@@ -397,9 +397,6 @@ export default {
 
 <style lang="scss">
 #linkage-config {
-  width: 100%;
-  height: 100%;
-
   .el-dropdown {
     color: #fff;
     cursor: pointer;

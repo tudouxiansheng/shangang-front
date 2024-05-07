@@ -182,7 +182,7 @@ export default {
                 })
                 .then((res) => {
                     this.loading = false
-                    this.tableData = [{}]
+                    this.tableData = []
                     this.totalNum = 0
                     if (res.resultCode == 0) {
                         if (res.disposalPlanList?.length) {

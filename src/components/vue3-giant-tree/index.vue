@@ -3,12 +3,6 @@
 </template>
 
 <script>
-import * as $ from 'jquery'
-if (!window.jQuery) {
-  window.jQuery = $
-}
-
-require('@ztree/ztree_v3/js/jquery.ztree.all')
 
 export default {
   props: {

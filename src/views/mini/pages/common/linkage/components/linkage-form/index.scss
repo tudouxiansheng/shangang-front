@@ -2,7 +2,6 @@
   .el-dialog__body {
     padding: 15px 35px 0;
     overflow-x: hidden;
-    display: flex;
     max-height: 72vh;
 
     .el-steps {
@@ -88,7 +87,8 @@
     }
     &.step1 {
       .select-camera {
-        background: #fafafa;
+        flex: 1;
+
         padding: 4px;
         max-width: 50%;
         &.edit {
@@ -107,12 +107,11 @@
           justify-content: space-between;
           .el-input {
             width: 100%;
-            background: #fafafa;
             .el-input__inner {
               height: 36px;
               line-height: 36px;
               width: 100%;
-              background: #fafafa;
+              background: transparent;
               border: 1px solid #d2d2d2;
               color: #262626;
             }
@@ -435,4 +434,10 @@
 .searchedUl.search-result {
   overflow-y: auto;
   max-height: 225px;
+}
+.linkage-form-item .flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
 }

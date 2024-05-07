@@ -1,6 +1,6 @@
 <template>
   <!-- 告警级别管理 -->
-  <div id="alarm-management" v-if="isRouterAlive" ref="alarmManagement">
+  <div id="alarm-management" class="base" v-if="isRouterAlive" ref="alarmManagement">
     <div class="btnMargin">
       <el-button v-has-permi="[78]" type="primary" @click="handleAdd">
         {{ $t('alarmList.add') }}
@@ -288,7 +288,6 @@ export default {
 
 <style lang="scss">
 #alarm-management {
-  width: 100%;
   padding: 0 20px;
 }
 </style>

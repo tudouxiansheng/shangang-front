@@ -5,13 +5,12 @@
         ? $t('alarmTypeManage.addAlertType')
         : $t('alarmTypeManage.modifyTheAlarmType')
     "
-    v-model="$parent.dialogFormVisible"
+    :visible.sync="$parent.dialogFormVisible"
     top="10vh"
     width="1000px"
     :close-on-click-modal="false"
     class="dialog"
-    :modal="false"
-    draggable
+    :draggable='false'
     @closed="dialogClosed"
     @open="dialogOpen"
   >

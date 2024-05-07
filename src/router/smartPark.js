@@ -383,4 +383,34 @@ export default [
         },
         component: () => import('@/views/mini/pages/AlarmManage/AlarmHandlingPlan/AlarmHandlingPlan'),
     },
+    {
+        path: '/alarm/management',
+        name: 'AlarmLevelManagement',
+        meta: {
+          ref: 'alarmManagement',
+          methods: ['getTemplateList'],
+          keepAlive: true
+        },
+        component:  () => import('@/views/mini/pages/common/alarm/management/index')
+      },
+      {
+        path: '/system/alarm-type',
+        name: 'AlarmTypeManagement',
+        meta: {
+          ref: 'systemAlarmType',
+          methods: ['getPermissions', 'getAlarmTypeList', 'getGroups'],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/common/system/alarm-type')
+      },
+      {
+        path: '/linkage/config',
+        name: 'AlarmLinkage',
+        meta: {
+          ref: 'linkageConfig',
+          methods: ['getPermissions', 'getActionList'],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/common/linkage/config')
+      }
 ]

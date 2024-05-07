@@ -1,6 +1,6 @@
 <template>
   <!-- 告警类型管理 -->
-  <div id="alarm-type" v-if="isRouterAlive" ref="systemAlarmType">
+  <div id="alarm-type" class='base' v-if="isRouterAlive" ref="systemAlarmType">
     <el-row>
       <el-col :span="24" class="el-row20" :style="{ minHeight: th + 'px' }">
         <div class="btnMargin" v-if="PermissionManage">
@@ -24,7 +24,7 @@
               :model="searchForm"
               label-position="left"
               style="position: relative"
-              :label-width="locale == 'en' ? '196px' : '84px'"
+              :label-width="locale == 'en' ? '196px' : '94px'"
           >
             <div class="flexstart">
               <el-form-item
@@ -183,29 +183,14 @@
           </el-table>
 
           <!--分页-->
-          <div class="pagination" v-if="!loading && tableData.length">
-            <div class="paging">
-              <span>{{ $t('public.everyPageShows') }}</span>
-              <el-select v-model="number" @change="numberChange">
-                <el-option
-                  v-for="(item, index) in numberList"
-                  :key="index"
-                  :label="item"
-                  :value="index"
-                ></el-option>
-              </el-select>
-              <span>{{ $t('public.records') }}</span>
-            </div>
-            <div>
-              <el-pagination
-                v-model:current-page="pageNum"
-                :page-size="pageSize"
-                layout="total, prev, pager, next, jumper"
+          <div class="pagination" v-if="!loading && tableData.length">    
+              <pagination
+                :pageNum="pageNum"
+                :limit="pageSize"
                 :total="totalNum"
-                @current-change="handleCurrentChange"
+                @pagination="handleCurrentChange"
                 background
               />
-            </div>
           </div>
         </div>
       </el-col>
@@ -537,7 +522,7 @@ export default {
   .filter-container {
     position: relative;
     margin: 20px 0 10px;
-    text-align: right;
+    text-align: left;
     .miniBtn{
       margin-left:10px;
     }
@@ -549,7 +534,7 @@ export default {
   .search-btn {
     position: absolute;
     right: 0;
-    bottom: 41px;
+    top: 0px;
   }
 }
 </style>

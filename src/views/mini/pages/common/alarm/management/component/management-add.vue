@@ -2,13 +2,13 @@
   <!-- 等级管理添加修改 -->
   <el-dialog
     :title="$parent.operation ? $t('alarmList.addAlarmLevel') : $t('alarmList.reviseAlarmLevel')"
-    v-model="$parent.dialogFormVisible"
+    :visible.sync="$parent.dialogFormVisible"
     top="10vh"
     width="1400px"
     :close-on-click-modal="false"
     class="addManagement"
     :modal="false"
-    draggable
+    :draggable='false'
     @closed="dialogClosed"
     @open="dialogOpen"
   >
@@ -70,9 +70,10 @@
           padding-left: 20px;
           font-size: 12px;
           font-weight: 500;
+          color:#333;
         "
       >
-        <el-icon style="color: #ed6a0c; line-height: 32px"><el-icon-info /></el-icon>
+        <el-icon class='el-icon-info' style="color: #ed6a0c; line-height: 32px"></el-icon>
         &nbsp;&nbsp;&nbsp;{{ $t('alarmList.operateTip') }}
       </div>
       <div v-if="!$parent.operation" class="alarmGroups">

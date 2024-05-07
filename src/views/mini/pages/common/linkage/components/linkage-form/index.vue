@@ -1,13 +1,12 @@
 <template>
   <el-dialog
     :title="title"
-    v-model="dialogVisible"
+    :visible.sync="$parent.dialogFormVisible"
     top="10vh"
     width="1400px"
     :close-on-click-modal="false"
-    :modal="false"
     class="linkage-form-dialog"
-    draggable
+    :draggable='false'
     v-loading="submitLoading"
     @open="dialogOpen"
     @closed="dialogClosed"
@@ -67,8 +66,6 @@
 </template>
 
 <script>
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
 import Step1 from './components/step1'
 import Step2 from './components/step2'
 import Step3 from './components/step3'
@@ -85,7 +82,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: i18n.t('alarmLinkage.addLinkage')
+      default: '新增联动策略'
     },
     visible: {
       type: Boolean,

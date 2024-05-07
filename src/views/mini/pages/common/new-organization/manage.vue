@@ -1,5 +1,5 @@
 <template>
-  <div id="organization_manage" v-if="isRouterAlive" ref="organizationManage">
+  <div class='base' id="organization_manage" v-if="isRouterAlive" ref="organizationManage">
     <!-- 组织管理 -->
     <el-row>
       <el-col :span="4" class="el-row4">
@@ -57,7 +57,7 @@
             :model="dataForm"
             :rules="rules2"
             size="small"
-            :label-width="locale == 'en' ? '195px' : '95px'"
+            :label-width="locale == 'en' ? '195px' : '115px'"
             label-position="left"
             v-loading="formLoading"
             :element-loading-text="$t('public.loading')"
@@ -584,9 +584,6 @@ export default {
 
 <style lang="scss">
 #organization_manage {
-  width: 100%;
-  height: 100%;
-
   .el-row20 {
     .noData {
       margin: 150px auto 80px;
@@ -649,8 +646,8 @@ export default {
     }
 
     .el-form {
-      margin: 0px auto;
-      width: 66%;
+      margin: 0px;
+      width: 100%;
 
       .el-form-item {
         margin-bottom: 45px;

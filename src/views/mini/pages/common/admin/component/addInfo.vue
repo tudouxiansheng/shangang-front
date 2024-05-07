@@ -1,13 +1,12 @@
 <template>
   <el-dialog
     :title="$parent.operation ? $t('adminManage.addAdmin') : $t('adminManage.editAdmin')"
-    v-model="$parent.dialogFormVisible"
+     :visible.sync="$parent.dialogFormVisible"
     top="10vh"
     :width="$parent.locale == 'en' ? '1200px' : '1060px'"
     :close-on-click-modal="false"
     class="add_admin"
-    :modal="false"
-    draggable
+    :draggable='false'
     @open="dialogOpen"
     @closed="dialogClosed"
   >
@@ -57,7 +56,11 @@
                   </span>
                 </div>
                 <template #reference>
-                  <pwd-input v-model="form.password" :placeholder="$t('public.psdPrompt')" />
+                 <el-input
+                  show-password
+                   v-model="form.password" :placeholder="$t('public.psdPrompt')"  
+                  />
+              
                 </template>
               </el-popover>
               <strength-meter

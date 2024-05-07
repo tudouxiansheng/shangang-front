@@ -2,14 +2,13 @@
   <!-- 角色添加修改 -->
   <el-dialog
     :title="$parent.operation ? $t('roleManage.addRole') : $t('roleManage.editRole')"
-    v-model="$parent.dialogFormVisible"
+   :visible.sync="$parent.dialogFormVisible"
     top="10vh"
     width="1000px"
     :close-on-click-modal="false"
     class="dialog"
     @open="dialogOpen"
-    :modal="false"
-    draggable
+    :draggable='false'
     @closed="dialogClosed"
   >
     <el-form
@@ -275,27 +274,7 @@ export default {
   },
   computed: {
     cuTypeList() {
-      if (this.$projectEnv.includes('SIOP')) {
-        if (this.form.roleType == 1 || this.form.roleType == 9) {
-          return [
-            {
-              label: this.$t('roleManage.bgManage'),
-              value: '4'
-            },
-            {
-              label: this.$t('roleManage.pc'),
-              value: '1'
-            }
-          ]
-        } else {
-          return [
-            {
-              label: this.$t('roleManage.pc'),
-              value: '1'
-            }
-          ]
-        }
-      } else {
+
         if (this.form.roleType == 1 || this.form.roleType == 9) {
           return [
             {
@@ -306,10 +285,7 @@ export default {
               label: this.$t('roleManage.pc'),
               value: '1'
             },
-            {
-              label: this.$t('roleManage.web'),
-              value: '7'
-            }
+            
           ]
         } else {
           return [
@@ -317,28 +293,19 @@ export default {
               label: this.$t('roleManage.pc'),
               value: '1'
             },
-            {
-              label: this.$t('roleManage.web'),
-              value: '7'
-            }
+            
           ]
-        }
+        
       }
     },
     menuIdList() {
-      if (this.$projectEnv.includes('SIOP')) {
+
         if (this.form.roleType == 1 || this.form.roleType == 9) {
           return ['4', '1']
         } else {
-          return ['1']
-        }
-      } else {
-        if (this.form.roleType == 1 || this.form.roleType == 9) {
-          return ['4', '1', '7']
-        } else {
           return ['1', '7']
         }
-      }
+      
     }
   },
 

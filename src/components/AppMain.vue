@@ -110,7 +110,11 @@ export default {
         '/device/main-dev-params-config/:mainDevId',
         '/device/camera',
         '/device/record-policy',
-        '/device/share-management'
+        '/device/share-management',
+        '/organization/manage',
+        '/role/manager',
+        '/admin/manage',
+        '/alarm/handlePlan'
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },

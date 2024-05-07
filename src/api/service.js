@@ -180,10 +180,8 @@ service.interceptors.response.use(
           })
           isShowAlert = true
         }
-
         return Promise.reject()
       }
-
       // return doRequest(error)
     } else if (code == 100003 && url.split('?')[0] == '/uas/v1/api/user/token') {
       if (!isShowAlert) {

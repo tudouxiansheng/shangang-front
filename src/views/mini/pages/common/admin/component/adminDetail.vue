@@ -1,13 +1,12 @@
 <template>
   <el-dialog
     :title="$t('adminManage.adminDetail')"
-    v-model="$parent.adminDetailVisible"
+    :visible.sync="$parent.adminDetailVisible"
     top="10vh"
     :width="$parent.locale == 'en' ? '1100px' : '1000px'"
     :close-on-click-modal="false"
     class="adminDetailDialog detailDialog"
-    :modal="false"
-    draggable
+    :draggable="false" 
     @closed="dialogClosed"
     @open="dialogOpen"
   >

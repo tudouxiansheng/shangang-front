@@ -344,5 +344,43 @@ export default [
           keepAlive: true
         },
         component: () => import('@/views/mini/pages/common/device/share-management/shareManagement')
-      }
+      },
+      {
+        path: '/organization/manage',
+        name: 'OrganizationManagement',
+        meta: {
+          ref: 'organizationManage',
+          methods: ['setFormRules', 'getPermissions'],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/common/new-organization/manage.vue')
+      },
+      {
+        path: '/role/manager',
+        name: 'RoleManagement',
+        meta: {
+          ref: 'roleManager',
+          methods: ['getPermissions', 'getRoleList', 'findTreeData'],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/common/role/manage')
+      },
+      {
+        path: '/admin/manage',
+        name: 'AdministratorManagement',
+        meta: {
+          ref: 'adminManage',
+          methods: ['getPermissions'],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/common/admin/manage')
+      },
+      {
+        path: '/alarm/handlePlan',
+        name: '告警处置预案',
+        meta: {
+            keepAlive: true,
+        },
+        component: () => import('@/views/mini/pages/AlarmManage/AlarmHandlingPlan/AlarmHandlingPlan'),
+    },
 ]

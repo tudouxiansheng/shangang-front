@@ -45,4 +45,25 @@ export default {
     text: 'Text',
     NotificationDetails: 'NotificationDetails',
   },
+  AlarmHandlingPlanForm: {
+    planName: 'Plan name',
+    planDesc: 'Plan desc',
+    alarmType: 'Alarm Type',
+    planStep: 'Plan steps',
+    stepName: 'Step name',
+    stepContent: 'Step content',
+  },
+  AlarmHandlingPlanButton: {
+    addPlan: "Add plan",
+    addStep: "Add steps",
+  },
+  AlarmHandlingPlanTitle: {
+    addPlan: "Add plan",
+    editPlan: "Edit plan",
+    PlanInfo: "Plan details"
+  },
+  AlarmHandlingPlanTips: {
+    stepMust:'Please complete the plan steps',
+    deletePrompt:'Make sure to delete the "{name}" disposal plan?'
+}
 }

@@ -29,6 +29,7 @@ import { fetch, postFetch, formFetch } from '@/api/service'
 import CusDialog from '@/components/CusDialog'
 import '@/style/element-variables.scss'
 import PwdInput from '@/components/pwd-input'
+import noTable from '@/components/no-table'
 Vue.use(i18n)
 Vue.use(ElementUI, {
   size: 'small',
@@ -36,6 +37,14 @@ Vue.use(ElementUI, {
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   Vue.component(key, component)
 }
+// Vue.prototype.$getNetType = () => {
+//   if (sStorage.get('netType')) {
+//     return sStorage.get('netType')
+//   }
+
+//   return isIpv6 ? 1 : 0
+// }
+Vue.component('noTable', noTable)
 Vue.use(flvjs)
 Vue.use(HappyScroll)
 Vue.use(Print)

@@ -3,13 +3,12 @@
   <el-dialog
     draggable
     :title="$t('organizationManage.addOrganization')"
-    v-model="$parent.dialogFormVisible"
+    :visible.sync="$parent.dialogFormVisible"
     top="10vh"
     width="1000px"
     :close-on-click-modal="false"
     @closed="dialogClosed"
     @open="dialogOpen"
-    :modal="false"
     class="addOrganization"
   >
     <el-form

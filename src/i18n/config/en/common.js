@@ -1,5 +1,19 @@
 export default {
+  length: {
+    lessthan: 'The length cannot exceed {num} characters',
+    less15: 'The length cannot exceed 15 characters',
+    less20: 'The length cannot exceed 20 characters',
+    less30: 'The length cannot exceed 30 characters',
+    less32: 'The length cannot exceed 32 characters',
+    less50: 'The length cannot exceed 50 characters',
+    less64: 'The length cannot exceed 64 characters',
+    less100: 'The length cannot exceed 100 characters',
+    less128: 'The length cannot exceed 128 characters',
+    fileName64: 'File name length cannot exceed sixty-four characters',
+    required: 'This option is required',
+},
   public: {
+    input: 'Please enter {type}',
     selectedTenantNum: '{num} tenants selected',
     batchAccess: 'Current page export',
     singleAccess: 'Current option export',

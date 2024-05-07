@@ -1,6 +1,6 @@
 <template>
   <!-- 管理员管理 -->
-  <div v-if="isRouterAlive" ref="adminManage" id="admin-manage">
+  <div v-if="isRouterAlive" ref="adminManage" id="admin-manage" class='base'>
     <el-row>
       <el-col :span="4" class="el-row4">
         <el-scrollbar style="border-radius: 6px">
@@ -168,9 +168,9 @@
             </el-table-column>
             <el-table-column :label="$t('public.operating')" min-width="120">
               <template #default="{ row }">
-                <span v-if="PermissionInfo" class="cell-operate" @click="handleInfo(row)">
+                <el-button type='text' v-if="PermissionInfo" class="cell-operate" @click="handleInfo(row)">
                   {{ $t('public.particulars') }}
-                </span>
+                </el-button>
                 <template
                   v-if="
                     ((row.organizationId != orgId || createBy == preSetId) && userType === 2) ||
@@ -337,7 +337,7 @@
 <script>
 import { permissions } from '@/utils/common/permissions'
 import whiteList from '../component/white-list'
-import orgChange from '@/views/common/component/org-change'
+import orgChange from '@/views/mini/pages/common/component/org-change'
 import addInfo from './component/addInfo'
 import adminDetail from './component/adminDetail'
 import breadcrumb from '@/components/breadcrumb' //面包屑
@@ -762,7 +762,7 @@ export default {
     async getAdminInfo(adminId, flag) {
       let res = await this.$api.getAdminInfo({
         adminId,
-        netType: this.$getNetType()
+        netType: 0
       })
       if (res.resultCode != 0) return
       const info = res.adminInfo
@@ -1018,8 +1018,6 @@ export default {
 
 <style lang="scss">
 #admin-manage {
-  width: 100%;
-  height: 100%;
   .operate-container {
     display: flex;
     justify-content: space-between;

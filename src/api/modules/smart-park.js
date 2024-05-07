@@ -925,7 +925,11 @@ export default {
    signOutSession: data => postFetch('/uas/v1/api/udc/session/sign-out', data),
    //心跳保活接口
    heartbeat: data => postFetch('/uas/v1/api/user/heartbeat', data, 300000),
- 
+   getAlarmPlanList: (data) => postFetch('/uas/v1/api/ecs/linkageExt/getDisposalPlanList', data),
+   // 详情
+   getAlarmPlanInfo: (data) => postFetch('/uas/v1/api/ecs/linkageExt/getDisposalPlanById', data),
+   // 获取已选择的告警类型
+   getAlarmTypeByPlan: (data) => postFetch('/uas/api/ecs/linkageExt/getAlarmTypeByPlan', data),
    /**
     * @description 系统公告
     * @param {Object} data

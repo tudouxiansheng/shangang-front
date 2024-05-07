@@ -2,13 +2,12 @@
   <!-- 角色详情 -->
   <el-dialog
     :title="$t('roleManage.roleDetail')"
-    v-model="$parent.detailVisible"
+    :visible.sync="$parent.detailVisible"
     top="10vh"
     width="1000px"
     :close-on-click-modal="false"
     class="roleManageDetail detailDialog"
-    :modal="false"
-    draggable
+    :draggable='false'
     @open="dialogOpen"
     @closed="dialogClosed"
   >
@@ -16,7 +15,7 @@
       ref="form"
       :model="form"
       label-position="left"
-      :label-width="$parent.locale == 'en' ? '140px' : '72px'"
+      :label-width="$parent.locale == 'en' ? '140px' : '82px'"
     >
       <div class="form-flex">
         <div class="form-left">
@@ -131,27 +130,7 @@ export default {
   },
   computed: {
     cuTypeList() {
-      if (this.$projectEnv.includes('SIOP')) {
-        if (this.form.roleType == 1 || this.form.roleType == 9) {
-          return [
-            {
-              label: this.$t('roleManage.bgManage'),
-              value: '4'
-            },
-            {
-              label: this.$t('roleManage.pc'),
-              value: '1'
-            }
-          ]
-        } else {
-          return [
-            {
-              label: this.$t('roleManage.pc'),
-              value: '1'
-            }
-          ]
-        }
-      } else {
+
         if (this.form.roleType == 1 || this.form.roleType == 9) {
           return [
             {
@@ -162,10 +141,7 @@ export default {
               label: this.$t('roleManage.pc'),
               value: '1'
             },
-            {
-              label: this.$t('roleManage.web'),
-              value: '7'
-            }
+            
           ]
         } else {
           return [
@@ -179,22 +155,16 @@ export default {
             }
           ]
         }
-      }
+      
     },
     menuIdList() {
-      if (this.$projectEnv.includes('SIOP')) {
+
         if (this.form.roleType == 1 || this.form.roleType == 9) {
           return ['4', '1']
         } else {
-          return ['1']
-        }
-      } else {
-        if (this.form.roleType == 1 || this.form.roleType == 9) {
-          return ['4', '1', '7']
-        } else {
           return ['1', '7']
         }
-      }
+      
     }
   },
   methods: {
@@ -246,10 +216,7 @@ export default {
       })
     },
     roleTypeFormat(val) {
-      return this.selectDictLabel(this.roleTypeList, val, {
-        key: 'label',
-        value: 'value'
-      })
+      return this.roleTypeList.find((t) => t.value == val)?.key
     },
     handleClick() {},
     dialogClosed() {

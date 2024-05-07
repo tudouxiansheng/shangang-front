@@ -14,6 +14,7 @@ const dict = {
     'camera-img-type': [], // 智能属性
     'main-dev-type': [], // 主设备类型
     'dev-access-mode': [], // 网络类型
+    'ecs-alarm-type-scene':[],
     uvs_puconfig_intelligent_type: [], // 设备配置智能分析类型
     subscribe_type: [], // 订阅类型
     'decoder-type': [], // 云台协议

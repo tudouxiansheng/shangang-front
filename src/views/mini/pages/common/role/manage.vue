@@ -1,10 +1,10 @@
 <template>
   <!-- 业务管理角色 -->
-  <div id="roleManager" v-if="isRouterAlive" ref="roleManager">
+  <div id="roleManager" class='base' v-if="isRouterAlive" ref="roleManager">
     <el-row>
       <el-col :span="24" class="el-row20">
-        <div class="btnMargin">
-          <div v-if="PermissionManage">
+        <div class="btnMargin" >
+          <div v-if="PermissionManage" style='margin-bottom:18px;'>
             <el-button type="primary" @click="handleAdd">
               {{ $t('roleManage.addRole') }}
             </el-button>
@@ -34,7 +34,7 @@
             </el-button>
           </div>
         </div>
-        <div style="height: 600px" v-loading="loading" :element-loading-text="$t('public.loading')">
+        <div style="height: 600px;margin-top:18px;" v-loading="loading" :element-loading-text="$t('public.loading')">
           <div v-if="!loading && !tableData.length" class="tableNOdata">
             <img src="@/assets/img/common/NOdata.png" alt />
             <p>{{ $t('public.noData') }}</p>
@@ -84,17 +84,17 @@
 
             <el-table-column :label="$t('public.operating')" min-width="120">
               <template #default="{ row }">
-                <span v-if="PermissionInfo" class="cell-operate" @click="handleDetail(row)">
+                <el-button type='text' v-if="PermissionInfo" class="cell-operate" @click="handleDetail(row)">
                   {{ $t('public.particulars') }}
-                </span>
+                </el-button>
 
-                <span
+                <el-button type='text'
                   v-if="PermissionManage && row.createBy != preSetId"
                   class="cell-operate"
                   @click="handleEdit(row)"
                 >
                   {{ $t('public.modify') }}
-                </span>
+                </el-button>
                 <span
                   v-if="PermissionManage && row.createBy != preSetId"
                   class="cell-operate danger"
@@ -477,7 +477,6 @@ export default {
 
 <style lang="scss">
 #roleManager {
-  width: 100%;
-  height: 100%;
+
 }
 </style>

@@ -45,4 +45,25 @@ export default {
     text: '正文',
     NotificationDetails: '通知详情',
   },
+  AlarmHandlingPlanForm: {
+    planName: '预案名称',
+    planDesc: '预案描述',
+    alarmType: '告警类型',
+    planStep: '预案步骤',
+    stepName: '步骤名称',
+    stepContent: '步骤内容',
+},
+AlarmHandlingPlanButton: {
+    addPlan: "新增预案",
+    addStep: "添加步骤",
+},
+AlarmHandlingPlanTitle: {
+    addPlan: "新增预案",
+    editPlan: "编辑预案",
+    PlanInfo: "预案详情"
+},
+AlarmHandlingPlanTips: {
+    stepMust:'请将预案步骤补充完整',
+    deletePrompt:'确认删除“{name}”处置预案吗?'
+}
 }

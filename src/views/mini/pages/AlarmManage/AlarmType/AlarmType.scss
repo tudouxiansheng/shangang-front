@@ -1,0 +1,23 @@
+.content {
+    &-table {
+        max-height: calc(100% - 58px);
+    }
+
+    .flexstart {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .flex-item {
+        margin-right: 40px;
+        // width: 42%;
+        // width: 30%;
+    }
+
+    .search-btn {
+        position: absolute;
+        right: 0;
+        // bottom: 18px;
+        bottom: 41px;
+    }
+}

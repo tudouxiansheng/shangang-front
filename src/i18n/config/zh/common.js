@@ -1,5 +1,20 @@
 export default {
+
+length: {
+  lessthan: '长度不能超过{num}个字符',
+  less15: '长度不能超过15个字符',
+  less20: '长度不能超过20个字符',
+  less30: '长度不能超过30个字符',
+  less32: '长度不能超过32个字符',
+  less50: '长度不能超过50个字符',
+  less64: '长度不能超过64个字符',
+  less100: '长度不能超过100个字符',
+  less128: '长度不能超过128个字符',
+  fileName64: '文件名称长度不能超过六十四个字符',
+  required: '此选项为必填项',
+},
   public: {
+    input: '请输入{type}',
     selectedTenantNum: '已选 {num} 个租户',
     batchAccess: '当前页导出',
     singleAccess: '当前选项导出',

@@ -104,7 +104,8 @@ export default {
         '/myTask',
         '/gatewayCluster/manage',
         '/accessPlatform/manage',
-        '/vPaasAccessPlatform/manage'
+        '/vPaasAccessPlatform/manage',
+        '/accessCamera/allocate'
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },

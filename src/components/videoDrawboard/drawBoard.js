@@ -1,5 +1,4 @@
 import { fabric } from 'fabric-pure-browser'
-import { ElMessage as Message } from 'element-plus'
 import { generateUuid } from '@/utils/common/utils'
 import { min, max } from 'lodash'
 import {

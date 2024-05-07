@@ -3248,7 +3248,7 @@ export default {
     pleaseSelectTimeZones: '请选择时区',
     unifiedAccessCode: '统一访问编码',
     inputUnifiedAccessCode: '请输入统一访问编码',
-    selectAll: '全选',
+    selectcAll: '全选',
     stop: '停用',
     start: '启用',
     videoSettings: '视频设置',

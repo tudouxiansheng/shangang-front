@@ -2,13 +2,13 @@
   <!-- 调拨设备失败列表 -->
   <el-dialog
     :title="title"
-    v-model="$parent.allcateErrorDialogVisible"
+    :visible.sync="$parent.allcateErrorDialogVisible"
     :close-on-click-modal="false"
     width="1000px"
     class="allcate-error-dialog"
     @closed="dialogClosed"
     @open="dialogOpen"
-    draggable
+    :draggable="false"  
   >
     <el-table
       max-height="369"
@@ -64,7 +64,7 @@ export default {
     title: {
       type: String,
       default() {
-        return i18n.global.t('primaryDevice.transferDevErrorList')
+        return this.$t('primaryDevice.transferDevErrorList')
       }
     }
   },

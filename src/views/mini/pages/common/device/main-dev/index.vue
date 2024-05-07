@@ -2,6 +2,7 @@
   <!-- 设备管理 -->
   <div
     id="main-dev"
+    class="base"
     v-if="isRouterAlive"
     ref="deviceMainDev"
     v-loading="pageloading"
@@ -635,7 +636,6 @@
 <script>
 import { defineAsyncComponent } from 'vue'
 import { PLATFORM_TYPE } from '@/enums/platformEnum'
-import { ArrowDown as ElIconArrowDown } from '@element-plus/icons-vue'
 import { permissions } from '@/utils/common/permissions'
 import { download } from '@/utils/common/download'
 import { mapState, mapActions } from 'vuex'
@@ -648,9 +648,9 @@ import deviceDetail from './component/device-detail'
 import deviceVideoChannel from './component/device-video-channel'
 import deviceAllcate from './component/device-allcate'
 import deviceAllcateErrorList from '../component/device-allcate-error-list.vue'
-import importFailList from '@/views/common/component/import-fail-list'
+import importFailList from '@/views/mini/pages/common/component/import-fail-list'
 import recordPolicyFailList from './component/recordPolicy-failList'
-import baseInfo from '@/views/common/config/pu-config'
+import baseInfo from '@/views/mini/pages/common/config/pu-config'
 import batchOperate from '@/components/batchOperate' //批量操作
 import breadcrumb from '@/components/breadcrumb' //面包屑
 import addFailList from './component/add-failList'
@@ -677,7 +677,6 @@ export default {
     breadcrumb,
     Excel,
     ExportExcelModal,
-    ElIconArrowDown
   },
   name: 'MainDeviceManagement',
   mixins: [tableCopy, judgeWindow],
@@ -1901,8 +1900,6 @@ export default {
 
 <style lang="scss">
 #main-dev {
-  width: 100%;
-  height: 100%;
   .flex-item {
     width: 36%;
   }

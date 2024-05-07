@@ -174,3 +174,4 @@ if (isPcENV) {
 } else {
   mount()
 }
+export default Vue

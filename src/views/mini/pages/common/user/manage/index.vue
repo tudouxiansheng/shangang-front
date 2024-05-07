@@ -398,7 +398,7 @@ import { download } from '@/utils/common/download'
 import logoUpload from '@/views/common/component/userLogo-upload'
 import whiteList from '@/views/common/component/white-list'
 import orgChange from '@/views/common/component/org-change'
-import importFailList from '@/views/common/component/import-fail-list'
+import importFailList from '@/views/mini/pages/common/component/import-fail-list'
 import addInfo from './component/addInfo'
 import userDetail from './component/userDetail'
 import breadcrumb from '@/components/breadcrumb' //面包屑

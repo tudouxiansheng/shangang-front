@@ -255,5 +255,15 @@ export default [
           keepAlive: true
         },
         component: () => import('@/views/mini/pages/common/gatewayCluster/manage')
+      },
+      {
+        path: '/accessPlatform/manage',
+        name: 'AccessPlatformManagement',
+        meta: {
+          ref: 'accessPlatformrManage',
+          methods: ['setDate', 'getDictionaryList', 'getAccessTypeList'],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/center/accessPlatform/manage')
       }
 ]

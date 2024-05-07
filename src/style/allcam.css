@@ -164,3 +164,84 @@ input:focus{
     /* flex-direction: column; */
     transform: translateX(-50%);
 }
+.el-cascader__dropdown {
+    margin: 0.02604rem 0;
+    font-size: 0.07292rem;
+    background: #0a3251!important;
+    border: solid 0.00521rem #E4E7ED;
+    border-radius: 0.02083rem;
+    box-shadow: 0 0.01042rem 0.0625rem 0 rgba(0, 0, 0, 0.1);
+}
+.el-cascader-menu {
+    min-width: 0.9375rem;
+    box-sizing: border-box;
+    color: #fff!important;
+    border-right: solid 0.00521rem #E4E7ED;
+}
+.el-cascader-node:not(.is-disabled):hover, .el-cascader-node:not(.is-disabled):focus{
+    background: #0c3c60!important;
+}
+.el-tooltip {
+    color: #eee!important;
+}
+.danger {
+    color: #f56c6c;
+}
+  .success {
+    color:#67c23a;
+  }
+  
+  .warning {
+    color:#e6a23c;
+  }
+  
+  .blue {
+    color: #10a9ff;
+  }
+  .el-form-item__label {
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: 0.07292rem;
+    color: #eee!important;
+    line-height: 0.20833rem;
+    padding: 0 0.0625rem 0 0;
+    box-sizing: border-box;
+}
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+    background-color: #ecf5ff!important;
+}
+.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
+    background-color: #3085cb!important;
+    color: #fff!important;
+}
+.el-tree-node:focus>.el-tree-node__content, .el-tree-node__content:hover, .el-upload-list__item:hover {
+    background-color: #082b5b!important;
+    color: #fff!important;
+}
+#orgTree .el-tree-node__content {
+    height: 36px;
+    color: #fff;
+}
+.el-table__body tr.hover-row.current-row>td.el-table__cell, .el-table__body tr.hover-row.el-table__row--striped.current-row>td.el-table__cell, .el-table__body tr.hover-row.el-table__row--striped.selection-row>td.el-table__cell, .el-table__body tr.hover-row.el-table__row--striped>td.el-table__cell, .el-table__body tr.hover-row.selection-row>td.el-table__cell, .el-table__body tr.hover-row>td.el-table__cell, .el-tree-node {
+    background-color: #082b5b;
+    color: #fff;
+}
+ .el-dropdown {
+    font-size: 0.07292rem;
+    margin-left: 2px;
+}
+.collapse-card {
+    margin-bottom: 0.10417rem;
+    border: none;
+    border-bottom: 0.00521rem solid #f4f5f7;
+    background-color: #0c3c60!important;
+}
+.collapse-card .card-header[data-v-0f952d60] {
+    position: relative;
+    font-size: 0.08333rem;
+    color: #eee!important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

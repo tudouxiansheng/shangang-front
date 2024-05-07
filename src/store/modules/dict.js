@@ -7,6 +7,8 @@ const dict = {
     'device-type': [], // 摄像机类型
     'alarm-video-type': [], //联动动作名称
     'ecs-alarm-type-scene': [], //场景分类
+    'access-plat-auth-type': [],
+    'access-plat-protocol-type': [],
     allocation_status: [
       {
         name: '未分配',

@@ -7,6 +7,7 @@ import passageway from './passageway'
 import patrol from './patrol'
 import linkage from './linkage'
 import worktable from './worktable'
+import center from './center'
 const en = {
   ...enLocale,
   ...common,
@@ -16,7 +17,8 @@ const en = {
   ...passageway,
   ...patrol,
   ...linkage,
-  ...worktable
+  ...worktable,
+  ...center
 }
 
 export default en

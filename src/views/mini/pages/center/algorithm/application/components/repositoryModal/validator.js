@@ -1,0 +1,12 @@
+export const RepoNameRegx = /^[A-Za-z0-9-.\u4e00-\u9fa5]{1,255}$/
+export const PhoneRegx = /^[0-9]{1,16}$/
+export const NameRegx = /^(?![-.·\s])[A-Za-z0-9\u4e00-\u9fa5-.·\s]{0,255}$/
+export const LpnRegx = /^[A-Za-z0-9\u4e00-\u9fa5]{1,32}$/
+export const IDCardRegx = /^[0-9a-zA-Z]{1,18}$/
+export const otherIDCardRegx = /^[a-zA-Z\d()]{1,255}$/
+export const OccupationRegx = /^[A-Za-z0-9\u4e00-\u9fa5\s]{1,255}$/
+export const CountryRegx = /^[A-Za-z0-9\u4e00-\u9fa5.\s]{1,255}$/
+export const DateRegx = /^\d{4}(-)(1[0-2]|0?\d)\1([0-2]\d|\d|30|31)$/
+export const AgeRegx = /^([1-9]|[1-9]\d|1[0-1]\d|12[0-7])$/ // 1-127
+export const YearRegx = /^\d{4}$/
+export const NationalityRegx = /^[A-Za-z0-9\u4e00-\u9fa5\s]{1,255}$/

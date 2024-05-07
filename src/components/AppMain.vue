@@ -102,7 +102,8 @@ export default {
         '/facepass',
         '/traffic-statistics',
         '/myTask',
-        '/gatewayCluster/manage'
+        '/gatewayCluster/manage',
+        '/accessPlatform/manage'
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },

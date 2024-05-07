@@ -6,12 +6,10 @@
           ? $t('gatewayCluster.addGatewayCluster')
           : $t('gatewayCluster.modifyGatewayCluster')
       "
-       :visible.sync="$parent.dialogFormVisible"
+      :visible.sync="$parent.dialogFormVisible"
       top="10vh"
       width="1000px"
-
-      :draggable="false"
-    
+      :draggable="false"  
       @closed="dialogClosed"
       @open="dialogOpen"
     >

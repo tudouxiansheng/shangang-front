@@ -1,6 +1,6 @@
 <!--接入平台管理-->
 <template>
-  <div v-if="isRouterAlive" id="vpaas-access-platform" ref="vpaasAccessPlatform">
+  <div v-if="isRouterAlive" class="base" id="vpaas-access-platform" ref="vpaasAccessPlatform">
     <el-row>
       <el-col :span="4" class="el-row4">
         <el-scrollbar style="border-radius: 6px">
@@ -158,12 +158,12 @@
               :min-width="locale == 'en' ? 170 : 100"
             >
               <template #default="{ row }">
-                <span class="cell-operate" @click="handleView(row)">
+                <el-button type="text" class="cell-operate" @click="handleView(row)">
                   {{ $t('public.particulars') }}
-                </span>
-                <span class="cell-operate" @click="handleUpdate(row)">
+                </el-button>
+                <el-button type="text" class="cell-operate" @click="handleUpdate(row)">
                   {{ $t('public.modify') }}
-                </span>
+                </el-button>
                 <el-dropdown trigger="click" @command="handleCommand">
                   <span style="color: #10a9ff; cursor: pointer; font-size: 12px">
                     {{ $t('public.moreActions') }}
@@ -414,22 +414,13 @@ export default {
       }
     },
     setPlatType(val) {
-      return this.selectDictLabel(this.platTypeList, val, {
-        key: 'name',
-        value: 'value'
-      })
+      return this.platTypeList.find((t) => t.value == val)?.name
     },
     setEnable(val) {
-      return this.selectDictLabel(this.enableList, val, {
-        key: 'name',
-        value: 'value'
-      })
+      return this.enableList.find((t) => t.value == val)?.name
     },
     setStatus(val) {
-      return this.selectDictLabel(this.platformStatusList, val, {
-        key: 'name',
-        value: 'value'
-      })
+      return this.platformStatusList.find((t) => t.value == val)?.name
     },
     handleFind() {
       this.queryParams.pageInfo.pageNum = 1
@@ -619,9 +610,6 @@ export default {
 
 <style lang="scss">
 #vpaas-access-platform {
-  width: 100%;
-  height: 100%;
-
   .search-btn {
     position: absolute;
     right: 0;

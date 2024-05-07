@@ -1,14 +1,13 @@
 <template>
   <el-dialog
     :title="$t('accessPlatform.vpaasAccessPlatformDetail')"
-    v-model="$parent.dialogFormVisible_detail"
+    :visible.sync="$parent.dialogFormVisible_detail"
     top="10vh"
     :width="locale == 'en' ? '1400px' : '1000px'"
     id="vpaasAccessPlatformDetailDialog"
     :close-on-click-modal="false"
-    :modal="false"
     @open="dialogOpen"
-    draggable
+    :draggable="false"
   >
     <el-form
       :model="form"
@@ -184,10 +183,8 @@ export default {
       })
     },
     setVpaasPlatId(val) {
-      return this.selectDictLabel(this.$parent.vpaasPlatIdList, val, {
-        key: 'platformName',
-        value: 'platformId'
-      })
+       return this.$parent.vpaasPlatIdList.find((t) => t.platformId == val)?.platformName
+
     },
     async getDomainQueryList() {
       let vType = undefined
@@ -237,34 +234,22 @@ export default {
       }
     },
     setDomainCode(val) {
-      return this.selectDictLabel(this.domainList, val, {
-        key: 'domainName',
-        value: 'domainCode'
-      })
+        return this.domainList.find((t) => t.domainCode == val)?.domainName
     },
     setAccessAuthType(val) {
-      return this.selectDictLabel(this.accessAuthTypeList, val, {
-        key: 'name',
-        value: 'value'
-      })
+      return this.accessAuthTypeList.find((t) => t.value == val)?.name
     },
     setTransProtocol(val) {
-      return this.selectDictLabel(this.$parent.transProtocolList, val, {
-        key: 'name',
-        value: 'value'
-      })
+       return this.$parent.transProtocolList.find((t) => t.value == val)?.name
+    
     },
     setCharacterSet(val) {
-      return this.selectDictLabel(this.$parent.characterSetList, val, {
-        key: 'name',
-        value: 'value'
-      })
+      return this.$parent.characterSetList.find((t) => t.value == val)?.name
+    
     },
     setStreamNet(val) {
-      return this.selectDictLabel(this.$parent.networkTypeList, val, {
-        key: 'name',
-        value: 'value'
-      })
+      return this.$parent.networkTypeList.find((t) => t.value == val)?.name
+     
     }
   }
 }

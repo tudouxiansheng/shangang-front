@@ -1,6 +1,15 @@
 export default {
   algorithm: {
     cameraList: '摄像机列表',
+    createdAt: '创建时间',
+    taskName: '任务名称',
+    detectType: '检测类型',
+    cameraName: '摄像机名称',
+    taskStatus: '任务状态',
+    runDuration: '运行时长',
+    withinDays: '天内',
+    seq: '序号',
+    algorithmPlatformName: '算法平台名称',
   },
   length: {
     lessthan: '长度不能超过{num}个字符',

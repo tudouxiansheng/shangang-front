@@ -8,6 +8,8 @@ import { merge } from 'lodash'
 import { mockData } from '@/api/mockData'
 export default {
   // 智能分析任务
+  getAreaCameraList: (data) =>
+    mockRequest(() => postFetch('/uas/v1/api/uvs/main-dev/list', data), mockData.areaCameraList(data)),
   getCameraTree: (data) =>
     mockRequest(() => postFetch('/uas/v1/api/udc/organization/tree', data), mockData.cameraTree(data)),
   // 搜索

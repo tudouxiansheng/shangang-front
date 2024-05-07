@@ -27,6 +27,122 @@
       </el-col>
 
       <el-col :span="20" class="el-row20">
+        <breadcrumb ref="breadcrumb" @changeTree="tree_change" />
+        <div class="search-form searchSelect">
+          <el-form
+            :inline="true"
+            class="demo-form-inline"
+            :label-width="locale == 'en' ? '170px' : '137px'"
+            ref="form"
+            :model="searchForm"
+            label-position="left"
+          >
+            <div class="flexstart">
+              <el-form-item :label="$t('algorithm.taskName') + ' ：'" :class="screenFlag ? 'screenthree' : 'flex-item'">
+                <el-input
+                  v-model="searchForm.taskName"
+                  auto-complete="off"
+                  :placeholder="$t('public.pleaseInputMainDevName')"
+                  clearable
+                  maxlength="128"
+                  @change="search_change"
+                />
+              </el-form-item>
+              <el-form-item
+                :label="$t('algorithm.createdAt') + ' ：'"
+                :class="screenFlag ? 'screenthree' : 'flex-item'"
+              >
+                <el-date-picker
+                  style="width: 187px"
+                  v-model="searchForm.createdAt"
+                  type="date"
+                  @change="search_change"
+                ></el-date-picker>
+              </el-form-item>
+              <el-form-item
+                :label="$t('algorithm.detectType') + ' ：'"
+                auto-complete="off"
+                prop="detectType"
+                :class="screenFlag ? 'screenthree' : 'flex-item'"
+                v-if="screenFlag"
+              >
+                <el-select
+                  clearable
+                  :popper-append-to-body="false"
+                  v-model="searchForm.detectType"
+                  @change="search_change"
+                >
+                  <!--                  <el-option :label="$t('public.all')" value></el-option>-->
+                  <el-option
+                    v-for="(item, index) in mockSelectOptions"
+                    :key="item.id"
+                    :label="item.name"
+                    :value="item.id"
+                  ></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item
+                :label="$t('algorithm.cameraName') + ' ：'"
+                :class="screenFlag ? 'screenthree' : 'flex-item'"
+              >
+                <el-input
+                  v-model="searchForm.cameraName"
+                  auto-complete="off"
+                  :placeholder="$t('public.pleaseInputMainDevName')"
+                  clearable
+                  maxlength="128"
+                  @change="search_change"
+                />
+              </el-form-item>
+              <el-form-item
+                :label="$t('algorithm.taskStatus') + ' ：'"
+                auto-complete="off"
+                prop="taskStatus"
+                :class="screenFlag ? 'screenthree' : 'flex-item'"
+                v-if="screenFlag"
+              >
+                <el-select
+                  clearable
+                  :popper-append-to-body="false"
+                  v-model="searchForm.taskStatus"
+                  @change="search_change"
+                >
+                  <!--                  <el-option :label="$t('public.all')" value></el-option>-->
+                  <el-option
+                    v-for="(item, index) in mockSelectOptions"
+                    :key="item.id"
+                    :label="item.name"
+                    :value="item.id"
+                  ></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item
+                :label="$t('algorithm.runDuration') + ' ：'"
+                :class="screenFlag ? 'screenthree' : 'flex-item'"
+              >
+                <el-input-number
+                  v-model="searchForm.runDuration"
+                  :precision="0"
+                  :step="1"
+                  :min="1"
+                  :controls="false"
+                  @change="search_change"
+                ></el-input-number>
+                <span style="margin-left: 0.08rem">{{ $t('algorithm.withinDays') }}</span>
+              </el-form-item>
+            </div>
+
+            <div class="search-btn" style="margin-bottom: 18px">
+              <el-button type="primary" @click="handleFind" class="miniBtn">
+                {{ $t('public.search') }}
+              </el-button>
+
+              <el-button @click="reset">{{ $t('public.reset') }}</el-button>
+            </div>
+          </el-form>
+        </div>
+        <!-- //面包屑 -->
+
         <div style="margin: 20px 0 20px">
           <el-dropdown v-if="PermissionManage" trigger="click" @command="handleAdd" style="margin-left: 10px">
             <el-button type="primary">
@@ -44,281 +160,10 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-
-          <el-dropdown v-if="PermissionManage" trigger="click" @command="getTemplate" style="margin-left: 10px">
-            <el-button type="primary">
-              {{ $t('public.getTemplate') }}
-              <el-icon class="el-icon--right"><el-icon-arrow-down /></el-icon>
-            </el-button>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item :command="1">
-                  {{ $t('primaryDevice.DownloadIVS') }}
-                </el-dropdown-item>
-                <el-dropdown-item :command="5">
-                  {{ $t('primaryDevice.DownloadADS') }}
-                </el-dropdown-item>
-                <el-dropdown-item :command="4">
-                  {{ $t('primaryDevice.DownloadAVS') }}
-                </el-dropdown-item>
-
-                <el-dropdown-item :command="16">
-                  {{ $t('primaryDevice.DownloadvPaaS') }}
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-
-          <el-dropdown v-if="PermissionManage" trigger="click" style="margin: 0 10px">
-            <el-button type="primary">
-              {{ $t('public.batchImport') }}
-              <el-icon class="el-icon--right"><el-icon-arrow-down /></el-icon>
-            </el-button>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>
-                  <div class="upload">
-                    <Excel @success="batchImportIVS">
-                      <div>{{ $t('primaryDevice.importIVS') }}</div>
-                    </Excel>
-                  </div>
-                </el-dropdown-item>
-                <el-dropdown-item>
-                  <div class="upload">
-                    <Excel @success="batchImportADS">
-                      <div>{{ $t('primaryDevice.importADS') }}</div>
-                    </Excel>
-                  </div>
-                </el-dropdown-item>
-                <el-dropdown-item>
-                  <div class="upload">
-                    <Excel @success="batchImportAVS">
-                      <div>{{ $t('primaryDevice.importAVS') }}</div>
-                    </Excel>
-                  </div>
-                </el-dropdown-item>
-                <el-dropdown-item>
-                  <div class="upload">
-                    <Excel @success="batchImportIVS">
-                      <div>{{ $t('primaryDevice.importvPaaS') }}</div>
-                    </Excel>
-                  </div>
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-          <el-button type="primary" @click="Allocating" v-if="PermissionAllot">
-            {{ $t('primaryDevice.AllocatingEquipment') }}
-          </el-button>
           <el-button type="danger" @click="handleDel" :disabled="delShow" v-if="PermissionDelete">
             {{ $t('public.batchDeletion') }}
           </el-button>
         </div>
-
-        <div class="search-form searchSelect">
-          <el-form
-            :inline="true"
-            class="demo-form-inline"
-            :label-width="locale == 'en' ? '170px' : '137px'"
-            ref="form"
-            :model="searchForm"
-            label-position="left"
-          >
-            <div class="flexstart">
-              <el-form-item :label="$t('public.mainDevName') + ' ：'" :class="screenFlag ? 'screenthree' : 'flex-item'">
-                <el-input
-                  v-model="searchForm.mainDevName"
-                  auto-complete="off"
-                  :placeholder="$t('public.pleaseInputMainDevName')"
-                  clearable
-                  maxlength="128"
-                  @change="search_change"
-                />
-              </el-form-item>
-              <el-form-item
-                :label="$t('primaryDevice.mainDevId') + ' ：'"
-                prop="cameraId"
-                :class="screenFlag ? 'screenthree' : 'flex-item'"
-              >
-                <el-input
-                  v-model="searchForm.mainDevId"
-                  auto-complete="off"
-                  :placeholder="$t('primaryDevice.pleaseInputmainDevId')"
-                  clearable
-                  maxlength="32"
-                  @change="search_change"
-                />
-              </el-form-item>
-              <el-form-item
-                :label="$t('public.thirdMainDevId') + ' ：'"
-                :class="screenFlag ? 'screenthree' : 'flex-item'"
-                v-if="screenFlag"
-              >
-                <el-input
-                  v-model="searchForm.thirdMainDevId"
-                  auto-complete="off"
-                  :placeholder="$t('public.inputThirdMainDevId')"
-                  clearable
-                  maxlength="64"
-                  @change="search_change"
-                />
-              </el-form-item>
-            </div>
-
-            <div v-show="showManyCondition">
-              <div class="flexstart">
-                <el-form-item
-                  :label="$t('public.thirdMainDevId') + ' ：'"
-                  :class="screenFlag ? 'screenthree' : 'flex-item'"
-                  v-if="!screenFlag"
-                >
-                  <el-input
-                    v-model="searchForm.thirdMainDevId"
-                    auto-complete="off"
-                    :placeholder="$t('public.inputThirdMainDevId')"
-                    clearable
-                    maxlength="64"
-                    @change="search_change"
-                  />
-                </el-form-item>
-
-                <el-form-item
-                  :label="$t('primaryDevice.puIp') + ' ：'"
-                  prop="platId"
-                  :class="screenFlag ? 'screenthree' : 'flex-item'"
-                >
-                  <el-input
-                    v-model="searchForm.puIp"
-                    auto-complete="off"
-                    :placeholder="$t('primaryDevice.pleaseInputpuIp')"
-                    clearable
-                    maxlength="16"
-                    @change="search_change"
-                  />
-                </el-form-item>
-                <el-form-item
-                  :label="$t('deviceCamera.platId') + ' ：'"
-                  auto-complete="off"
-                  prop="platId"
-                  :class="screenFlag ? 'screenthree' : 'flex-item'"
-                  v-if="screenFlag"
-                >
-                  <el-select
-                    clearable
-                    :popper-append-to-body="false"
-                    v-model="searchForm.platId"
-                    :placeholder="$t('deviceCamera.pleaseInputPlatId')"
-                    @change="search_change"
-                  >
-                    <el-option :label="$t('public.all')" value></el-option>
-                    <el-option
-                      v-for="(item, index) in platNameList"
-                      :key="index"
-                      :label="item.platName"
-                      :value="item.platId"
-                    ></el-option>
-                  </el-select>
-                </el-form-item>
-                <el-form-item
-                  :label="$t('public.state') + ' ：'"
-                  auto-complete="off"
-                  prop="status"
-                  :class="screenFlag ? 'screenthree' : 'flex-item'"
-                  v-if="screenFlag"
-                >
-                  <el-select
-                    clearable
-                    :popper-append-to-body="false"
-                    v-model="searchForm.status"
-                    :placeholder="$t('primaryDevice.statusProp')"
-                    @change="search_change"
-                  >
-                    <el-option :label="$t('public.all')" value></el-option>
-                    <el-option
-                      v-for="(item, index) in deviceRegisterStatusListFormattered"
-                      :key="index"
-                      :label="item.name"
-                      :value="item.value"
-                    ></el-option>
-                  </el-select>
-                </el-form-item>
-              </div>
-              <div class="flexstart">
-                <el-form-item
-                  :label="$t('deviceCamera.platId') + ' ：'"
-                  auto-complete="off"
-                  prop="platId"
-                  :class="screenFlag ? 'screenthree' : 'flex-item'"
-                  v-if="!screenFlag"
-                >
-                  <el-select
-                    clearable
-                    :popper-append-to-body="false"
-                    v-model="searchForm.platId"
-                    :placeholder="$t('deviceCamera.pleaseInputPlatId')"
-                    @change="search_change"
-                  >
-                    <el-option :label="$t('public.all')" value></el-option>
-                    <el-option
-                      v-for="(item, index) in platNameList"
-                      :key="index"
-                      :label="item.platName"
-                      :value="item.platId"
-                    ></el-option>
-                  </el-select>
-                </el-form-item>
-                <el-form-item
-                  :label="$t('public.state') + ' ：'"
-                  auto-complete="off"
-                  prop="status"
-                  :class="screenFlag ? 'screenthree' : 'flex-item'"
-                  v-if="!screenFlag"
-                >
-                  <el-select
-                    clearable
-                    :popper-append-to-body="false"
-                    v-model="searchForm.status"
-                    :placeholder="$t('primaryDevice.statusProp')"
-                    @change="search_change"
-                  >
-                    <el-option :label="$t('public.all')" value></el-option>
-                    <el-option
-                      v-for="(item, index) in deviceRegisterStatusListFormattered"
-                      :key="index"
-                      :label="item.name"
-                      :value="item.value"
-                    ></el-option>
-                  </el-select>
-                </el-form-item>
-              </div>
-              <div class="flexstart">
-                <el-form-item
-                  :label="$t('primaryDevice.accessInterconnectCode') + ' ：'"
-                  prop="accessInterconnectCode"
-                  :class="screenFlag ? 'screenthree' : 'flex-item'"
-                >
-                  <el-input
-                    v-model="searchForm.accessInterconnectCode"
-                    auto-complete="off"
-                    :placeholder="$t('primaryDevice.pleaseInputinterconnectCode')"
-                    clearable
-                    @change="search_change"
-                  />
-                </el-form-item>
-              </div>
-            </div>
-
-            <div class="search-btn" style="margin-bottom: 18px">
-              <el-button type="primary" @click="handleFind" class="miniBtn">
-                {{ $t('public.search') }}
-              </el-button>
-
-              <el-button @click="manyCondition">{{ $t('public.manyCondition') }}</el-button>
-            </div>
-          </el-form>
-        </div>
-        <!-- //面包屑 -->
-        <breadcrumb ref="breadcrumb" @changeTree="tree_change" />
 
         <div style="height: 600px" v-loading="loading" :element-loading-text="$t('public.loading')">
           <div v-if="!loading && !tableData.length" class="tableNOdata">
@@ -342,79 +187,74 @@
               <span>{{ dataText }}</span>
             </template>
             <el-table-column label width="50" type="selection" />
-            <el-table-column
-              :label="$t('primaryDevice.mainDevId')"
-              min-width="110"
-              show-overflow-tooltip
-              prop="mainDevId"
-            >
-              <template #default="{ row }">
-                <span>{{ row.mainDevId }}</span>
+            <el-table-column :label="$t('algorithm.seq')" min-width="60" show-overflow-tooltip prop="mainDevId">
+              <template #default="{ row, $index }">
+                <span>{{ $index + 1 }}</span>
               </template>
             </el-table-column>
-
-            <el-table-column
-              :label="$t('public.thirdMainDevId')"
-              min-width="110"
-              show-overflow-tooltip
-              prop="thirdMainDevId"
-            >
-              <template #default="{ row }">
-                <span>{{ row.thirdMainDevId }}</span>
-              </template>
-            </el-table-column>
-
-            <el-table-column :label="$t('public.mainDevName')" min-width="100" show-overflow-tooltip prop="mainDevName">
-              <template #default="{ row }">
-                <span>{{ row.mainDevName }}</span>
-              </template>
-            </el-table-column>
-
-            <el-table-column :label="$t('primaryDevice.drive')" show-overflow-tooltip prop="drive">
-              <template #default="{ row }">
-                <span>{{ row.drive }}</span>
-              </template>
-            </el-table-column>
-
-            <el-table-column :label="$t('public.mainDevType')" min-width="95" show-overflow-tooltip prop="mainDevType">
-              <template #default="{ row }">
-                <span>{{ setmainDevType(row.mainDevType) }}</span>
-              </template>
-            </el-table-column>
-
-            <el-table-column
-              :label="$t('primaryDevice.puIp')"
-              min-width="65"
-              show-overflow-tooltip
-              prop="mainDevConfigInfo"
-            >
-              <template #default="{ row }">
-                <span>{{ row.mainDevConfigInfo.puIp }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column :label="$t('public.state')" min-width="60" show-overflow-tooltip prop="status">
-              <template #default="{ row }">
-                <span
-                  :class="
-                    row.status == '0' ? 'warning' : row.status == '1' ? 'success' : row.status == '2' ? 'danger' : ''
-                  "
-                >
-                  {{ deviceRegister(row.status) }}
-                </span>
-              </template>
-            </el-table-column>
-
-            <el-table-column :label="$t('public.createTime')" min-width="90" show-overflow-tooltip prop="createTime">
-              <template #default="{ row }">
-                <span>{{ row.createTime }}</span>
-              </template>
-            </el-table-column>
-
-            <el-table-column :label="$t('public.updateTime')" min-width="90" show-overflow-tooltip prop="updateTime">
-              <template #default="{ row }">
-                <span>{{ row.updateTime }}</span>
-              </template>
-            </el-table-column>
+            <template v-if="selectedTreeNodeType == 'area'">
+              <el-table-column
+                :label="$t('algorithm.taskName')"
+                min-width="110"
+                show-overflow-tooltip
+                prop="mainDevId"
+              />
+              <el-table-column
+                :label="$t('algorithm.detectType')"
+                min-width="80"
+                show-overflow-tooltip
+                prop="mainDevId"
+              />
+              <el-table-column
+                :label="$t('algorithm.cameraName')"
+                min-width="110"
+                show-overflow-tooltip
+                prop="mainDevId"
+              />
+              <el-table-column :label="$t('algorithm.taskStatus')" min-width="60" show-overflow-tooltip prop="status">
+                <template #default="{ row }">
+                  <span
+                    :class="
+                      row.status == '0' ? 'warning' : row.status == '1' ? 'success' : row.status == '2' ? 'danger' : ''
+                    "
+                  >
+                    {{ deviceRegister(row.status) }}
+                  </span>
+                </template>
+              </el-table-column>
+              <el-table-column
+                :label="$t('algorithm.createdAt')"
+                min-width="110"
+                show-overflow-tooltip
+                prop="mainDevId"
+              />
+              <el-table-column
+                :label="$t('algorithm.runDuration')"
+                min-width="110"
+                show-overflow-tooltip
+                prop="mainDevId"
+              />
+              <el-table-column
+                :label="$t('algorithm.algorithmPlatformName')"
+                min-width="110"
+                show-overflow-tooltip
+                prop="mainDevId"
+              />
+            </template>
+            <template v-else>
+              <el-table-column
+                :label="$t('algorithm.detectType')"
+                min-width="80"
+                show-overflow-tooltip
+                prop="mainDevId"
+              />
+              <el-table-column
+                :label="$t('algorithm.algorithmPlatformName')"
+                min-width="110"
+                show-overflow-tooltip
+                prop="mainDevId"
+              />
+            </template>
 
             <el-table-column :label="$t('public.operating')" min-width="150">
               <template #default="{ row }">
@@ -627,6 +467,7 @@ export default {
       PermissionCameraManage: true,
       PermissionDelete: true,
       batchVisible: false,
+      selectedTreeNodeType: 'area',
       organizationId: undefined,
       organizationName: '', //组织名称
 
@@ -708,7 +549,16 @@ export default {
           2: { name: this.$t('dictConst.HWSDKACREG'), value: 'HWSDK-ACREG' },
         },
       ], // 设备协议类型
-
+      mockSelectOptions: [
+        {
+          id: '1',
+          name: '111',
+        },
+        {
+          id: '3',
+          name: '333',
+        },
+      ],
       platNameList: [], //平台
       platNameLists: [], //调拨平台
       AddplatNameLists: [], //添加设备平台
@@ -930,7 +780,6 @@ export default {
       const payload = list[0].payload
       this.organizationId = payload.organizationId
       this.organizationName = payload.organizationName
-      await this.platformList() // 监控平台
       await this.getMainDevList()
     },
     // 点击树节点
@@ -939,9 +788,9 @@ export default {
       this.$refs.breadcrumb.treeLinkBread(obj.data, obj.node)
       this.organizationId = obj.data.payload.organizationId
       this.organizationName = obj.data.payload.organizationName
+      this.selectedTreeNodeType = obj.data == 1 ? 'area' : 'camera'
       this.search_clear()
       await this.getMainDevList()
-      await this.platformList()
     },
     // 面包屑联动树
     tree_change(data) {
@@ -968,7 +817,7 @@ export default {
           Object.assign(data, this.searchForm)
         }
 
-        this.$api.getMainDevList(data).then((res) => {
+        this.$api.getAreaCameraList(data).then((res) => {
           this.devListBack(res)
         })
       }
@@ -1120,7 +969,12 @@ export default {
       this.isSearch = true
       this.getMainDevList()
     },
-
+    reset() {
+      this.pageNum = 1
+      this.isSearch = false
+      this.search_clear()
+      this.getMainDevList()
+    },
     getTemplateCommand(command) {
       switch (command) {
         case 1:

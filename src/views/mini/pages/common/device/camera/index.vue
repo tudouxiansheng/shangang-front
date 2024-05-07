@@ -1,6 +1,7 @@
 <template>
   <!-- 镜头管理 -->
   <div
+    class='base'
     id="device_camera"
     v-if="isRouterAlive"
     ref="deviceCamera"
@@ -480,14 +481,14 @@
 
             <el-table-column :label="$t('public.operating')" min-width="160">
               <template #default="{ row }">
-                <span
+                <el-button type='text'
                   class="cell-operate"
                   style="word-break: break-word"
                   @click="cameraDetails(row)"
                   v-if="PermissionInfo"
                 >
                   {{ $t('public.particulars') }}
-                </span>
+                </el-button>
                 <span
                   style="margin-right: 7px; color: #10a9ff; cursor: pointer; word-break: break-word"
                   @click="paramsConfig(row)"
@@ -2074,8 +2075,6 @@ export default {
 
 <style lang="scss">
 #device_camera {
-  width: 100%;
-  height: 100%;
   .searchSelect {
     .el-select {
       width: 100%;

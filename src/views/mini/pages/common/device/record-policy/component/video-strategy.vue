@@ -7,17 +7,17 @@
         ? $t('videoRecord.videoStrategyInfo')
         : $t('videoRecord.editingVideoStrategy')
     "
-    v-model="$parent.dialogFormVisible"
+   :visible.sync="$parent.dialogFormVisible"
     top="10vh"
     width="1040px"
     class="videoPlanDialog"
     :close-on-click-modal="false"
     :modal="false"
-    draggable
+    :draggable='false'
     @closed="dialogClosed"
     @open="dialogOpen"
   >
-    <el-form ref="form" :model="form" :rules="rules" label-width="115px" label-position="left">
+    <el-form ref="form" :model="form" :rules="rules" label-width="124px" label-position="left">
       <div class="form-flex" v-show="$parent.operation == 1">
         <div class="form-left">
           <el-form-item :label="$t('videoRecord.videoPolicyName') + '：'">

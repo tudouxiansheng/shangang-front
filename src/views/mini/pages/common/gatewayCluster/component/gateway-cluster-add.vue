@@ -9,7 +9,7 @@
       :visible.sync="$parent.dialogFormVisible"
       top="10vh"
       width="1000px"
-      :draggable="false"  
+      
       @closed="dialogClosed"
       @open="dialogOpen"
     >

@@ -3,14 +3,14 @@
     <!-- 修改镜头 -->
     <el-dialog
       :title="$t('deviceCamera.modifyCamera')"
-      v-model="$parent.modifyCameraVisible"
+      :visible.sync="$parent.modifyCameraVisible"
       top="10vh"
       :width="locale == 'en' ? '1200px' : '1050px'"
       :close-on-click-modal="false"
       @closed="dialogClosed"
       @open="dialogOpen"
       :modal="false"
-      draggable
+      :draggable="false"  
     >
       <el-form
         ref="form"

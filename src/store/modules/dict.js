@@ -12,8 +12,38 @@ const dict = {
     'stream-type': [], //码流类型
     'application-type': [], //应用类型
     'camera-img-type': [], // 智能属性
+    'main-dev-type': [], // 主设备类型
     'dev-access-mode': [], // 网络类型
+    uvs_puconfig_intelligent_type: [], // 设备配置智能分析类型
+    subscribe_type: [], // 订阅类型
+    'decoder-type': [], // 云台协议
+    'reliable-transmission-protocol': [], // 可靠传输
+    'fec-matrix-percent': [], // 抗丢包率
+    'stream-type': [], //码流类型
+    'network-type': [], //网络类型
+    'device-timezone-type': [], //时区
+    subscribe_resources_type: [], //资源类别
+    subscribe_result_pic_type: [], //返回图片约定
     camera_manufacturer: [], // 设备厂商类型
+    'stream-encode-type': [], //编码格式
+    'stream-trans-protocol': [], //传输协议
+    status_type: [], // 设备状态
+    'stream-resolution-type': [], //分辨率
+    'stream-bit-rate': [], //码率
+    'stream-frame-rate': [], //帧率
+    'license-code': [], //控制项
+    'license-describe': [], //描述
+        // ipcProtocol网络协议类型
+        ipc_protocol_type: [
+          {
+            name: 'HTTP',
+            code: 0
+          },
+          {
+            name: 'HTTPS',
+            code: 1
+          }
+        ],
     //所有平台的设备协议类型
     drive_type_all: [
       {
@@ -54,6 +84,7 @@ const dict = {
       }
     ],
     'device-register-status': [],
+    
 
     allocation_status: [
       {
@@ -73,7 +104,7 @@ const dict = {
   },
   actions: {
     // 系统字典表
-    getSysDictData({ commit, dispatch, state }, dictCodes) {
+   async getSysDictData({ commit, dispatch, state }, dictCodes) {
       for (let i = 0; i < dictCodes.length; i++) {
         if (state[dictCodes[i]].length == 0) {
           api.API.getDictionary({

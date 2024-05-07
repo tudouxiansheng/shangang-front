@@ -306,4 +306,43 @@ export default [
         },
         component: () => import('@/views/mini/pages/common/device/params-config')
       },
+      {
+        path: '/device/camera',
+        name: 'CameraManagement',
+        meta: {
+          ref: 'deviceCamera',
+          methods: ['getPermissions', 'pageResize', 'setData', 'applicationTypeData'],
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/common/device/camera')
+      },
+      {
+        path: '/device/camera-params-config/:cameraId',
+        name: 'CameraParameterConfiguration',
+        meta: {
+          ref: 'deviceParamsConfig',
+          methods: ['initialFunction'],
+          keepAlive: false
+        },
+        component: () => import('@/views/mini/pages/common/device/params-config')
+      },
+      {
+        path: '/device/record-policy',
+        name: 'VideoRecordingPolicy',
+        meta: {
+          ref: 'recordPolicy',
+          methods: ['getPermissions', 'getRecordList'],
+          keepAlive: true
+        },
+        component:() => import('@/views/mini/pages/common/device/record-policy')
+      },
+      {
+        path: '/device/share-management',
+        name: 'DeviceShareManagement',
+        meta: {
+          ref: 'shareManagement',
+          keepAlive: true
+        },
+        component: () => import('@/views/mini/pages/common/device/share-management/shareManagement')
+      }
 ]

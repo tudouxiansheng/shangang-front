@@ -2,7 +2,7 @@
   <!-- 批量设备移动 -->
   <el-dialog
     :title="$t('public.devicechange')"
-    v-model="$parent.orgChangeShow"
+    :visible.sync="$parent.orgChangeShow"
     width="820px"
     :close-on-click-modal="false"
     :modal="false"

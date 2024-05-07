@@ -1,6 +1,6 @@
 <template>
   <!-- 录像策略 -->
-  <div id="record-policy" v-if="isRouterAlive" ref="recordPolicy">
+  <div class='base' id="record-policy" v-if="isRouterAlive" ref="recordPolicy">
     <el-row>
       <el-col :span="24" class="el-row20" :style="{ minHeight: th + 'px' }">
         <div class="btnMargin">
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div
-          style="height: 600px"
+          style="height: 600px;margin-top:18px;"
           v-loading="loading"
           :element-loading-text="$t('public.loading')"
           

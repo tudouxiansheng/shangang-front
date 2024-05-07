@@ -2,11 +2,11 @@
   <!-- 修改录像策略 -->
   <el-dialog
     :title="$parent.camera_record_name"
-    v-model="$parent.cameraRecordVisible"
+    :visible.sync="$parent.cameraRecordVisible"
     width="600px"
     :close-on-click-modal="false"
     :modal="false"
-    draggable
+          :draggable="false" 
     @closed="dialogClosed"
     @open="dialogOpen"
   >

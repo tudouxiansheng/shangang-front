@@ -8,6 +8,7 @@ import actions from './actions'
 import mutations from './mutations'
 import map from './modules/map'
 import mapSet from './modules/mapSet'
+import deviceConfig from './modules/deviceConfig'
 import user from './modules/user'
 import init_time from './modules/init_time'
 import personApplicationModule from './modules/personApplicationModule'
@@ -26,6 +27,7 @@ const store = new Vuex.Store({
     menu,
     mapSet,
     map,
+    deviceConfig,
     dict,
     user,
     init_time,

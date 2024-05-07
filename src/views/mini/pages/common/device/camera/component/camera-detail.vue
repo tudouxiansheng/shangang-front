@@ -1,13 +1,13 @@
 <template>
   <el-dialog
     :title="$t('deviceCamera.cameraInfo')"
-    v-model="$parent.cameraDetailVisible"
+    :visible.sync="$parent.cameraDetailVisible"
     top="10vh"
     :width="locale == 'en' ? '1480px' : '1200px'"
     :close-on-click-modal="false"
     class="cameraDetailDialog"
     :modal="false"
-    draggable
+
     @closed="dialogClosed"
     @open="dialogOpen"
   >

@@ -108,7 +108,7 @@ export default {
   }
   &_content {
     flex: 1;
-    height: calc(100% - 56px);
+    height: calc(100% - 156px);
   }
 }
 </style>

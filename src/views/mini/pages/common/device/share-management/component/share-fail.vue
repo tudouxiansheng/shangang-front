@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :title="title"
-    v-model="dialogVisible"
+    :visible.sync="dialogVisible"
     :close-on-click-modal="false"
     width="800px"
     append-to-body

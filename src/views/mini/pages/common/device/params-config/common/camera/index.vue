@@ -218,6 +218,7 @@ export default {
       margin: 20px 0 20px 10px;
       font-size: 16px;
       font-weight: bold;
+      color:#eee;
       &:before {
         content: '';
         width: 4px;
@@ -230,7 +231,7 @@ export default {
       }
     }
     .el-form {
-      height: calc(100% - 50px);
+      height: calc(100% - 150px);
       overflow-y: auto;
       .el-row {
         margin-right: 0 !important;

@@ -2,13 +2,12 @@
   <!-- 镜头onenet配置 -->
   <el-dialog
     :title="$t('deviceCamera.onenet')"
-    v-model="$parent.cameraOnenet"
+    :visible.sync="$parent.cameraOnenet"
     class="onenetDialog"
     top="10vh"
     width="1000px"
     :close-on-click-modal="false"
     :modal="false"
-    draggable
     @closed="dialogClosed"
     @open="dialogOpen"
   >

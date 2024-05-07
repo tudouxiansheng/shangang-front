@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :title="$t('mainDevConfiguration.modifyPwd')"
-    v-model="dialogVisible"
+    :visible.sync="dialogVisible"
     top="10vh"
     width="30%"
     :close-on-click-modal="false"
@@ -77,6 +77,7 @@ export default {
       callback()
     }
     return {
+            locale: localStorage.getItem('locale'),
       form: {
         authPassword: undefined,
         password: undefined,

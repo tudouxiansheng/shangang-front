@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :title="txt.deviceShare"
-    v-model="dialogVisible"
+    :visible.sync="$parent.shareDeviceDialogVisible"
     top="10vh"
     width="1500px"
     :close-on-click-modal="false"
@@ -14,7 +14,7 @@
     <div class="share-device">
       <div class="share-device-title">
         <i class="el-icon-warning-outline" style="color: rgba(244, 160, 94, 1)"></i>
-        <span>{{ txt.tips }}</span>
+        <span style='color:#333;'>提示：可多次同时共享操作，选择共享的设备，选择准备共享的用户，点击共享。</span>
       </div>
       <div class="share-device-card">
         <div class="share-device-left">
@@ -125,7 +125,7 @@ export default {
       this.resetForm()
       this.chooseUserDevList = []
       this.$refs.preShare.selectedId = ''
-      this.dialogVisible = false
+     this.$parent.shareDeviceDialogVisible = false
     },
     resetForm() {
       this.$refs.deviceTree.$refs.shareDialogTree.$refs.treeList?.setCheckedKeys([])

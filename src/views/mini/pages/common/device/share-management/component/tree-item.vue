@@ -35,8 +35,6 @@
 <script>
 import LazySearchTree from './lazy-search-tree'
 import searchTree from './search-tree'
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
 export default {
   components: {
     LazySearchTree,
@@ -61,11 +59,11 @@ export default {
     },
     chooseLabel: {
       type: String,
-      default: i18n.t('shareDevice.chooseDevShare')
+      default: '选择共享设备'
     },
     checkedLabel: {
       type: String,
-      default: i18n.t('shareDevice.tips1')
+      default: '共享组织，自动关联后续新增的所有子组和设备'
     },
     treeApi: {
       type: String,

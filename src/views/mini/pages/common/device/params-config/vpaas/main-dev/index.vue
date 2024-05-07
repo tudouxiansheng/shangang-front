@@ -241,12 +241,15 @@ export default {
       }
     }
     .el-form {
-      height: calc(100% - 50px);
+      height: calc(100% - 150px);
       overflow-y: auto;
       .el-row {
         margin-right: 0 !important;
       }
     }
+  }
+  .form-title {
+    color:#eee;
   }
   .el-input__inner,
   .el-textarea__inner {

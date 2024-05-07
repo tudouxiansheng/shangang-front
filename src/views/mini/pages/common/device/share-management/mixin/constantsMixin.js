@@ -1,20 +1,19 @@
-import { i18n as i18nn } from '@/i18n'
-const i18n = i18nn.global
+
 export default {
   data() {
     return {
       txt: {
-        tips: i18n.t('shareDevice.tips'),
-        tips1: i18n.t('shareDevice.tips1'),
-        deviceShare: i18n.t('shareDevice.deviceShare'),
-        cancelShare: i18n.t('shareDevice.cancelShare'),
-        setShareAuth: i18n.t('shareDevice.setShareAuth'),
-        share: i18n.t('shareDevice.share'),
-        chooseDevShare: i18n.t('shareDevice.chooseDevShare'),
-        chooseUserShare: i18n.t('shareDevice.chooseUserShare'),
-        preShare: i18n.t('shareDevice.preShare'),
-        title: i18n.t('shareDevice.title'),
-        isCancelShareDev: i18n.t('shareDevice.isCancelShareDev')
+        tips: '提示：可多次同时共享操作，选择共享的设备，选择准备共享的用户，点击共享。',
+        tips1: '共享组织，自动关联后续新增的所有子组和设备',
+        deviceShare: '设备共享',
+        cancelShare: '取消共享',
+        setShareAuth: '共享权限设置',
+        share: '共享',
+        chooseDevShare: '选择共享设备',
+        chooseUserShare:'选择共享用户',
+        preShare:'预共享',
+        title: '提示',
+        isCancelShareDev: '确定取消所选用户的设备共享吗？'
       }
     }
   }

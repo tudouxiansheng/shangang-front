@@ -107,7 +107,10 @@ export default {
         '/vPaasAccessPlatform/manage',
         '/accessCamera/allocate',
         '/device/main-dev',
-        '/device/main-dev-params-config/:mainDevId'
+        '/device/main-dev-params-config/:mainDevId',
+        '/device/camera',
+        '/device/record-policy',
+        '/device/share-management'
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },

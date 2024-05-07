@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     :title="$t('userManage.setPermissions')"
-    v-model="$parent.shareDialogVisible"
+    :visible.sync="$parent.shareDialogVisible"
     width="820px"
     class="share-permission"
     @open="dialogOpen"

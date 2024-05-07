@@ -2,13 +2,13 @@
   <!-- 镜头接入配置生成 -->
   <el-dialog
     :title="$t('deviceCamera.lensAccessConfigurationGeneration')"
-    v-model="$parent.registerInfoVisible"
+    :visible.sync="$parent.registerInfoVisible"
     top="10vh"
     width="1000px"
     :close-on-click-modal="false"
     class="registerInfoDialog detailDialog"
     :modal="false"
-    draggable
+    :draggable="false"  
     @closed="dialogClosed"
     @open="dialogOpen"
   >

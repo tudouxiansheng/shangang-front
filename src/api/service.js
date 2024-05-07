@@ -8,6 +8,7 @@ import { get, merge } from 'lodash'
 import { lStorage, sStorage } from '@/utils/store'
 import { selectUserPermissions, getLoginUserInfo } from '@/utils/api'
 import tokenServer from './tokenServer'
+import { apiMock } from '@/configs'
 let requests = [],
   showMsg = true
 let isShowAlert = false
@@ -384,4 +385,9 @@ export function fetch(url, param = {}, config = {}, timeout = 30000) {
     },
   }
   return request(false, query)
+}
+
+export function mockRequest(fn, md) {
+  if (apiMock) return new Promise((r) => r(md))
+  else return fn()
 }

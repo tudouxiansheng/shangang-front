@@ -11,8 +11,8 @@ export default [
   //智能应用
   {
     path: '/algorithm/intelligent-task',
-    name: '智能应用',
-    component: () => import('@/views/mini/pages/center/algorithm/intelligent-task/manage.vue'),
+    name: '智能分析任务',
+    component: () => import('@/views/mini/pages/common/algorithm/intelligent-task/index.vue'),
   },
   {
     //智能监控

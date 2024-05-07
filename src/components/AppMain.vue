@@ -78,6 +78,7 @@ export default {
     isShowMap() {
       let noShowMap = [
         '/algorithm/intelligent-task',
+        '/algorithm/config',
         '/carpage',
         '/personpage',
         '/requirepage',

@@ -9,8 +9,6 @@ const dict = {
     'ecs-alarm-type-scene': [], //场景分类
     'access-plat-auth-type': [],
     'access-plat-protocol-type': [],
-<<<<<<< Updated upstream
-=======
     'stream-type': [], //码流类型
     'application-type': [], //应用类型
     'camera-img-type': [], // 智能属性
@@ -57,7 +55,6 @@ const dict = {
     ],
     'device-register-status': [],
 
->>>>>>> Stashed changes
     allocation_status: [
       {
         name: '未分配',

@@ -1366,15 +1366,7 @@ export default {
           this.$refs.form.resetFields()
         })
       }
-<<<<<<< Updated upstream
-      this.$nextTick(() => {
-        
-        Object.assign(this.form, {
-          organizationName: this.$parent.organizationName
-        })
-=======
           this.form.organizationName= this.$parent.organizationName
->>>>>>> Stashed changes
         this.organizationId = this.$parent.organizationId
       this.$nextTick(() => {
         console.log(this.$parent.organizationName,'12322')

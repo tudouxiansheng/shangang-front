@@ -10,14 +10,24 @@
   font-size: 18px;
 }
 
-.flex{
+.flex {
   display: flex;
 }
 
-.flex-between{
+.flex-between {
   justify-content: space-between;
 }
 
 .el-picker-panel {
   background-color: #051b2c !important;
+}
+
+.el-date-editor {
+  background-color: #051b2c !important;
+  color: #fff;
+}
+
+.el-range-input,
+.el-range-separator {
+  color: #fff !important;
 }

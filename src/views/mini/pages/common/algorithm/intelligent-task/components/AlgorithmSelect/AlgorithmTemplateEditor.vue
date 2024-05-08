@@ -13,15 +13,7 @@
       :modal="false"
       draggable
     >
-      <el-form
-        ref="form"
-        :model="formData"
-        :rules="formRules"
-        class="addForm"
-        inline
-        label-suffix="："
-        label-position="right"
-      >
+      <el-form ref="form" :model="formData" :rules="formRules" class="addForm" label-suffix="：" label-position="right">
         <el-form-item label="检测类型">
           <span>{{ value.templateName }}</span>
         </el-form-item>

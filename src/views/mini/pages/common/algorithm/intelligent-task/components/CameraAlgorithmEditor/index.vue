@@ -12,7 +12,8 @@
     <div style="display: flex">
       <div style="flex: 1">
         <CameraTree1
-          :selected-options.sync="selectedCameras"
+          :selected-options="value || []"
+          @update:selectedOptions="$emit('input', $event)"
           :focused-item.sync="currentCamera"
           canModify
           ref="camera"
@@ -25,7 +26,12 @@
           :disableIds="[]"
           :platType="is1800 ? 14 : 16"
         ></CameraTree1>
-        <AlgorithmSelect style="margin-top: 38px" v-if="currentCamera" v-model="currentCamera" />
+        <AlgorithmSelect
+          style="margin-top: 38px"
+          v-if="currentCamera"
+          :value="currentCamera"
+          @input="currentCamera = { ...$event }"
+        />
       </div>
       <div style="flex: 1; padding-left: 88px">
         <CameraDrawer
@@ -67,7 +73,6 @@ export default {
       algorithmOptions: [],
       loading: false,
       currentCamera: null,
-      selectedCameras: [],
     }
   },
   async created() {},

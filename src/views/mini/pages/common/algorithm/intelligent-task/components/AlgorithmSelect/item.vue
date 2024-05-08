@@ -4,6 +4,7 @@
   background-color: #4d4d4d;
   color: #fff;
   font-size: 14px;
+  line-height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +12,7 @@
   .tmpl {
     font-size: 12px;
     margin-top: 6px;
+    line-height: 12px;
     color: #888;
   }
   i {
@@ -27,8 +29,8 @@
       <div>{{ metadata.name }}</div>
       <div class="tmpl">{{ selectedTemplate.name }}</div>
     </div>
-    <el-dropdown trigger="click" @click.native.stop>
-      <i class="el-icon-sort" style="margin-left: 38px" />
+    <el-dropdown trigger="click" @click.native.stop style="margin-left: 38px">
+      <i class="el-icon-sort" />
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item v-for="a in metadata.templates" :key="a.id" @click.native="$emit('templateChange', a)"
           >{{ a.name }}

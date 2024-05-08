@@ -83,7 +83,7 @@
         </span>
       </div>
       <div class="box-card_item">
-        <template v-for="item in selectedOptions">
+        <template v-for="item in selTreeData">
           <showItem
             style="cursor: pointer"
             :data="item"
@@ -100,8 +100,8 @@
       <div slot="header" class="clearfix">
         <span>已选摄像机</span>
       </div>
-      <div class="box-card_box" v-show="selectedOptions.length">
-        <template v-for="item in selectedOptions">
+      <div class="box-card_box" v-show="selTreeData.length">
+        <template v-for="item in selTreeData">
           <showItem
             :data="item"
             :showClose="false"
@@ -126,11 +126,10 @@ export default {
     showItem,
   },
   props: {
-    selectedOptions: {
+    value: {
       type: Array,
       default: () => [],
     },
-    focusedItem: {},
     canModify: {
       // true 表示添加和修改 false 标识详情
       type: Boolean,
@@ -155,8 +154,10 @@ export default {
   },
   data() {
     return {
+      focusedItem: null,
       treeLoading: false,
       // 摄像机分组
+      selectedOptions: [], //勾选的树节点 一维数组
       defaultProps: {
         children: 'children',
         label: 'label',
@@ -165,6 +166,7 @@ export default {
       isAll: false, //是否全选
       defaultExpendsId: [], //需要展开的节点
       checkedValue: [],
+      selTreeData: [], //回显使用的节点集合
       cameraId: [], //要保存的摄像机id
       options: null, //参数副本
     }
@@ -184,6 +186,9 @@ export default {
     )
   },
   watch: {
+    selectedOptions: function () {
+      this.resetRightTree()
+    },
     repalyIdArr: function () {
       this.replayCamera()
     },
@@ -199,7 +204,7 @@ export default {
   },
   methods: {
     focusItem(item) {
-      this.$emit('update:focusedItem', item)
+      this.focusedItem = item
     },
     // 懒加载树
     loadNode(node, resolve) {
@@ -268,10 +273,10 @@ export default {
         if (checkedNode.checkedKeys.includes(node.id)) {
           this.$refs.areaTree.setCheckedKeys([node.id])
           this.checkedValue = [node.id]
-          this.$emit('update:selectedOptions', [node])
+          this.selectedOptions = [node]
           isCheck = true
         } else {
-          this.$emit('update:selectedOptions', [])
+          this.selectedOptions = []
         }
       } else {
         if (!checkedNode.checkedKeys.includes(node.id)) {
@@ -286,19 +291,36 @@ export default {
         }
         let { checkedKeys, checkedNodes } = checkedNode
         this.checkedValue = checkedKeys
-        this.$emit('update:selectedOptions', [...checkedNodes])
         // this.selectedOptions = []
+        this.selectedOptions = [].concat([...checkedNodes])
       }
       this.$emit('nodeCheck', node, isCheck) //触发选中事件 ，咱是用于告警联动设置请求告警类型
     },
     // 组织树形结构渲染右侧树
+    resetRightTree() {
+      let dataList = JSON.parse(JSON.stringify(this.selectedOptions))
+      this.selTreeData = []
+      // let pIds = []
+      dataList.forEach((data) => {
+        // pIds.push(data.id)
+        // if (!pIds.includes(data.payload.parentId + '')) {
+        //   this.selTreeData.push(data)
+        // }
+        // 只显示摄像机
+        if (this.options.dataType == 'camera' && data.showType == 'camera') {
+          this.selTreeData.push(data)
+        } else if (this.options.dataType == 'all') {
+          this.selTreeData.push(data)
+        }
+      })
+    },
     /**
      * 通过右侧点击x 删除后取消右侧树的勾选
      * @param {Number} id 节点id
      */
     removeSel(id) {
       if (this.focusedItem?.id === id) {
-        this.$emit('update:focusedItem', null)
+        this.focusedItem = null
       }
       if (!this.options.strictly) {
         // 清楚全选状态
@@ -310,7 +332,7 @@ export default {
       this.isAll = false
       // this.checkedValue = this.checkedValue.filter((c) => c != id)
       // this.$refs.areaTree.setCheckedKeys(this.checkedValue)
-      this.$emit('update:selectedOptions', this.$refs.areaTree.getCheckedNodes())
+      this.selectedOptions = this.$refs.areaTree.getCheckedNodes()
       // this.selectedOptions = [...arr]
     },
 
@@ -322,22 +344,119 @@ export default {
         this.checkedValue = this.checkedValue.filter((val) => !this.$refs.areaTree.store.nodesMap[val].data.disabled)
       }
       this.$refs.areaTree.setCheckedKeys(this.checkedValue)
-      this.$emit('update:selectedOptions', this.$refs.areaTree.getCheckedNodes())
+      this.selectedOptions = this.$refs.areaTree.getCheckedNodes()
       // let arr2 = this.$refs.areaTree.getHalfCheckedNodes()
       // this.selectedOptions = [...arr, ...arr2]
     },
     // 清空操作
     removeAllSel() {
-      this.$emit('update:focusedItem', null)
-      this.$emit('update:selectedOptions', [])
+      this.focusedItem = null
+      this.selectedOptions = []
       // 操作左侧树
       this.$refs.areaTree.setCheckedKeys([])
       this.isAll = false
     },
+    // 保存时所需要的参数处理 按照部分接口使用
+    // getSaveData() {
+    //   this.resetRightTree() //同步
+    //   this.cameraId = Array.from(new Set(this.cameraId))
+    //   let saveData = []
+    //   this.selTreeData.forEach((data) => {
+    //     if (data.showType == 'camera') {
+    //       saveData.push({
+    //         cameraId: data.id,
+    //         type: 2,
+    //         label: data.label
+    //       })
+    //     } else {
+    //       saveData.push({
+    //         orgId: Number(data.id),
+    //         type: 1,
+    //         label: data.label
+    //       })
+    //     }
+    //   })
+    //   return saveData
+    // },
+    // 保存时所需要的参数处理 按照部分接口使用
+    getSaveData() {
+      this.resetRightTree() //同步
+      this.cameraId = Array.from(new Set(this.cameraId))
+      let saveData = []
+      this.selTreeData.forEach((data) => {
+        if (data.showType == 'camera') {
+          saveData.push({
+            label: data.label,
+            id: data.id,
+            type: 2,
+            platId: data.payload.platId,
+            ptzType: data.payload.ptzType,
+          })
+        } else {
+          saveData.push({
+            label: data.label,
+            id: Number(data.id),
+            type: 1,
+          })
+        }
+      })
+      return saveData
+    },
+    // 根据参数id集合请求回显的值
+    replayCamera() {
+      var _this = this
+      this.checkedValue = []
+      this.selTreeData = []
+      this.defaultExpendsId = []
+      let areaIdList = this.repalyIdArr.filter((r) => r.type == 1).map((r) => r.id)
+      let cameraIdList = this.repalyIdArr.filter((r) => r.type == 2).map((r) => r.id)
+      if (!areaIdList.length && !cameraIdList.length) {
+        this.selTreeData = []
+        this.selectedOptions = []
+        this.$refs.areaTree.setCheckedKeys(this.checkedValue)
+        return
+      }
+      this.$api.getRoleUserCameraOrgRequest({ areaIdList, cameraIdList }).then((res) => {
+        this.selTreeData = []
+        if (res.resultCode == 0) {
+          res.areaInfoList?.forEach((org) => {
+            this.selTreeData.push({
+              label: org.orgName,
+              id: org.orgId,
+            })
+            this.checkedValue.push(org.orgId + '')
+            org.parents = org.parents.slice(0, -1)
+            var _ps = org.parents.split(',')
+            if (_ps.length >= 2) {
+              this.defaultExpendsId = [...new Set([..._ps, ...this.defaultExpendsId])]
+            }
+          })
+          res.cameraInfoList?.forEach((car) => {
+            this.selTreeData.push({
+              label: car.cameraName,
+              id: car.cameraId,
+              showType: 'camera',
+              payload: {
+                ptzType: car.ptzType || 1,
+              },
+            })
+            this.checkedValue.push(car.cameraId)
+            car.parents = car.parents.slice(0, -1)
+            var _ps = car.parents.split(',')
+            if (_ps.length >= 2) {
+              this.defaultExpendsId = [...new Set([..._ps, ...this.defaultExpendsId])]
+            }
+          })
+        }
+        this.$refs.areaTree.setCheckedKeys(_this.checkedValue)
+        this.selectedOptions = JSON.parse(JSON.stringify(this.selTreeData))
+      })
+    },
     // 新增时重置
     reset() {
       this.checkedValue = []
-      this.$emit('update:selectedOptions', [])
+      this.selectedOptions = []
+      this.selTreeData = []
       this.$refs.areaTree.setCheckedKeys([])
     },
   },

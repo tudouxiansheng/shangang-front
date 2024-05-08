@@ -1,27 +1,32 @@
 <template>
   <div
     class="task-add"
-    v-loading="imgLoad"
+    v-loading="loading"
     element-loading-text="获取设备图像中..."
     element-loading-spinner="el-icon-loading"
   >
     <!-- 返回主页面按钮 -->
-    <el-button size="large" type="primary" @click="backTo">{{ $t('public.back') }}</el-button>
-    <CameraDrawer :on-load-image="loadLiveImage" v-model="areas" />
-    {{ areas }}
+    <el-button size="large" type="primary">{{ $t('public.back') }}</el-button>
+    <!--    {{ areas }}-->
+    <!--    <CameraDrawer :on-load-image="loadLiveImage" v-model="areas" />-->
+    <CameraAlgorithmEditor />
     <div style="text-align: center">
-      <el-button @click="backTo">取消</el-button>
-      <el-button type="primary" @click="submitTask" :loading="maskloading">确定</el-button>
+      <el-button>取消</el-button>
+      <el-button type="primary">确定</el-button>
     </div>
   </div>
 </template>
 
 <script>
+import CameraAlgorithmEditor from './components/CameraAlgorithmEditor/index.vue'
+import CameraDrawer from './components/CameraDrawer/index.vue'
+
 const CameraTree = () => import('@/components/CameraTree1')
 const DrawROI = () => import('@/components/DrawROI')
 export default {
   components: {
-    CameraDrawer: () => import('./components/CameraDrawer/index.vue'),
+    CameraAlgorithmEditor,
+    CameraDrawer,
     CameraTree,
     DrawROI,
   },
@@ -38,6 +43,7 @@ export default {
   watch: {},
   data() {
     return {
+      loading: false,
       areas: [],
     }
   },

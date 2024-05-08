@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import DrawROI from '@/components/DrawROI'
 // [
 //   {
 //     color: '#ff6b6b',
@@ -113,23 +114,30 @@
 //   },
 // ]
 
-const DrawROI = () => import('@/components/DrawROI')
 export default {
   components: {
     DrawROI,
   },
   props: {
     value: {
+      type: Array,
       default: () => [],
     },
     width: {
+      type: Number,
       default: 640,
     },
     height: {
+      type: Number,
       default: 400,
     },
-    onLoadImage: {},
-    is1800: {},
+    onLoadImage: {
+      type: Function,
+      required: true,
+    },
+    is1800: {
+      type: Boolean,
+    },
   },
   watch: {
     EMIYA: function (val) {},
@@ -145,6 +153,12 @@ export default {
       loading: false,
       currentDrawType: null,
     }
+  },
+  mounted() {
+    this.$refs.DrawROI.allCoordinates = this.value || []
+    //console.log('this.replayCoords', JSON.stringify(this.replayCoords))
+    this.$refs.DrawROI.drawAllLines() //回显区域
+    this.$refs.DrawROI.fillAllArea() //回显区域
   },
   created() {
     this.loadImage()
@@ -215,15 +229,15 @@ export default {
           break
       }
       this.$refs.DrawROI.handleClear()
-      this.$refs.DrawROI.allCoordinates = this.value
+      this.$refs.DrawROI.allCoordinates = this.value || []
       //console.log('this.replayCoords', JSON.stringify(this.replayCoords))
       this.$refs.DrawROI.drawAllLines() //回显区域
       this.$refs.DrawROI.fillAllArea() //回显区域
     },
     drawEnd(drawType) {
       const value = this.$refs.DrawROI.handleSave() || []
-      const sameTypeObjectCount = value.filter((a) => a.customType === type).length
-      if (drawType == 1) {
+      const sameTypeObjectCount = value.filter((a) => a.customType === this.currentDrawType).length
+      if (this.currentDrawType == 'polygon') {
         if (this.is1800) {
           //1800 可以绘制4个区域
           if (sameTypeObjectCount >= 4) this.$refs.DrawROI.startDraw = false

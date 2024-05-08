@@ -20,6 +20,7 @@
       :templateId="value.algorithmTemplateId"
       @delete="onDelete"
       @select="onSelect"
+      @templateChange="onTemplateChange(a, $event)"
     />
   </div>
 </template>
@@ -52,6 +53,14 @@ export default {
     }
   },
   methods: {
+    onTemplateChange(algorithm, tmpl) {
+      algorithm.selectedTemplateId = tmpl.id
+      this.options = this.options.map((a) => (a === algorithm ? { ...algorithm } : a))
+      if (this.value.algorithmId === algorithm.id) {
+        this.value.algorithmTemplateId = tmpl.id
+        this.$emit('input', { ...this.value })
+      }
+    },
     async onDelete({ id }) {
       await this.$confirm(
         '删除后任务内所选的所有摄像头的该算法将同步删除，不再生效。是否确认删除',

@@ -16,17 +16,27 @@
   i {
     position: relative;
     top: 3px;
+    color: #fff;
   }
 }
 </style>
 <template>
   <div class="algorithm-item" :style="{ 'background-color': highlight ? '#134b71' : '' }" @click="onClick">
-    <i class="el-icon-delete" style="margin-right: 18px" @click="$emit('delete', metadata)" />
+    <i class="el-icon-delete" style="margin-right: 18px" @click.stop="$emit('delete', metadata)" />
     <div>
       <div>{{ metadata.name }}</div>
       <div class="tmpl">{{ selectedTemplate.name }}</div>
     </div>
-    <i class="el-icon-sort" style="margin-left: 38px" />
+    <div @click.stop>
+      <el-dropdown trigger="click">
+        <i class="el-icon-sort" style="margin-left: 38px" />
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item v-for="a in metadata.templates" :key="a.id" @click.native="$emit('templateChange', a)">{{
+            a.name
+          }}</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </div>
 </template>
 

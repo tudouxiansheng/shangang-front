@@ -3,7 +3,7 @@
   display: inline-block;
   .actions {
     height: 40px;
-    width: 640px;
+    width: 100%;
   }
   .drawer-area {
     position: relative;

@@ -1,12 +1,9 @@
 <template>
-  <!-- 设备管理 -->
   <div
-    id="main-dev"
+    id="intelligent-task"
     class="base"
     v-if="isRouterAlive"
-    ref="deviceMainDev"
     v-loading="pageloading"
-    :element-loading-text="$t('public.batchImporting')"
     element-loading-background="rgba(0, 0, 0, 0.5)"
   >
     <el-row>
@@ -28,7 +25,7 @@
 
       <el-col :span="20" class="el-row20">
         <breadcrumb ref="breadcrumb" @changeTree="tree_change" />
-        <div class="search-form searchSelect">
+        <div v-if="selectedTreeNodeType === 'area'" class="search-form searchSelect">
           <el-form
             :inline="true"
             class="demo-form-inline"
@@ -72,7 +69,7 @@
                   v-model="searchForm.detectType"
                   @change="search_change"
                 >
-                  <!--                  <el-option :label="$t('public.all')" value></el-option>-->
+                  <el-option :label="$t('public.all')" value></el-option>
                   <el-option
                     v-for="(item, index) in mockSelectOptions"
                     :key="item.id"
@@ -107,7 +104,7 @@
                   v-model="searchForm.taskStatus"
                   @change="search_change"
                 >
-                  <!--                  <el-option :label="$t('public.all')" value></el-option>-->
+                  <el-option :label="$t('public.all')" value></el-option>
                   <el-option
                     v-for="(item, index) in mockSelectOptions"
                     :key="item.id"
@@ -143,23 +140,16 @@
         </div>
         <!-- //面包屑 -->
 
-        <div style="margin: 20px 0 20px">
-          <el-dropdown v-if="PermissionManage" trigger="click" @command="handleAdd" style="margin-left: 10px">
-            <el-button type="primary">
-              {{ $t('primaryDevice.addDevice') }}
-              <el-icon class="el-icon--right"><el-icon-arrow-down /></el-icon>
-            </el-button>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item :command="1">
-                  <span v-hasPermi="[19]">{{ $t('primaryDevice.batchAccess') }}</span>
-                </el-dropdown-item>
-                <el-dropdown-item :command="2">
-                  {{ $t('primaryDevice.singleAccess') }}
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
+        <div style="margin: 20px 0 20px" v-if="selectedTreeNodeType === 'area'">
+          <el-button icon="el-icon-plus" type="primary" @click="handleBatchStart">
+            {{ $t('algorithm.addTask') }}
+          </el-button>
+          <el-button style="margin-left: 10px" type="primary" @click="handleBatchStart">
+            {{ $t('algorithm.batchStart') }}
+          </el-button>
+          <el-button style="margin-left: 10px" type="primary" @click="handleBatchStop">
+            {{ $t('algorithm.batchStop') }}
+          </el-button>
           <el-button type="danger" @click="handleDel" :disabled="delShow" v-if="PermissionDelete">
             {{ $t('public.batchDeletion') }}
           </el-button>
@@ -172,7 +162,6 @@
           </div>
 
           <!-- 表格 -->
-
           <el-table
             :max-height="tableHeight"
             v-if="!loading && tableData.length"
@@ -788,7 +777,7 @@ export default {
       this.$refs.breadcrumb.treeLinkBread(obj.data, obj.node)
       this.organizationId = obj.data.payload.organizationId
       this.organizationName = obj.data.payload.organizationName
-      this.selectedTreeNodeType = obj.data == 1 ? 'area' : 'camera'
+      this.selectedTreeNodeType = obj.data.type == 1 ? 'area' : 'camera'
       this.search_clear()
       await this.getMainDevList()
     },
@@ -1282,45 +1271,36 @@ export default {
       }
       this.allcateDialogVisible = true
     },
-
-    // 批量删除 ！
-    handleDel() {
-      if (this.multipleSelection.length > 50) {
-        this.$message.warning(this.$t('primaryDevice.delete50'))
-        return
-      }
-      this.isBatchDelete = true
-      let pormpt = ''
-      if (this.locale == 'en') {
-        pormpt =
-          this.$t('public.bulkDelPrompt1') +
-          ' ' +
-          this.multipleSelection.length +
-          ' ' +
-          this.$t('batchOperator.device1') +
-          ',' +
-          this.$t('public.bulkDelPrompt2')
-      } else {
-        pormpt = this.$t('GBShare.deleteEquipment', {
-          num: this.multipleSelection.length,
-        })
-      }
-      this.$confirm(pormpt, this.$t('public.prompt'), {
+    handleBatchStart() {
+      this.$confirm(this.$t('algorithm.startConfirm'), this.$t('public.prompt'), {
         confirmButtonText: this.$t('public.confirm'),
         cancelButtonText: this.$t('public.cancel'),
         type: 'warning',
         closeOnClickModal: false,
       })
-        .then(async () => {
-          this.dialogDeleteVisible = true
-          this.deleteConfirm = ''
-        })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: this.$t('public.canceledDelete'),
-          })
-        })
+        .then(async () => {})
+        .catch(() => {})
+    },
+    handleBatchStop() {
+      this.$confirm(this.$t('algorithm.stopConfirm'), this.$t('public.prompt'), {
+        confirmButtonText: this.$t('public.confirm'),
+        cancelButtonText: this.$t('public.cancel'),
+        type: 'warning',
+        closeOnClickModal: false,
+      })
+        .then(async () => {})
+        .catch(() => {})
+    },
+    // 批量删除 ！
+    handleDel() {
+      this.$confirm(this.$t('algorithm.deleteConfirm'), this.$t('public.prompt'), {
+        confirmButtonText: this.$t('public.confirm'),
+        cancelButtonText: this.$t('public.cancel'),
+        type: 'warning',
+        closeOnClickModal: false,
+      })
+        .then(async () => {})
+        .catch(() => {})
     },
     //取消删除操作
     cancelDelete() {
@@ -1631,7 +1611,7 @@ export default {
 </script>
 
 <style lang="scss">
-#main-dev {
+#intelligent-task {
   .flex-item {
     width: 36%;
   }

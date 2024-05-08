@@ -10,6 +10,12 @@ export default {
     withinDays: '天内',
     seq: '序号',
     algorithmPlatformName: '算法平台名称',
+    startConfirm: '是否确认要启动任务？',
+    stopConfirm: '是否确认要停止任务？',
+    batchStart: '批量启动任务',
+    batchStop: '批量停止任务',
+    deleteConfirm: '是否确认要删除任务?',
+    addTask: '添加智能任务',
   },
   length: {
     lessthan: '长度不能超过{num}个字符',

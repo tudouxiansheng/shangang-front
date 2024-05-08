@@ -302,7 +302,7 @@ export const mockData = {
           {
             id: Math.random() + Date.now() + '',
             label: '一级区域（10/20）',
-            type: '2',
+            type: '1',
             payload: {
               organizationId: 5,
               organizationName: '港口',

@@ -3,11 +3,13 @@
  * @Date 2022/5/6 10:51
  * @Version 1.0
  */
-import { postFetch, getFetch, loginRequest, mockRequest } from '@/api/service'
+import { postFetch, getFetch, loginRequest, mockRequest, fetch } from '@/api/service'
 import { merge } from 'lodash'
 import { mockData } from '@/api/mockData'
 export default {
   // 智能分析任务
+  getCameraLiveCover: (data) =>
+    mockRequest(() => postFetch('/uas/v1/api/ars/task/getStreamImage', data), mockData.cameraPreview(data)),
   getAreaCameraList: (data) =>
     mockRequest(() => postFetch('/uas/v1/api/uvs/main-dev/list', data), mockData.areaCameraList(data)),
   getCameraTree: (data) =>
@@ -707,7 +709,7 @@ export default {
   getAlarmAzimuth: (data) => postFetch('/uas/v1/api/oba/camera/alarm-position/get', data),
 
   // 告警用设备树
-  getDeviceTree: (data) => postFetch('/uas/v1/api/udc/device/tree', data),
+  getDeviceTree: (data) => mockRequest(() => fetch('/uas/v1/api/udc/device/tree', data), mockData.deviceTree(data)),
   //设备树的模糊查询
   searchInDeviceTree: (data) => postFetch('/uas/v1/api/udc/device/search', data),
   //用户设备或设备组定位

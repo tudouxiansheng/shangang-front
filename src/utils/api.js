@@ -1612,7 +1612,8 @@ export const delSource = (data) => fetch('/uas/v1/api/ars/guard/remove-deleted-s
 export const switchGuard = (data) => fetch('/uas/v1/api/ars/guard/switch', data)
 
 /*车辆检索 */
-export const getDeviceTree = (data) => fetch('/uas/v1/api/udc/device/tree', data)
+export const getDeviceTree = (data) =>
+  mockRequest(() => fetch('/uas/v1/api/udc/device/tree', data), mockData.deviceTree(data))
 //车辆检索
 export const vehiclesearchByImage = (data) => fetch('/uas/v1/api/ars/snap/vehicle/searchByImage', data)
 //车辆条件检索

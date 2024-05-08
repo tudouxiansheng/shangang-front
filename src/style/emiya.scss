@@ -10,6 +10,14 @@
   font-size: 18px;
 }
 
+.flex{
+  display: flex;
+}
+
+.flex-between{
+  justify-content: space-between;
+}
+
 .el-picker-panel {
   background-color: #051b2c !important;
 }

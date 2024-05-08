@@ -17,6 +17,7 @@ export const mockData = {
         templates: [
           {
             templateId: 1,
+            templateName: '算法1',
             id: 11,
             name: '模板11',
             json: '{id:1}',
@@ -24,6 +25,7 @@ export const mockData = {
           },
           {
             templateId: 1,
+            templateName: '算法1',
             id: 12,
             name: '模板12',
             json: '{id:2}',
@@ -36,12 +38,14 @@ export const mockData = {
         templates: [
           {
             templateId: 2,
+            templateName: '算法2',
             id: 21,
             name: '模板21',
             json: '{id:3}',
           },
           {
             templateId: 2,
+            templateName: '算法2',
             id: 22,
             name: '模板22',
             json: '{id:4}',

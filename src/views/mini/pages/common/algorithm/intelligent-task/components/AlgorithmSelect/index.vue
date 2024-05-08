@@ -15,6 +15,7 @@
       style="margin: 0 18px 18px 0"
       v-for="a in options"
       :key="a.id"
+      :customTemplates.sync="value.customTemplates"
       :metadata="a"
       :highlight="a.id === value.algorithmId"
       :templateId="value.algorithmTemplateId"

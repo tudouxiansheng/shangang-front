@@ -2,8 +2,8 @@
 .camera-drawer {
   display: inline-block;
   .actions {
-    height: 40px;
     width: 100%;
+    margin-bottom: 18px;
   }
   .drawer-area {
     position: relative;

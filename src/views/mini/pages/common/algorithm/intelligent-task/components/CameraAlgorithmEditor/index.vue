@@ -25,9 +25,9 @@
           :disableIds="[]"
           :platType="is1800 ? 14 : 16"
         ></CameraTree1>
-        <AlgorithmSelect v-if="currentCamera" v-model="currentCamera" />
+        <AlgorithmSelect style="margin-top: 38px" v-if="currentCamera" v-model="currentCamera" />
       </div>
-      <div style="flex: 1; padding-left: 38px">
+      <div style="flex: 1; padding-left: 88px">
         <CameraDrawer
           v-if="currentCamera"
           :key="currentCamera.id"
@@ -66,7 +66,7 @@ export default {
     return {
       algorithmOptions: [],
       loading: false,
-      currentCamera: {},
+      currentCamera: null,
       selectedCameras: [],
     }
   },
@@ -77,4 +77,94 @@ export default {
     },
   },
 }
+
+// [
+// {
+//   "id": "00000024022714010301000000000036",
+//   "label": "周界7",
+//   "type": "2",
+//   "payload": {
+//     "deviceId": "00000024022714010301000000000036",
+//     "deviceName": "周界7",
+//     "deviceType": 1,
+//     "mainDevId": "00000024022714010303000000000035",
+//     "type": 1,
+//     "status": 1,
+//     "deviceStatus": 0,
+//     "organizationId": 2,
+//     "platId": "0000000000001401",
+//     "thirdId": "05443784947355940101",
+//     "belongTenantId": "00000000000000000100000000000000",
+//     "aiType": 0,
+//     "ptzType": 1,
+//     "parentId": "2"
+//   },
+//   "leaf": true,
+//   "showType": "camera",
+//   "dashData": [
+//     {
+//       "color": "#ff6b6b",
+//       "coordinates": [
+//         {
+//           "x": 106,
+//           "y": 68
+//         },
+//         {
+//           "x": 324,
+//           "y": 68
+//         },
+//         {
+//           "x": 324,
+//           "y": 165
+//         },
+//         {
+//           "x": 106,
+//           "y": 165
+//         }
+//       ],
+//       "customType": "max"
+//     }
+//   ],
+//   "customTemplates": {
+//     "11": {
+//       "json": "{id:1}aaaa"
+//     }
+//   },
+//   "algorithmId": 2,
+//   "algorithmTemplateId": 22
+// },
+//   {
+//     "id": "00000024022714010301000000000038",
+//     "label": "大门全景",
+//     "type": "2",
+//     "payload": {
+//       "deviceId": "00000024022714010301000000000038",
+//       "deviceName": "大门全景",
+//       "deviceType": 3,
+//       "mainDevId": "00000024022714010303000000000037",
+//       "type": 1,
+//       "status": 1,
+//       "deviceStatus": 0,
+//       "organizationId": 2,
+//       "platId": "0000000000001401",
+//       "thirdId": "05443784945779530101",
+//       "belongTenantId": "00000000000000000100000000000000",
+//       "longitude": 116.39126541990397,
+//       "latitude": 39.90690296198505,
+//       "altitude": 0,
+//       "aiType": 0,
+//       "ptzType": 3,
+//       "parentId": "2"
+//     },
+//     "leaf": true,
+//     "showType": "camera",
+//     "customTemplates": {
+//       "11": {
+//         "json": "{id:1}abfdfdsfs"
+//       }
+//     },
+//     "algorithmId": 1,
+//     "algorithmTemplateId": 11
+//   }
+// ]
 </script>

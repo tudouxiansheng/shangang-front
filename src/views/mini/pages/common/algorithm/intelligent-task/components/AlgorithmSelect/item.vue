@@ -27,24 +27,34 @@
       <div>{{ metadata.name }}</div>
       <div class="tmpl">{{ selectedTemplate.name }}</div>
     </div>
-    <div @click.stop>
-      <el-dropdown trigger="click">
-        <i class="el-icon-sort" style="margin-left: 38px" />
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item v-for="a in metadata.templates" :key="a.id" @click.native="$emit('templateChange', a)">{{
-            a.name
-          }}</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </div>
+    <el-dropdown trigger="click" @click.native.stop>
+      <i class="el-icon-sort" style="margin-left: 38px" />
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item v-for="a in metadata.templates" :key="a.id" @click.native="$emit('templateChange', a)"
+          >{{ a.name }}
+          <AlgorithmTemplateEditor
+            :value="a"
+            :customTemplates="customTemplates"
+            @update:customTemplates="$emit('update:customTemplates', $event)"
+          >
+            <template #default="{ onClick }">
+              <i class="el-icon-edit-outline" style="margin-left: 18px" @click="onClick" />
+            </template>
+          </AlgorithmTemplateEditor>
+        </el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
   </div>
 </template>
 
 <script>
+import AlgorithmTemplateEditor from '../AlgorithmSelect/AlgorithmTemplateEditor.vue'
+
 export default {
-  components: {},
+  components: { AlgorithmTemplateEditor },
   props: {
     metadata: {},
+    customTemplates: {},
     templateId: {},
     highlight: {
       type: Boolean,

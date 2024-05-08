@@ -8,6 +8,8 @@ import { merge } from 'lodash'
 import { mockData } from '@/api/mockData'
 export default {
   // 智能分析任务
+  getAlgorithmOptions: (data) =>
+    mockRequest(() => postFetch('/uas/v1/api/ars/task/getStreamImage', data), mockData.algorithmOptions(data)),
   getCameraLiveCover: (data) =>
     mockRequest(() => postFetch('/uas/v1/api/ars/task/getStreamImage', data), mockData.cameraPreview(data)),
   getAreaCameraList: (data) =>

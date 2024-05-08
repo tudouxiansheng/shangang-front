@@ -2,6 +2,55 @@ import cctv from '@/views/mini/pages/common/algorithm/assets/024-cctv.svg'
 import cctv1 from '@/views/mini/pages/common/algorithm/assets/023-cctv-1.svg'
 
 export const mockData = {
+  algorithmOptions: () => ({
+    resultCode: 0,
+    resultDesc: 'SUCCESS',
+    pageInfo: {
+      pageNum: 1,
+      pageSize: 10,
+      totalNum: 12,
+    },
+    data: [
+      {
+        id: 1,
+        name: '算法1',
+        templates: [
+          {
+            templateId: 1,
+            id: 11,
+            name: '模板11',
+            json: '{id:1}',
+            isDefault: true,
+          },
+          {
+            templateId: 1,
+            id: 12,
+            name: '模板12',
+            json: '{id:2}',
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: '算法2',
+        templates: [
+          {
+            templateId: 2,
+            id: 21,
+            name: '模板21',
+            json: '{id:3}',
+          },
+          {
+            templateId: 2,
+            id: 22,
+            name: '模板22',
+            json: '{id:4}',
+            isDefault: true,
+          },
+        ],
+      },
+    ],
+  }),
   cameraPreview: (data) => ({
     resultCode: 0,
     resultDesc: 'SUCCESS',

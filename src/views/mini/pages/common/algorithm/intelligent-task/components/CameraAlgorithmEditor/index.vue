@@ -25,6 +25,7 @@
           :disableIds="[]"
           :platType="is1800 ? 14 : 16"
         ></CameraTree1>
+        <AlgorithmSelect v-if="currentCamera" v-model="currentCamera" />
       </div>
       <div style="flex: 1; padding-left: 38px">
         <CameraDrawer
@@ -39,10 +40,12 @@
 </template>
 
 <script>
+import AlgorithmSelect from '../AlgorithmSelect/index.vue'
 import CameraTree1 from '@components/CameraTree1'
 
 export default {
   components: {
+    AlgorithmSelect,
     CameraDrawer: () => import('@views/mini/pages/common/algorithm/intelligent-task/components/CameraDrawer/index.vue'),
     CameraTree1,
   },
@@ -58,21 +61,16 @@ export default {
   watch: {
     EMIYA: function (val) {},
   },
-  computed: {
-    actionDisabled() {
-      return !this.snapshotImg
-    },
-  },
+  computed: {},
   data() {
     return {
+      algorithmOptions: [],
       loading: false,
-      currentCamera: null,
+      currentCamera: {},
       selectedCameras: [],
     }
   },
-  created() {
-    setInterval(() => console.log(this.currentCamera), 1000)
-  },
+  async created() {},
   methods: {
     async loadLiveImage() {
       return (await this.$api.getCameraLiveCover({ cameraId: this.currentCamera.id })).base64

@@ -182,7 +182,7 @@
                 <span>{{ dataText }}</span>
               </template>
               <el-table-column label width="50" type="selection" />
-              <el-table-column :label="$t('algorithm.seq')" min-width="60" show-overflow-tooltip prop="mainDevId">
+              <el-table-column :label="$t('algorithm.seq')" min-width="60" show-overflow-tooltip prop="mainDevName">
                 <template #default="{ row, $index }">
                   <span>{{ $index + 1 }}</span>
                 </template>
@@ -192,19 +192,19 @@
                   :label="$t('algorithm.taskName')"
                   min-width="110"
                   show-overflow-tooltip
-                  prop="mainDevId"
+                  prop="mainDevName"
                 />
                 <el-table-column
                   :label="$t('algorithm.detectType')"
                   min-width="80"
                   show-overflow-tooltip
-                  prop="mainDevId"
+                  prop="mainDevName"
                 />
                 <el-table-column
                   :label="$t('algorithm.cameraName')"
                   min-width="110"
                   show-overflow-tooltip
-                  prop="mainDevId"
+                  prop="mainDevName"
                 />
                 <el-table-column :label="$t('algorithm.taskStatus')" min-width="60" show-overflow-tooltip prop="status">
                   <template #default="{ row }">
@@ -219,7 +219,7 @@
                           : ''
                       "
                     >
-                      {{ deviceRegister(row.status) }}
+                      {{ row.status == '1' ? '运行中' : row.status == '2' ? '停止' : '' }}
                     </span>
                   </template>
                 </el-table-column>
@@ -227,19 +227,19 @@
                   :label="$t('algorithm.createdAt')"
                   min-width="110"
                   show-overflow-tooltip
-                  prop="mainDevId"
+                  prop="mainDevName"
                 />
                 <el-table-column
                   :label="$t('algorithm.runDuration')"
                   min-width="110"
                   show-overflow-tooltip
-                  prop="mainDevId"
+                  prop="mainDevName"
                 />
                 <el-table-column
                   :label="$t('algorithm.algorithmPlatformName')"
                   min-width="110"
                   show-overflow-tooltip
-                  prop="mainDevId"
+                  prop="mainDevName"
                 />
                 <el-table-column :label="$t('public.operating')" min-width="150">
                   <template #default="{ row }">
@@ -248,6 +248,20 @@
                       @click="editItem(row)"
                     >
                       编辑
+                    </span>
+                    <span
+                      v-if="row.status == 2"
+                      style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                      @click="start(row)"
+                    >
+                      启动
+                    </span>
+                    <span
+                      v-if="row.status == 1"
+                      style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                      @click="stop(row)"
+                    >
+                      停止
                     </span>
                     <!--                    <el-button-->
                     <!--                      type="text"-->
@@ -264,12 +278,6 @@
                     >
                       {{ $t('public.delete') }}
                     </span>
-                    <span
-                      style="margin-right: 7px; color: #10a9ff; cursor: pointer; word-break: break-word"
-                      @click="paramsConfig(row)"
-                    >
-                      {{ $t('primaryDevice.paramsConfig') }}
-                    </span>
                   </template>
                 </el-table-column>
               </template>
@@ -278,13 +286,13 @@
                   :label="$t('algorithm.detectType')"
                   min-width="80"
                   show-overflow-tooltip
-                  prop="mainDevId"
+                  prop="mainDevName"
                 />
                 <el-table-column
                   :label="$t('algorithm.algorithmPlatformName')"
                   min-width="110"
                   show-overflow-tooltip
-                  prop="mainDevId"
+                  prop="mainDevName"
                 />
               </template>
             </el-table>
@@ -655,6 +663,18 @@ export default {
     this.pageResize()
   },
   methods: {
+    async start(row) {
+      await this.$confirm(`确认启动“${row.mainDevName}"分析任务吗？`, this.$t('public.prompt'), {
+        confirmButtonText: this.$t('public.confirm'),
+        cancelButtonText: this.$t('public.cancel'),
+      })
+    },
+    async stop(row) {
+      await this.$confirm(`确认停止“${row.mainDevName}"分析任务吗？`, this.$t('public.prompt'), {
+        confirmButtonText: this.$t('public.confirm'),
+        cancelButtonText: this.$t('public.cancel'),
+      })
+    },
     addItem() {
       this.editTarget = null
       this.showSubLayout = true
@@ -1536,25 +1556,13 @@ export default {
       this.videoChannelDialogVisible = true
     },
 
-    handleDelete(row) {
-      this.selectedRow = row
-      this.isBatchDelete = false
-      this.$confirm(this.$t('public.deletedev'), this.$t('public.prompt'), {
+    async handleDelete(row) {
+      this.$confirm(`确认删除“${row.mainDevName}"分析任务吗`, this.$t('public.prompt'), {
         confirmButtonText: this.$t('public.confirm'),
         cancelButtonText: this.$t('public.cancel'),
         type: 'warning',
         closeOnClickModal: false,
       })
-        .then(() => {
-          this.dialogDeleteVisible = true
-          this.deleteConfirm = ''
-        })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: this.$t('public.canceledDelete'),
-          })
-        })
     },
 
     // 配置前端参数

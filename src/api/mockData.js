@@ -633,7 +633,7 @@ export const mockData = {
       {
         formData: editData(),
         mainDevId: '00000024043016000303000000000086',
-        mainDevName: '视频5DS7808NK1CDAY6516824',
+        mainDevName: '仅作演示',
         mainDevType: 3,
         thirdMainDevId: '12345678921321000013#3201002001',
         organizationId: 8,
@@ -662,7 +662,7 @@ export const mockData = {
       {
         formData: editData(),
         mainDevId: '00000024043016000303000000000087',
-        mainDevName: '视频2DS7808NK1CDAY6516824',
+        mainDevName: '仅作演示',
         mainDevType: 3,
         thirdMainDevId: '12345678921321000010#3201002001',
         organizationId: 8,
@@ -683,7 +683,7 @@ export const mockData = {
           isExDomain: 1,
         },
         mainDevAccessInfo: {},
-        status: 1,
+        status: 2,
         originType: 1,
         createTime: '2024-04-30 14:23:41',
         updateTime: '2024-04-30 14:23:41',

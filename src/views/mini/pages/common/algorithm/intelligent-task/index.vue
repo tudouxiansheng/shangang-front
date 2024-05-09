@@ -42,6 +42,9 @@
         >
         </el-date-picker>
       </el-form-item>
+      <el-form-item label="任务计划" prop="schedule">
+        <ScheduleEditor v-model="formData.schedule" />
+      </el-form-item>
     </el-form>
 
     <div style="text-align: center">
@@ -54,11 +57,12 @@
 <script>
 import CameraAlgorithmEditor from './components/CameraAlgorithmEditor/index.vue'
 import CameraDrawer from './components/CameraDrawer/index.vue'
-
+import ScheduleEditor from './components/ScheduleEditor/time-grid-control.vue'
 const CameraTree = () => import('@/components/CameraTree1')
 const DrawROI = () => import('@/components/DrawROI')
 export default {
   components: {
+    ScheduleEditor,
     CameraAlgorithmEditor,
     CameraDrawer,
     CameraTree,

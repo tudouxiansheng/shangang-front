@@ -1,6 +1,6 @@
 <template>
   <!-- 录像策略 -->
-  <div class='base' id="record-policy" v-if="isRouterAlive" ref="recordPolicy">
+  <div class="base" id="record-policy" v-if="isRouterAlive" ref="recordPolicy">
     <el-row>
       <el-col :span="24" class="el-row20" :style="{ minHeight: th + 'px' }">
         <div class="btnMargin">
@@ -26,12 +26,7 @@
             </el-button>
           </div>
         </div>
-        <div
-          style="height: 600px;margin-top:18px;"
-          v-loading="loading"
-          :element-loading-text="$t('public.loading')"
-          
-        >
+        <div style="height: 600px; margin-top: 18px" v-loading="loading" :element-loading-text="$t('public.loading')">
           <div v-if="!loading && !tableData.length" class="tableNOdata">
             <img src="@/assets/img/common/NOdata.png" alt />
             <p>{{ $t('public.noData') }}</p>
@@ -61,37 +56,19 @@
               ref="status"
               show-overflow-tooltip
             />
-            <el-table-column
-              :label="$t('videoRecord.videoPolicyType')"
-              min-width="120"
-              show-overflow-tooltip
-            >
+            <el-table-column :label="$t('videoRecord.videoPolicyType')" min-width="120" show-overflow-tooltip>
               <template #default="{ row }">
                 <span>{{ setAlarmLevel(row.planType) }}</span>
               </template>
             </el-table-column>
-            <el-table-column
-              prop="createTime"
-              :label="$t('public.createTime')"
-              min-width="120"
-              show-overflow-tooltip
-            />
-            <el-table-column
-              prop="updateTime"
-              :label="$t('public.updateTime')"
-              min-width="120"
-              show-overflow-tooltip
-            />
+            <el-table-column prop="createTime" :label="$t('public.createTime')" min-width="120" show-overflow-tooltip />
+            <el-table-column prop="updateTime" :label="$t('public.updateTime')" min-width="120" show-overflow-tooltip />
             <el-table-column :label="$t('public.operating')" min-width="120">
               <template #default="{ row }">
                 <span class="cell-operate" @click="handleInfo(row)" v-show="PermissionInfo">
                   {{ $t('public.particulars') }}
                 </span>
-                <span
-                  class="cell-operate"
-                  @click="handleEdit(row)"
-                  v-show="row.planType != 2 && PermissionManage"
-                >
+                <span class="cell-operate" @click="handleEdit(row)" v-show="row.planType != 2 && PermissionManage">
                   {{ $t('public.modify') }}
                 </span>
                 <span
@@ -128,7 +105,7 @@ import videoStrategy from './component/video-strategy'
 export default {
   name: 'VideoRecordingPolicy',
   components: {
-    'video-strategy': videoStrategy
+    'video-strategy': videoStrategy,
   },
   data() {
     return {
@@ -141,7 +118,7 @@ export default {
       th: window.innerHeight - 70,
 
       searchForm: {
-        planName: ''
+        planName: '',
       },
 
       // 列表
@@ -156,7 +133,7 @@ export default {
       operation: 0, // 0:新增, 1:详情, 2:编辑
       dialogFormVisible: false, // 添加或者编辑
       dataForm: { planName: '', planType: '' },
-      maskloading: false // 点击提交按钮后蒙版
+      maskloading: false, // 点击提交按钮后蒙版
     }
   },
   created() {
@@ -165,9 +142,7 @@ export default {
   mounted() {
     this.getRecordList()
   },
-  activated() {
-    
-  },
+  activated() {},
   methods: {
     //用户权限判断
     async getPermissions() {
@@ -193,13 +168,13 @@ export default {
       let obj = {
         pageInfo: {
           pageNum: this.pageNum,
-          pageSize: this.pageSize
-        }
+          pageSize: this.pageSize,
+        },
       }
       if (this.searchForm.planName != '') {
         obj.searchInfo = { planName: this.searchForm.planName }
       }
-      this.$api.getRecordPlanList(obj).then(res => {
+      this.$api.getRecordPlanList(obj).then((res) => {
         if (res.recordPlanList && res.recordPlanList.length) {
           this.tableData = res.recordPlanList
           this.totalNum = res.pageInfo.totalNum
@@ -228,7 +203,7 @@ export default {
     handleAdd() {
       this.dataForm = {
         planName: '',
-        planType: 0
+        planType: 0,
       }
       this.operation = 0
       this.dialogFormVisible = true
@@ -251,7 +226,7 @@ export default {
           planId,
           planName: res.planName,
           planType: res.planType,
-          timeSpanList: res.timeSpanList
+          timeSpanList: res.timeSpanList,
         }
         this.timeSpanList = res.timeSpanList
         this.operation = operation
@@ -265,15 +240,15 @@ export default {
         confirmButtonText: this.$t('public.confirm'),
         cancelButtonText: this.$t('public.cancel'),
         type: 'warning',
-        closeOnClickModal: false
+        closeOnClickModal: false,
       })
         .then(() => {
           let delObj = { planId: row.planId }
-          this.$api.deleteRecordPlanInfo(delObj).then(res => {
+          this.$api.deleteRecordPlanInfo(delObj).then((res) => {
             if (res.resultCode == 0) {
               this.$message({
                 type: 'success',
-                message: this.$t('public.operatingSuccessContent')
+                message: this.$t('public.operatingSuccessContent'),
               })
               this.getRecordList()
             }
@@ -282,7 +257,7 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: this.$t('public.canceledDelete')
+            message: this.$t('public.canceledDelete'),
           })
         })
     },
@@ -290,8 +265,8 @@ export default {
     // 分页
     getListByPage() {
       this.getRecordList()
-    }
-  }
+    },
+  },
 }
 </script>
 

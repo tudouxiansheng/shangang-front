@@ -7,13 +7,13 @@
         ? $t('videoRecord.videoStrategyInfo')
         : $t('videoRecord.editingVideoStrategy')
     "
-   :visible.sync="$parent.dialogFormVisible"
+    :visible.sync="$parent.dialogFormVisible"
     top="10vh"
     width="1040px"
     class="videoPlanDialog"
     :close-on-click-modal="false"
     :modal="false"
-    :draggable='false'
+    :draggable="false"
     @closed="dialogClosed"
     @open="dialogOpen"
   >
@@ -49,11 +49,7 @@
 
         <div class="form-right">
           <el-form-item :label="$t('videoRecord.videoPolicyType') + '：'" prop="planType">
-            <el-select
-              :popper-append-to-body="false"
-              v-model="form.planType"
-              @change="planTypeChange"
-            >
+            <el-select :popper-append-to-body="false" v-model="form.planType" @change="planTypeChange">
               <el-option :value="0" :label="$t('videoRecord.weekPlan')"></el-option>
               <el-option :value="1" :label="$t('videoRecord.dayPlan')"></el-option>
             </el-select>
@@ -62,7 +58,7 @@
       </div>
     </el-form>
 
-    <!-- 网格时间选择控件 -->
+    <!-- 网格时间选择控件0add 2edit -->
     <time-grid-control
       ref="timeGridControl"
       :id="$parent.operation != 1 ? 'time_grid_control' : 'time_grid_control1'"
@@ -76,12 +72,7 @@
 
         <el-button @click="dialogClosed">{{ $t('public.cancel') }}</el-button>
 
-        <el-button
-          type="primary"
-          @click="submitForm"
-          v-if="$parent.operation != 1"
-          :loading="$parent.maskloading"
-        >
+        <el-button type="primary" @click="submitForm" v-if="$parent.operation != 1" :loading="$parent.maskloading">
           {{ $t('public.confirm') }}
         </el-button>
       </span>
@@ -94,22 +85,22 @@ import { defineAsyncComponent } from 'vue'
 import timeGridControl from '@/components/time-grid-control.vue'
 export default {
   components: {
-    'time-grid-control': timeGridControl
+    'time-grid-control': timeGridControl,
   },
   data() {
     return {
       form: {
         planName: '',
-        planType: 0
+        planType: 0,
       },
-      rules: {}
+      rules: {},
     }
   },
   watch: {
     //监听语言切换
     '$i18n.locale': function () {
       this.setFormRules()
-    }
+    },
   },
   async mounted() {
     this.setFormRules()
@@ -122,7 +113,6 @@ export default {
         })
       }
       this.$nextTick(() => {
-        
         this.form = this.$parent.dataForm
 
         let planType = this.$parent.dataForm.planType
@@ -146,16 +136,16 @@ export default {
           {
             required: true,
             message: this.$t('videoRecord.addPolicyName'),
-            trigger: 'blur'
-          }
+            trigger: 'blur',
+          },
         ],
         planType: [
           {
             required: true,
             message: this.$t('videoRecord.planTypePrompt'),
-            trigger: 'blur'
-          }
-        ]
+            trigger: 'blur',
+          },
+        ],
       }
     },
 
@@ -171,14 +161,14 @@ export default {
 
     // 表单提交
     submitForm() {
-      this.$refs['form'].validate(valid => {
+      this.$refs['form'].validate((valid) => {
         if (valid) {
           let timeSpanList = this.$refs.timeGridControl.getTimeSpanList()
           if (timeSpanList.length == 0) {
             this.$message({
               message: this.$t('videoRecord.setRecordingTime'),
               type: 'error',
-              duration: 5 * 1000
+              duration: 5 * 1000,
             })
             return
           }
@@ -186,18 +176,18 @@ export default {
           let obj = {
             planName: this.form.planName,
             planType: this.form.planType,
-            timeSpanList
+            timeSpanList,
           }
           this.$parent.maskloading = true
           if (this.$parent.operation == 0) {
-            this.$api.addRecordPlanInfo(obj).then(res => {
+            this.$api.addRecordPlanInfo(obj).then((res) => {
               this.successResult(res, this.$t('public.addSuccess'))
             })
           } else if (this.$parent.operation == 2) {
             Object.assign(obj, {
-              planId: this.form.planId
+              planId: this.form.planId,
             })
-            this.$api.modifyRecordPlanInfo(obj).then(res => {
+            this.$api.modifyRecordPlanInfo(obj).then((res) => {
               this.successResult(res, this.$t('public.modifySuccess'))
             })
           }
@@ -210,13 +200,13 @@ export default {
         this.$parent.dialogFormVisible = false
         this.$message({
           type: 'success',
-          message: title
+          message: title,
         })
         this.$parent.handleFind()
       }
       this.$parent.maskloading = false
-    }
-  }
+    },
+  },
 }
 </script>
 

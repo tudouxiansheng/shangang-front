@@ -25,8 +25,8 @@
         <el-input style="width: 860px" v-model="formData.name"></el-input>
       </el-form-item>
       <el-form-item label="算法类型" prop="type">
-        <el-select clearable :popper-append-to-body="false" v-model="formData.type">
-          <el-option :label="$t('public.all')" value="1"></el-option>
+        <el-select multiple clearable :popper-append-to-body="false" v-model="formData.type">
+          <el-option v-for="a in algorithmOptions" :key="a.id" :label="a.name" :value="a.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="摄像机范围" prop="cameraScope">
@@ -74,6 +74,7 @@ export default {
   watch: {},
   data() {
     return {
+      algorithmOptions: [],
       formData: {},
       formRules: {
         platformId: [
@@ -124,6 +125,12 @@ export default {
   },
   async created() {
     this.formData = this.defaultValue || {}
+    this.loading = true
+    try {
+      this.algorithmOptions = await this.$api.getAlgorithmOptions().data
+    } finally {
+      this.loading = false
+    }
   },
   methods: {
     onClose() {

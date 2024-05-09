@@ -10,15 +10,13 @@
       width="96%"
       id="accessPlatformDetailDialog"
       :close-on-click-modal="false"
-      @open="dialogOpen"
       :draggable="false"
     >
       <el-form
         ref="archivesForm"
-        :model="form"
         class="archivesForm"
         :inline="true"
-        :label-width="locale == 'en' ? '285px' : '142px'"
+        :label-width="'142px'"
         label-position="left"
         :validate-on-rule-change="false"
       >

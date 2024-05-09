@@ -90,7 +90,7 @@
           <!--            </el-button>-->
           <!--          </div>-->
 
-          <div style="height: 600px; margin-top: 80px" v-loading="loading" :element-loading-text="$t('public.loading')">
+          <div style="margin-top: 80px" v-loading="loading" :element-loading-text="$t('public.loading')">
             <div v-if="!loading && !tableData.length" class="tableNOdata">
               <img src="../../../../../../assets/img/common/NOdata.png" alt />
               <p>{{ $t('public.noData') }}</p>

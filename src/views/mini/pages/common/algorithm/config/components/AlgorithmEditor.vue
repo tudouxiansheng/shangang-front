@@ -30,7 +30,7 @@
         </el-form-item>
         <el-form-item label="算法平台" prop="platform">
           <el-select clearable :popper-append-to-body="false" v-model="formData.platform">
-            <el-option :label="$t('public.all')" value></el-option>
+            <el-option :label="$t('public.all')" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
@@ -96,7 +96,7 @@ export default {
       if (this.value) {
         this.formData.name = '测试'
         this.formData.type = '演示'
-        this.formData.platform = ''
+        this.formData.platform = '1'
       }
       this.visible = true
     },

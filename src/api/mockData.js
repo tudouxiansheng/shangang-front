@@ -3,7 +3,7 @@ import cctv1 from '@/views/mini/pages/common/algorithm/assets/023-cctv-1.svg'
 
 const editData = () => ({
   platformId: '1',
-  type: '1',
+  type: [1, 2],
   name: '测试',
   cameraScope: [
     {

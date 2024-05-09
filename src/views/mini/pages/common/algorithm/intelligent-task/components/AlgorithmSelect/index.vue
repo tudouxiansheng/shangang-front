@@ -12,13 +12,14 @@
     element-loading-spinner="el-icon-loading"
   >
     <Item
+      :readonly="readonly"
       style="margin: 0 18px 18px 0"
       v-for="a in options"
       :key="a.id"
       :customTemplates="value.customTemplates || {}"
       @update:customTemplates="onCustomTemplatesChange"
       :metadata="a"
-      :highlight="a.id === value.algorithmId"
+      :highlight="readonly ? false : a.id === value.algorithmId"
       :templateId="value.algorithmTemplateId"
       @delete="onDelete"
       @select="onSelect"
@@ -34,6 +35,7 @@ export default {
     Item,
   },
   props: {
+    readonly: { type: Boolean },
     value: {},
   },
   watch: {

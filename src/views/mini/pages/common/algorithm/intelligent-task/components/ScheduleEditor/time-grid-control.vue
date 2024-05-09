@@ -1,6 +1,12 @@
 <template>
   <!-- 网格时间选择控件 -->
-  <div class="time-grid-control" style="color: #fff" id="time_grid_control" @click="onPossibleChange"></div>
+  <div
+    class="time-grid-control"
+    style="color: #fff"
+    :id="!readonly ? 'time_grid_control' : 'time_grid_control'"
+    :style="{ 'pointer-events': readonly ? 'none' : '' }"
+    @click="onPossibleChange"
+  ></div>
 </template>
 
 <script>
@@ -793,6 +799,9 @@ Date.prototype.format = function (fmt) {
 
 export default {
   props: {
+    readonly: {
+      type: Boolean,
+    },
     value: {
       type: Array,
       default: () => [],
@@ -815,6 +824,10 @@ export default {
     // this.time_ready();
   },
   watch: {
+    readonly: function (val) {
+      this.clearAll()
+      this.time_initialize(this.type, 1, val || [])
+    },
     value: function (val) {
       if (val !== recordPlanSubInfoList) {
         this.clearAll()

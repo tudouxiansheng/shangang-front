@@ -4,14 +4,14 @@
 </style>
 <template>
   <div class="ScheduleEditor base">
-    <div style="margin-bottom: 8px">
+    <div style="margin-bottom: 8px" v-if="!readonly">
       <el-radio-group v-model="type">
         <el-radio :label="0">周计划</el-radio>
         <el-radio :label="1">日计划</el-radio>
       </el-radio-group>
       <el-button type="primary" size="small" style="margin-left: 38px" @click="clear">清除</el-button>
     </div>
-    <TimeGridControl :type="type" ref="comp" :value="value" @input="$emit('input', $event)" />
+    <TimeGridControl :readonly="readonly" :type="type" ref="comp" :value="value" @input="$emit('input', $event)" />
   </div>
 </template>
 
@@ -23,6 +23,9 @@ export default {
     TimeGridControl,
   },
   props: {
+    readonly: {
+      type: Boolean,
+    },
     value: {
       type: Array,
       default: () => [],

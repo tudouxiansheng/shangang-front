@@ -243,6 +243,17 @@
                 />
                 <el-table-column :label="$t('public.operating')" min-width="150">
                   <template #default="{ row }">
+                    <CameraTaskDetail :value="row">
+                      <template #default="{ onClick }">
+                        <span
+                          :value="row"
+                          style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                          @click="onClick"
+                        >
+                          详情
+                        </span>
+                      </template>
+                    </CameraTaskDetail>
                     <span
                       style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
                       @click="editItem(row)"
@@ -454,9 +465,11 @@ import LazySearchTree from '@/components/lazy-search-tree'
 import tableCopy from '@/mixin/tableCopy.js'
 import judgeWindow from '@/mixin/judgeWindow'
 import IndexAdd from '@views/mini/pages/common/algorithm/intelligent-task/index-add.vue'
+import CameraTaskDetail from '@views/mini/pages/common/algorithm/intelligent-task/components/CameraTaskDetail/index.vue'
 
 export default {
   components: {
+    CameraTaskDetail,
     IndexAdd,
     'base-info': baseInfo,
     'device-add': deviceAdd,

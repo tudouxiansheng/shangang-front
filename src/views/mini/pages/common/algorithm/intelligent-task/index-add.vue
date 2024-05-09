@@ -35,7 +35,7 @@
       <el-form-item label="任务时间" prop="date">
         <el-date-picker
           v-model="formData.date"
-          type="datetimerange"
+          type="daterange"
           range-separator="-"
           start-placeholder="开始日期"
           end-placeholder="结束日期"

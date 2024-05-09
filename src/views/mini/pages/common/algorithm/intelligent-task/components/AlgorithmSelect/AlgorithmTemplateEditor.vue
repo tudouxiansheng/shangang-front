@@ -6,14 +6,21 @@
       :visible.sync="visible"
       top="10vh"
       append-to-body
-      width="1000"
       modal-append-to-body
       class="algorithm-tmpl-editor-shortcut"
       :close-on-click-modal="false"
       :modal="false"
       draggable
     >
-      <el-form ref="form" :model="formData" :rules="formRules" class="addForm" label-suffix="：" label-position="right">
+      <el-form
+        ref="form"
+        :model="formData"
+        :rules="formRules"
+        class="addForm"
+        label-suffix="："
+        label-position="right"
+        :disabled="readonly"
+      >
         <el-form-item label="检测类型">
           <span>{{ value.templateName }}</span>
         </el-form-item>
@@ -24,7 +31,7 @@
           <el-input type="textarea" :autosize="{ minRows: 8, maxRows: 18 }" v-model="formData.json"> </el-input>
         </el-form-item>
       </el-form>
-      <template #footer>
+      <template #footer v-if="!readonly">
         <span class="dialog-footer">
           <el-button @click="visible = false">{{ $t('public.cancel') }}</el-button>
           <el-button @click="reset">重置</el-button>
@@ -39,6 +46,9 @@
 export default {
   components: {},
   props: {
+    readonly: {
+      type: Boolean,
+    },
     customTemplates: {},
     value: {},
   },

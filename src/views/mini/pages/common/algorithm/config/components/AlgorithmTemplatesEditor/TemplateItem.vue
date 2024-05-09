@@ -1,7 +1,13 @@
 <template>
   <div>
     <div style="display: flex; align-items: center">
-      <el-input :value="value.name" @input="onChange('name', $event)" style="width: unset; flex: 1"></el-input>
+      <el-input
+        :value="value.name"
+        maxlength="30"
+        show-word-limit
+        @input="onChange('name', $event)"
+        style="width: unset; flex: 1"
+      ></el-input>
       <i
         class="el-icon-remove"
         @click="$emit('delete', value)"
@@ -35,6 +41,9 @@
 export default {
   components: {},
   props: {
+    canUnsetDefault: {
+      type: Boolean,
+    },
     removable: {
       type: Boolean,
     },
@@ -47,10 +56,11 @@ export default {
   watch: {},
   methods: {
     onChange(k, v) {
+      if (k === 'isDefault' && !this.canUnsetDefault && !v) return
       this.$emit('input', { ...this.value, [k]: v })
     },
     onSetAsDefault(v) {
-      if (v) this.$emit('setAsDefault', this.value)
+      if (v) this.$emit('setAsDefault', v)
     },
   },
 }

@@ -95,7 +95,7 @@
               <template #empty>
                 <span>{{ dataText }}</span>
               </template>
-              <el-table-column label width="50" type="selection" />
+              <!--              <el-table-column label width="50" type="selection" />-->
               <el-table-column :label="$t('algorithm.seq')" min-width="60" show-overflow-tooltip prop="mainDevName">
                 <template #default="{ row, $index }">
                   <span>{{ $index + 1 }}</span>
@@ -1418,7 +1418,7 @@ export default {
     },
 
     async handleDelete(row) {
-      this.$confirm(`确认删除“${row.mainDevName}"分析任务吗`, this.$t('public.prompt'), {
+      this.$confirm(`确认删除“${row.mainDevName}"算法吗`, this.$t('public.prompt'), {
         confirmButtonText: this.$t('public.confirm'),
         cancelButtonText: this.$t('public.cancel'),
         type: 'warning',

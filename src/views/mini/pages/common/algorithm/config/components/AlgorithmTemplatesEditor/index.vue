@@ -32,7 +32,9 @@
             @click="addTemplate"
             >添加模板</el-button
           >
+          <span style="font-size: 12px; color: red; margin-left: 8px">提示：最多可添加3个模板</span>
         </el-form-item>
+
         <el-form-item
           v-for="(item, index) in formData.templates || []"
           :label="`模板${index + 1}`"
@@ -40,15 +42,16 @@
           :prop="`templates.${index}.value`"
           :rules="{
             required: true,
-            message: '模板不能为空',
+            validator: templateValidator,
             trigger: 'blur',
           }"
         >
           <TemplateItem
             v-model="item.value"
+            :canUnsetDefault="formData.templates.filter((a) => a.isDefault).length > 1"
             :removable="formData.templates.length > 1"
             @delete="removeTemplate"
-            @setAsDefault="setAsDefault"
+            @setAsDefault="setAsDefault($event, item)"
           />
         </el-form-item>
       </el-form>
@@ -106,6 +109,20 @@ export default {
   computed: {},
   watch: {},
   methods: {
+    templateValidator(rule, value, callback) {
+      if (!value.name?.trim()) {
+        callback(new Error('请输入模板名称'))
+      } else if (!value.json?.trim()) {
+        callback(new Error('请输入JSON模板'))
+      } else {
+        try {
+          if (typeof JSON.parse(value.json) !== 'object') throw new Error()
+          callback()
+        } catch (e) {
+          callback(new Error('无效的JSON模板'))
+        }
+      }
+    },
     reset() {
       this.formData.json = this.value.json
     },
@@ -113,10 +130,11 @@ export default {
       await this.$refs.form.validate()
       this.visible = false
     },
-    setAsDefault(item) {
-      this.formData.templates.forEach((a) => {
-        if (a !== item) a.value.isDefault = false
-      })
+    setAsDefault(v, item) {
+      if (v)
+        this.formData.templates.forEach((a) => {
+          if (a !== item) a.value.isDefault = false
+        })
     },
     addTemplate() {
       this.formData.templates = this.formData.templates || []

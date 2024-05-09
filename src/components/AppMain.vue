@@ -77,6 +77,9 @@ export default {
   computed: {
     isShowMap() {
       let noShowMap = [
+        '/algorithm/abnormal-task-event-analysis',
+        '/algorithm/intelligent-task',
+        '/algorithm/config',
         '/carpage',
         '/personpage',
         '/requirepage',
@@ -117,7 +120,7 @@ export default {
         '/alarm/handlePlan',
         '/alarm/management',
         '/system/alarm-type',
-        '/linkage/config'
+        '/linkage/config',
       ]
       return noShowMap.indexOf(this.$route.path) == -1
     },
@@ -246,7 +249,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-wrapper {
-  background:#051b2c;
+  background: #051b2c;
   background-size: 100% 100%;
   box-sizing: border-box;
   overflow: hidden;

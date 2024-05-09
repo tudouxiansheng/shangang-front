@@ -9,7 +9,7 @@
       :fetch-suggestions="querySearchAsync"
       :trigger-on-focus="false"
       :debounce="300"
-      :placeholder="$t('public.pleaseEnterOrgOrDev')"
+      :placeholder="placeholder === undefined ? $t('public.pleaseEnterOrgOrDev') : placeholder"
       clearable
       @select="handleFilterNode"
     ></el-autocomplete>
@@ -34,6 +34,7 @@
           <template #default="{ node, data }">
             <span class="custom-tree-node">
               <i :class="iconSty(data)" class="aci" />
+              <img style="height: 0.1rem; margin-right: 0.01rem" v-if="data.icon" :src="data.icon" />
               <span>{{ node.label }}</span>
             </span>
           </template>
@@ -50,53 +51,57 @@ import devIcon from '@/utils/common/dev-icon.js'
 const { getDevIcon } = devIcon()
 export default {
   props: {
+    placeholder: {
+      type: String,
+      default: '',
+    },
     delSearch: {
       type: String,
-      default: ''
+      default: '',
     },
     withTenant: {
-      type: Number
+      type: Number,
     },
     treeApi: {
       type: String,
-      default: 'getDeviceTree'
+      default: 'getDeviceTree',
     },
     treeParams: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     searchApi: {
       type: String,
-      default: 'searchInDeviceTree'
+      default: 'searchInDeviceTree',
     },
     searchParams: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     locateApi: {
       type: String,
-      default: 'locateInDeviceTree'
+      default: 'locateInDeviceTree',
     },
     locateParams: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     placeholderTitle: {
       type: String,
-      default: ''
+      default: '',
     },
     iconColor: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isDialog: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showCheckbox: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   mixins: [treeStyle],
   data() {
@@ -108,11 +113,11 @@ export default {
       organizationTreeProps: {
         label: 'label',
         children: [],
-        isLeaf: 'leaf'
+        isLeaf: 'leaf',
       },
       filterText: '',
       currentKey: '',
-      locateTreeTip: false
+      locateTreeTip: false,
     }
   },
   mounted() {
@@ -125,24 +130,24 @@ export default {
         this.$refs.selectSuggest.activated = true
         const data = {
           searchName: queryString,
-          ...this.searchParams
+          ...this.searchParams,
         }
         // 后端函数调用返回联想词列表
-        this.$api[this.searchApi](data).then(res => {
+        this.$api[this.searchApi](data).then((res) => {
           if (res && res.nodeList && res.nodeList.length > 0) {
             const nodeList = res.nodeList || []
             if (this.treeApi === 'getDeviceTree') {
-              nodeList.forEach(item => {
+              nodeList.forEach((item) => {
                 item.value = item.label
               })
             } else {
-              nodeList.forEach(item => {
+              nodeList.forEach((item) => {
                 item.value = item.nodeName
                 item.id = item.nodeId
               })
             }
             cb(nodeList)
-          }else{
+          } else {
             cb([])
           }
         })
@@ -155,11 +160,11 @@ export default {
       const data = {
         nodeId: item.id,
         nodeType: this.treeApi == 'getDeviceTree' ? item.type : null,
-        ...this.locateParams
+        ...this.locateParams,
       }
       this.searchFlag = true
       this.idArr = []
-      await this.$api[this.locateApi](data).then(res => {
+      await this.$api[this.locateApi](data).then((res) => {
         if (res.parents) {
           for (let i = 0; i < res.parents.length; i++) {
             this.idArr.push(res.parents[i].parentId.toString())
@@ -191,10 +196,10 @@ export default {
       let data = {
         type: 1,
         parentId: parentId ? parseInt(parentId) : null,
-        ...this.treeParams
+        ...this.treeParams,
       }
       this.withTenant ? (data.withTenant = this.withTenant) : undefined
-      await this.$api[this.treeApi](data).then(res => {
+      await this.$api[this.treeApi](data).then((res) => {
         if (res) {
           list = res.nodeList || []
           this.treeLoading = false
@@ -210,7 +215,8 @@ export default {
       } else if (level == 0 && list.length == 0) {
         this.treeEmptyText = this.$t('public.noData')
       } else if (level >= 1) {
-        if (level == 1) { // 组织管理树特有的
+        if (level == 1) {
+          // 组织管理树特有的
           this.$emit('autoDev', list)
         }
         if (list.length) {
@@ -219,15 +225,15 @@ export default {
             this.locateTreeTip = true
             let index1 = this.idArr.indexOf(parentId.toString())
             if (
-                this.idArr.length > 1 &&
-                this.locateApi == 'locateInDeviceTree' &&
-                index1 + 1 < this.idArr.length - 1 &&
-                list.findIndex(item => item.id === this.idArr[index1 + 1]) < 0
+              this.idArr.length > 1 &&
+              this.locateApi == 'locateInDeviceTree' &&
+              index1 + 1 < this.idArr.length - 1 &&
+              list.findIndex((item) => item.id === this.idArr[index1 + 1]) < 0
             ) {
               this.idArr = []
               this.$message({
                 type: 'warning',
-                message: this.$t('public.locateTree')
+                message: this.$t('public.locateTree'),
               })
             }
           }
@@ -238,7 +244,7 @@ export default {
     handleNodeClick(data, node) {
       let obj = {
         data,
-        node
+        node,
       }
       this.$emit('nodeClick', obj)
     },
@@ -246,7 +252,7 @@ export default {
       if (!this.showCheckbox) return
       let obj = {
         data,
-        node
+        node,
       }
       this.$emit('nodeCheck', obj)
     },
@@ -334,7 +340,7 @@ export default {
             this.idArr = []
             this.$message({
               type: 'warning',
-              message: this.$t('public.locateTree')
+              message: this.$t('public.locateTree'),
             })
           }
           if (this.$refs.treeList.getNode(this.currentKey)) {
@@ -346,8 +352,8 @@ export default {
           }
         })
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

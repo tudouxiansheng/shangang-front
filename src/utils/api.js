@@ -1,4 +1,5 @@
-import { fetch, getFetch, postFetch } from '@/api/service'
+import { fetch, getFetch, mockRequest, postFetch } from '@/api/service'
+import { mockData } from '@/api/mockData'
 //公告详情
 
 export const noticeDetail = (data) => fetch('/uas/v1/api/scs/notice/detail', data)
@@ -13,7 +14,7 @@ export const getDictionary = (data) => fetch('/uas/v1/api/udc/assist/dictionary'
 //获取局点信息
 export const getFlavor = (data) => fetch('/uas/v1/api/udc/assist/flavor', data)
 
-export const getName = (data) => fetch('/uas/v1/api/scs/system/info/get', data)
+export const getName = (data) => mockRequest(() => fetch('/uas/v1/api/scs/system/info/get', data), {})
 // 登录
 // export const login = (data) => digestFetch('/uas/v1/api/user/login', data);
 // 获取token
@@ -30,11 +31,12 @@ export const getSysPlatType = (data) => fetch('/uas/v1/api/udc/system/accessPlat
 // export const captcha = (data) => digestFetch('/uas/v1/api/captcha', data);
 export const captcha = (data) => fetch('/uas/v1/api/captcha', data)
 // 获取当前用户信息
-export const getLoginUserInfo = (data) => fetch('/uas/v1/api/udc/login/user', data)
+export const getLoginUserInfo = (data) => mockRequest(() => fetch('/uas/v1/api/udc/login/user', data), mockData.user())
 
 // 查询菜单
 // export const selectMenus = (data) => fetch('/uas/v1/api/udc/management/menus', data);
-export const selectMenus = (data) => fetch('/uas/v1/api/udc/management/menus', data)
+export const selectMenus = (data) =>
+  mockRequest(() => fetch('/uas/v1/api/udc/management/menus', data), mockData.menus())
 // 查询菜单权限
 // export const selectMenuPerms = (data) => fetch('/uas/v1/api/udc/management/perms', data);
 export const selectMenuPerms = (data) => fetch('/uas/v1/api/udc/management/perms', data)
@@ -1610,7 +1612,8 @@ export const delSource = (data) => fetch('/uas/v1/api/ars/guard/remove-deleted-s
 export const switchGuard = (data) => fetch('/uas/v1/api/ars/guard/switch', data)
 
 /*车辆检索 */
-export const getDeviceTree = (data) => fetch('/uas/v1/api/udc/device/tree', data)
+export const getDeviceTree = (data) =>
+  mockRequest(() => fetch('/uas/v1/api/udc/device/tree', data), mockData.deviceTree(data))
 //车辆检索
 export const vehiclesearchByImage = (data) => fetch('/uas/v1/api/ars/snap/vehicle/searchByImage', data)
 //车辆条件检索

@@ -1,18 +1,35 @@
 export default {
-
-length: {
-  lessthan: '长度不能超过{num}个字符',
-  less15: '长度不能超过15个字符',
-  less20: '长度不能超过20个字符',
-  less30: '长度不能超过30个字符',
-  less32: '长度不能超过32个字符',
-  less50: '长度不能超过50个字符',
-  less64: '长度不能超过64个字符',
-  less100: '长度不能超过100个字符',
-  less128: '长度不能超过128个字符',
-  fileName64: '文件名称长度不能超过六十四个字符',
-  required: '此选项为必填项',
-},
+  algorithm: {
+    cameraList: '摄像机列表',
+    createdAt: '创建时间',
+    taskName: '任务名称',
+    detectType: '检测类型',
+    cameraName: '摄像机名称',
+    taskStatus: '任务状态',
+    runDuration: '运行时长',
+    withinDays: '天内',
+    seq: '序号',
+    algorithmPlatformName: '算法平台名称',
+    startConfirm: '是否确认要启动任务？',
+    stopConfirm: '是否确认要停止任务？',
+    batchStart: '批量启动任务',
+    batchStop: '批量停止任务',
+    deleteConfirm: '是否确认要删除任务?',
+    addTask: '添加智能任务',
+  },
+  length: {
+    lessthan: '长度不能超过{num}个字符',
+    less15: '长度不能超过15个字符',
+    less20: '长度不能超过20个字符',
+    less30: '长度不能超过30个字符',
+    less32: '长度不能超过32个字符',
+    less50: '长度不能超过50个字符',
+    less64: '长度不能超过64个字符',
+    less100: '长度不能超过100个字符',
+    less128: '长度不能超过128个字符',
+    fileName64: '文件名称长度不能超过六十四个字符',
+    required: '此选项为必填项',
+  },
   public: {
     input: '请输入{type}',
     selectedTenantNum: '已选 {num} 个租户',
@@ -135,8 +152,7 @@ length: {
     nameError3: '名称只能含有汉字、数字、字母、下划线且不能以下划线开头和结尾',
     nameError4: '名称只支持中文、英文、数字和.·-_空格，且首位不为特殊字符',
     psdError: '两次输入密码不一致',
-    psdError1:
-      "密码不能包含空格，特殊字符 ！￥…（）—【】‘；：”“’。，、《》？`~()-+=|{}<>?/\\[]·:;,'" + '"',
+    psdError1: "密码不能包含空格，特殊字符 ！￥…（）—【】‘；：”“’。，、《》？`~()-+=|{}<>?/\\[]·:;,'" + '"',
     psdError2: '密码长度在8-16位之间',
     accountError: '账号必须由数字,字母,下划线中的一种或多种组成,且长度在6-32位之间',
     telError: '固定电话格式输入不正确',
@@ -406,7 +422,7 @@ length: {
       specialWord: '不允许输入特殊字符',
       specialWord1: '不能包含以下任意英文字符: \\ / : * ? " < > |',
       fileSizeLimit: '上传文件大小不能超过{size}M',
-      fileFormatLimit: '只能上传{format}格式的文件'
+      fileFormatLimit: '只能上传{format}格式的文件',
     },
     sn: '序号',
     forgetPassword: '忘记密码',
@@ -625,7 +641,7 @@ length: {
   },
   i18n: {
     simplifiedChinese: '简体中文',
-    english: '英文'
+    english: '英文',
   },
   //组织管理
   organizationManage: {
@@ -653,7 +669,7 @@ length: {
     organizationRegExp: '组织名称不能为空',
     area: '所属区域',
     chooseArea: '请选择所属区域',
-    areaNoEmpty: '所属区域不能为空'
+    areaNoEmpty: '所属区域不能为空',
   },
   // 管理员管理
   adminManage: {
@@ -672,7 +688,7 @@ length: {
     permissionSettings: '权限设置',
     PTZControlPriority: '云台控制优先级',
     lowest: '最低',
-    highest: '最高'
+    highest: '最高',
   },
   // 用户管理
   userManage: {
@@ -718,7 +734,7 @@ length: {
     highest: '最高',
     importOverMsg: '超过{max}条数据，请重新操作',
     accountPrompt: '请输入用户账号',
-    accountLabel: '用户账号'
+    accountLabel: '用户账号',
   },
   // 租户管理
   tenantManage: {
@@ -780,7 +796,7 @@ length: {
     tenantImportTemplate: '租户导入模板',
     tenantImportResult: '租户导入结果',
     tenantInfoCannotSame: '租户信息不能相同',
-    operationCanceled: '已取消操作'
+    operationCanceled: '已取消操作',
   },
   // 租户管理
   clientManage: {
@@ -807,7 +823,7 @@ length: {
     permissionSettings: '权限设置',
     PTZControlPriority: '云台控制优先级',
     lowest: '最低',
-    highest: '最高'
+    highest: '最高',
   },
   // 角色管理
   roleManage: {
@@ -839,7 +855,7 @@ length: {
     pc: 'PC客户端',
     web: 'WEB客户端',
     roleTypeErr: '角色权限选择不能为空',
-    copy: '复制'
+    copy: '复制',
   },
   //主设备管理
   primaryDevice: {
@@ -1091,7 +1107,7 @@ length: {
     tryAgainContent: '验证失败，请重新输入',
     distribute: '前往分配',
     operationCanceled: '已取消操作',
-    unsupportedTip: '当前仅支持添加主设备，因没有可用录像存储组尚不支持录像策略设置'
+    unsupportedTip: '当前仅支持添加主设备，因没有可用录像存储组尚不支持录像策略设置',
   },
   accessPlatform: {
     platformStatus: '平台状态',
@@ -1237,7 +1253,7 @@ length: {
       inputAccessServerIp: '请输入注册服务器IP地址',
       inputAccessServerPort: '请输入注册服务器端口号',
       T28181Dev: '国标设备',
-      HWSDKDev: 'HWSDK设备'
+      HWSDKDev: 'HWSDK设备',
     },
     addVpaas: 'Vpaas外域平台接入',
     editVpaas: 'Vpaas外域平台编辑',
@@ -1292,7 +1308,7 @@ length: {
     noVpaasPlatform: '暂无可用的vpaas平台',
     noDomain: '暂无可用的域',
     accessCodeTip: '接入平台ID要以{domainCode}开头',
-    codeValidator: '第11位到第13位的范围必须在200~299之间'
+    codeValidator: '第11位到第13位的范围必须在200~299之间',
   },
   //国标共享管理
   GBShare: {
@@ -1353,7 +1369,7 @@ length: {
     pleaseInput: '请输入',
     noOptions: '暂无数据',
     loading: '加载中',
-    pleaseSelectCameraName: '请选择镜头名称'
+    pleaseSelectCameraName: '请选择镜头名称',
   },
   //镜头管理
   deviceCamera: {
@@ -1527,7 +1543,7 @@ length: {
     //20230915
     batchRecordTip1: '不支持批量设置不同平台设备的录像策略',
     batchRecordTip2: 'VPAAS平台不支持批量设置不同域设备的录像策略',
-    unsupportedTip: '因没有可用录像存储组尚不支持批量录像策略设置'
+    unsupportedTip: '因没有可用录像存储组尚不支持批量录像策略设置',
   },
   // 镜头转码配置
   lens: {
@@ -1565,7 +1581,7 @@ length: {
     batchStopTranscodingSuccess: '批量暂停转码成功',
     startTranscodingSuccess: '启动转码成功',
     stopTranscodingSuccess: '暂停转码成功',
-    preview: '预览'
+    preview: '预览',
   },
   //我的共享设备
   myShare: {
@@ -1587,7 +1603,7 @@ length: {
     chooseDevFirst: '请先选择设备',
     ifCancelChoosedAllocate: '此操作将取消所选共享,是否继续',
     operationCanceled: '已取消操作',
-    ifCancelThisAllocate: '此操作将取消此共享,是否继续'
+    ifCancelThisAllocate: '此操作将取消此共享,是否继续',
   },
   // 集群管理
   Operations: {
@@ -1712,7 +1728,7 @@ length: {
     bossActivation: 'Boss开通是否使用',
     supportDevice: '是否支持1400设备',
     platId: '监控平台',
-    pleaseSelectplatId: '请选择监控平台'
+    pleaseSelectplatId: '请选择监控平台',
   },
   // 集群分配
   distribution: {
@@ -1736,7 +1752,7 @@ length: {
     lensTotal: '国标镜头总数',
     allocation: '分配',
     MassDistribution: '批量分配',
-    MassDistributionContent: '批量分配'
+    MassDistributionContent: '批量分配',
   },
   //平台管理
   monitorManage: {
@@ -1833,7 +1849,7 @@ length: {
     equipmentDirectConnection: '设备直连，通过SDK连接',
     platformDetails: '监控平台详情',
     port: '端口',
-    streamingProtocol: '标准实时流传输协议'
+    streamingProtocol: '标准实时流传输协议',
   },
   //告警类型管理
   alarmTypeManage: {
@@ -1872,7 +1888,7 @@ length: {
     videoQualityAlarm: '视频质量检测告警',
     alarmTypeDetail: '告警类型详情',
     //20221126
-    alarmTypeManage128Prop: '告警类型名称最大长度为128个字符'
+    alarmTypeManage128Prop: '告警类型名称最大长度为128个字符',
   },
   //告警查询
   alarmList: {
@@ -1996,7 +2012,7 @@ length: {
     exportTip: '正在导出中,请勿关闭当前页面,否则导出失败',
     noData: '导出数据为空',
     selectedDataTip: '请选择要导出的数据',
-    isExporting: '正在导出，请耐心等待'
+    isExporting: '正在导出，请耐心等待',
   },
   //登录
   login: {
@@ -2040,7 +2056,7 @@ length: {
     protocolContent3: '请阅读完整版',
     protocolContent4: '《隐私政策》',
     agreeProtocol: '我同意以上协议',
-    VPNLogin: 'VPN登录'
+    VPNLogin: 'VPN登录',
   },
   //修改密码
   changePwd: {
@@ -2076,8 +2092,7 @@ length: {
     detectionMustChangePwdAlert: '系统检测到您的账号密码已过期或被重置,请修改您的密码!',
     pwdChangeSuccessLogin: '密码修改成功,请重新登录',
 
-    firstLoginTips:
-      '系统检测到您首次登录后还未修改初始密码,为了保障您的账号安全,请修改您的初始密码!',
+    firstLoginTips: '系统检测到您首次登录后还未修改初始密码,为了保障您的账号安全,请修改您的初始密码!',
     riskPwdTips: '系统检测到您的密码为风险密码,为了保障您的账号安全,请修改您的密码!',
     uppercaseLetter: '大写字母',
     lowercaseLetter: '小写字母',
@@ -2092,7 +2107,7 @@ length: {
     passWordLength: '密码长度不能小于',
     resetPwd: '重置密码',
     resetPwdTips: '注意：重置用户密码后，该用户将进入冻结状态，由安全管理员解冻后方可使用',
-    resetPwdSuccess: '用户密码重置成功'
+    resetPwdSuccess: '用户密码重置成功',
   },
   //前端参数配置
   frontParameterConfiguration: {
@@ -2386,8 +2401,8 @@ length: {
       alarmOutMode: '告警形态',
       selectAlarmOutMode: '请选择告警形态',
       alarmOutMode0: '单形态',
-      alarmOutMode1: '双形态'
-    }
+      alarmOutMode1: '双形态',
+    },
   },
   //告警联动
   alarmLinkage: {
@@ -2488,12 +2503,11 @@ length: {
     deviceMaxLength: '最多只能选择100个设备!',
     notSupportedFileType: '不支持此格式文件',
     deletePrompt: '此操作将选中的 {num} 条告警联动策略删除, 是否继续?',
-    aiTypeLimitPrompt:
-      '已选择的告警类型中包含智能分析告警类型,则不支持 前端录像、平台录像、平台抓拍',
+    aiTypeLimitPrompt: '已选择的告警类型中包含智能分析告警类型,则不支持 前端录像、平台录像、平台抓拍',
     associateSnPrompt: '所选镜头中有镜头未关联sn号',
     aiTypeLimitDoRemove:
       '已选择的告警类型中包含智能分析告警类型,不支持 前端录像、平台录像、前端抓拍,已清除这些已选动作',
-    addTips: '说明:勾选需要添加告警策略的设备'
+    addTips: '说明:勾选需要添加告警策略的设备',
   },
   //录像策略
   videoRecord: {
@@ -2534,7 +2548,7 @@ length: {
     planTypePrompt: '请选择录像策略类型',
     fullStorage: '全量存储',
     noPreRecording: '不预录',
-    frontendPrerecording: '前端预录'
+    frontendPrerecording: '前端预录',
   },
   // 算法平台
   algorithmPlat: {
@@ -2554,7 +2568,7 @@ length: {
     accessIPPormpt: '请输入接入IP',
     IPPormpt: '请输入正确的IP地址',
     accessPort: '接入端口',
-    accessPortPormpt: '请输入接入端口'
+    accessPortPormpt: '请输入接入端口',
   },
   //镜头转码模板
   transcodeTemplate: {
@@ -2657,7 +2671,7 @@ length: {
     border: '月光边境',
     threadCount: '线程数',
     kbsFail: '码率范围填写错误',
-    inputKbps: '请输入码率(kbps)'
+    inputKbps: '请输入码率(kbps)',
   },
   // 任务管理
   workOrder: {
@@ -2734,7 +2748,7 @@ length: {
     workOrderState: '工单状态',
     workOrderStatePrompt: '请选择工单状态',
     workOrderLevel: '工单级别',
-    workOrderLevelPrompt: '请选择工单级别'
+    workOrderLevelPrompt: '请选择工单级别',
   },
   //安全管理
   security: {
@@ -2754,8 +2768,7 @@ length: {
     passwordsMustContainLowercaseLetters: '密码必须包含小写字母',
     thePasswordMustContainANumber: '密码必须包含数字',
     thePasswordMustContainSpecialSymbols: '密码必须包含特殊符号',
-    doNotAllowMoreThanThreeConsecutiveOrRepeatedLettersAndNumbers:
-      '禁止3位以上连续或重复字母和数字',
+    doNotAllowMoreThanThreeConsecutiveOrRepeatedLettersAndNumbers: '禁止3位以上连续或重复字母和数字',
     keyboardSortingWithMoreThanThreeCharactersIsProhibited: '禁止3位以上键盘排序字母',
     pwdNoAcc: '密码不能包含账号',
     firstLoginSwitch: '首次登录修改密码开关',
@@ -2785,8 +2798,7 @@ length: {
     pwdAlertCantOver: '密码过期提醒天数不能超过密码存活有效期天数',
     pwdRulesConfiguredSuccess: '密码规则配置成功',
     pwdRulesClosePrompt: '关闭密码校验开关，用户账号可能存在安全风险，您确认关闭吗？',
-    modifyOnFirstLoginRulesClosePrompt:
-      '关闭首次登录修改密码校验开关，用户账号可能存在安全风险，您确认关闭吗？'
+    modifyOnFirstLoginRulesClosePrompt: '关闭首次登录修改密码校验开关，用户账号可能存在安全风险，您确认关闭吗？',
   },
   // 配置白名单
   whiteList: {
@@ -2805,7 +2817,7 @@ length: {
     inputSomeMAC: '已存在相同的MAC地址，请重新输入',
     inputipMAC: '开启白名单配置时白名单ip和mac地址两者必填一个',
     remark: '描述',
-    addSuccess: '白名单配置成功'
+    addSuccess: '白名单配置成功',
   },
   // 上传logo
   logoUpload: {
@@ -2817,7 +2829,7 @@ length: {
     logoPrompt: '支持上传png图片格式，推荐分辨率为50*50，文件大小不超过4MB',
     loginBgLabel: '客户端登录背景图',
     loginBgPreview: '查看默认背景',
-    loginBgPrompt: '支持上传png图片格式，推荐分辨率为598*543，文件大小不超过4MB'
+    loginBgPrompt: '支持上传png图片格式，推荐分辨率为598*543，文件大小不超过4MB',
   },
   // 日志管理
   businessLog: {
@@ -2836,7 +2848,7 @@ length: {
     //20220718
     businessLogInfo: '操作日志信息',
     pleaseSelectTime: '请选择操作时间',
-    beginTimeNotGreaterThanEndTime: '请选择正确的操作时间范围'
+    beginTimeNotGreaterThanEndTime: '请选择正确的操作时间范围',
   },
 
   batchOperator: {
@@ -2865,7 +2877,7 @@ length: {
     successList: '成功列表',
     name: '名称',
     requestTimeOut: '服务请求超时',
-    dataEmpty: '您导入的数据为空'
+    dataEmpty: '您导入的数据为空',
   },
 
   //license
@@ -2878,8 +2890,7 @@ length: {
     apeNum: '1400采集设备数（个）',
     userNum: '用户数（个）',
     reimport: '重新导入',
-    ifImport:
-      '您现在有一个许可证正在使用，重新导入后目前使用的许可证将会自动作废，您是否选择继续导入？',
+    ifImport: '您现在有一个许可证正在使用，重新导入后目前使用的许可证将会自动作废，您是否选择继续导入？',
     importCancel: '已取消重新导入',
     prompt: '许可证提示',
     reimportPlz: '许可证已过期，请重新导入许可证',
@@ -2893,7 +2904,7 @@ length: {
     used: '已使用',
     remaining: '剩余数',
     usedTips:
-      '当已使用大于授权值时，可能存在历史license授权后添加的数据信息，当license过期时，对历史添加的数据不进行删除处理'
+      '当已使用大于授权值时，可能存在历史license授权后添加的数据信息，当license过期时，对历史添加的数据不进行删除处理',
   },
 
   // 行政划分字典
@@ -2903,7 +2914,7 @@ length: {
     administrativeHierarchy: '行政划分等级',
     cancelOperate: '已取消操作',
     exportTip: '批量导出时间可能过长，请耐心等待',
-    downloadTip: '下载导入模板时间可能过长，请耐心等待'
+    downloadTip: '下载导入模板时间可能过长，请耐心等待',
   },
   // 新组织管理
   newOrg: {
@@ -2926,13 +2937,13 @@ length: {
     levelPrompt3: '行政级别必须连续',
     quickCreateSuccess: '国标目录创建成功',
     manualInput: '手动输入',
-    cascadeSelection: '级联选择'
+    cascadeSelection: '级联选择',
   },
   dictArea: {
     importTemplate: '区域字典导入模板',
     importError: '导入失败',
     title: '区域字典',
-    loadingText: '数据导入中，请稍后'
+    loadingText: '数据导入中，请稍后',
   },
 
   // 轮巡管理
@@ -2982,7 +2993,7 @@ length: {
     //20230403
     cantContain2: `不能包含空格和以下英文字符：<>\'{'@'}:"$*%)\\/|?-`,
     ignoredSpaces: '前后空格会被忽略',
-    selectCameraLessThanNum: '选择摄像机数量不能超过{num}个'
+    selectCameraLessThanNum: '选择摄像机数量不能超过{num}个',
   },
   snapList: {
     snapDevice: '抓拍设备',
@@ -3006,7 +3017,7 @@ length: {
     selectCapturetype: '请至少选择一个抓拍类型',
     selectCaptureTime: '请先选择抓拍时间',
     selectDownload: '请选择要下载的行',
-    downloadLoading: '数据正在加载中，请稍后重试'
+    downloadLoading: '数据正在加载中，请稍后重试',
   },
 
   // 网关集群管理
@@ -3083,7 +3094,7 @@ length: {
     gatewayStatus1: '网关状态',
     autoAdd: '自动添加',
     autoAddSuccess: '自动添加成功',
-    gateway: '网关'
+    gateway: '网关',
   },
 
   // 接入设备调拨
@@ -3114,7 +3125,7 @@ length: {
     selectOrg: '请选择要分配到的组织',
     selectDev: '请选择要分配的设备组或设备',
     allocatedSuccess: '分配成功',
-    enterRetrieveLens: '请输入名称或ID检索镜头'
+    enterRetrieveLens: '请输入名称或ID检索镜头',
   },
 
   // 图片裁剪组件
@@ -3126,7 +3137,7 @@ length: {
     uploadFail: '文件上传失败',
     import: '导入',
     uploadPrompt: '支持JPG、PNG、GIF、BMP图片格式，一次最多添加{num}张',
-    selectPicture: '选择图片'
+    selectPicture: '选择图片',
   },
   //主设备配置
   mainDevConfiguration: {
@@ -3348,8 +3359,7 @@ length: {
     pleaseSelectTheCamera: '请选择要启停的摄像机',
     confirmPwdProp: '确认密码与新密码不一致',
     pwdModifySucessful: '密码修改成功',
-    mostTenArea:
-      '遮挡告警/隐私保护最大矩形数量5个，移动侦测最大矩形数量 8个，具体效果以设备支持能力为准',
+    mostTenArea: '遮挡告警/隐私保护最大矩形数量5个，移动侦测最大矩形数量 8个，具体效果以设备支持能力为准',
     overTime: '遮挡监测时间间隔',
     inputOverTime: '请输入遮挡监测时间间隔',
     getLiveUrlFailed: '获取实时浏览地址失败',
@@ -3393,8 +3403,8 @@ length: {
     adsFrameIntervalHW: 'i帧间隔范围为1-500之间的整数',
     adsFrameIntervalHIK: 'i帧间隔范围为1-400之间的整数',
     adsFrameIntervalDH: 'i帧间隔范围为1-150之间的整数',
-    adsFrameRateHW:'帧率范围为1-60之间的整数',
-    adsFrameRateDH:'帧率范围为1-25之间的整数',
+    adsFrameRateHW: '帧率范围为1-60之间的整数',
+    adsFrameRateDH: '帧率范围为1-25之间的整数',
     videoSetSuccess: '视频设置成功',
     parametersSuccessfully: '设备参数配置成功',
     syncCameraStatusSuccess: '镜头状态同步成功',
@@ -3476,8 +3486,7 @@ length: {
     autoClearAlarmTimeProp225: '遮挡监测时间间隔取值范围是1-225之间的整数',
     sensitivityProp: '视频监测灵敏度取值范围是1-5之间的整数',
     //20220914
-    intelligentSetFail:
-      '设置失败,视频通道中移动侦测、视频遮挡与智能分析不支持同时配置,是否停用视频通道相应配置?',
+    intelligentSetFail: '设置失败,视频通道中移动侦测、视频遮挡与智能分析不支持同时配置,是否停用视频通道相应配置?',
     moveStopSuccess: '移动侦测停用成功!',
     coverStopSuccess: '视频遮挡停用成功!',
     intelligentStopSuccess: '智能分析停用成功!',
@@ -3494,8 +3503,7 @@ length: {
     superposition: '云台操作时用户名显示',
     //20221112
     domainCode: '选择备份域',
-    master:
-      '是否作为主备份服务域（主备份服务域有且只有一个，备份录像检索优先选择主备份服务域，主备份域可手动切换）',
+    master: '是否作为主备份服务域（主备份服务域有且只有一个，备份录像检索优先选择主备份服务域，主备份域可手动切换）',
     backupTTLProp: '备份录像留存期',
     backupTTLProp0: '0表示录像满覆盖,存在由于存储空间不足导致录像被优先回收的风险',
     domainCodeProp1: '备份录像留存期必须是0-9999之间的整数',
@@ -3517,13 +3525,11 @@ length: {
     puScaleProp: '请选择前端端备份下载速度',
     bcompressCodeProp: '请选择是否开启超级编码',
     setBackupConfigSuccess: '备份参数设置成功',
-    setServerBackupConfigProp:
-      '该设备已经设置了服务器备份计划，如果新建前端计划，将会覆盖服务器计划，确认继续?',
+    setServerBackupConfigProp: '该设备已经设置了服务器备份计划，如果新建前端计划，将会覆盖服务器计划，确认继续?',
     setPuBackupConfigSuccess: '前端备份计划设置成功',
     cancelSetPuBackupConfig: '已取消设置前端备份计划',
     timeSpanEmpty2: '备份执行时间段和备份录像时间段不能为空',
-    setPuBackupConfigProp:
-      '该设备已经设置了前端备份计划，如果新建服务器计划，将会覆盖前端计划，确认继续?',
+    setPuBackupConfigProp: '该设备已经设置了前端备份计划，如果新建服务器计划，将会覆盖前端计划，确认继续?',
     setServerBackupConfigSuccess: '服务器备份计划设置成功',
     cancelSetServerBackupConfig: '已取消设置服务器备份计划',
     timeSpanEmpty1: '备份执行时间段不能为空',
@@ -3587,7 +3593,7 @@ length: {
     unsupportedTip: '因没有可用录像存储组尚不支持录像策略设置',
     inputDns: '请输入DNS',
     batchRecordTip1: '不支持批量设置不同平台设备的录像策略',
-    batchRecordTip2: 'VPAAS平台不支持批量设置不同域设备的录像策略'
+    batchRecordTip2: 'VPAAS平台不支持批量设置不同域设备的录像策略',
   },
   // 镜头配置
   cameraConfiguration: {
@@ -3621,8 +3627,8 @@ length: {
       displaySetupSuccessful: '摄像机图像显示参数设置成功',
       displaySetupFailed: '摄像机图像显示参数设置失败',
       settingTip: '不同摄像机设置的画面参数值与实际值存在偏差',
-      inputText: '请输入叠加文字内容'
-    }
+      inputText: '请输入叠加文字内容',
+    },
   },
   // 收藏夹
   favorite: {
@@ -3635,7 +3641,7 @@ length: {
     selectGroupPrompt: '请选择分组',
     favoriteSuccess: '镜头收藏成功',
     filterText: '输入关键字进行过滤',
-    cancelFavorite: '确定取消收藏该设备吗？'
+    cancelFavorite: '确定取消收藏该设备吗？',
   },
   //设备组件(DeviceTools)
   deviceTools: {
@@ -3648,7 +3654,7 @@ length: {
     selectFaceOrCarCamera: '请选择目标或车辆特征检测相关智能设备',
     canAtMostSelectCamera: '最多可以选择摄像机数量为',
     selectDelCamera: '请选择需要删除的镜头',
-    inputCameraNameOrOrgName: '请输入设备名称或组织名称'
+    inputCameraNameOrOrgName: '请输入设备名称或组织名称',
   },
 
   //最新告警
@@ -3685,7 +3691,7 @@ length: {
     rest: '重置',
     alarmSum: '条告警',
     stopRefresh: '停止刷新',
-    refresh: '刷新'
+    refresh: '刷新',
   },
 
   //重置密码
@@ -3730,7 +3736,7 @@ length: {
     plInputEmailCode: '请输入邮箱验证码',
     sendMobile: '发送成功，请手机查看',
     sendEmail: '发送成功，请邮箱查看',
-    sendError: '发送失败'
+    sendError: '发送失败',
   },
   //签退提示框
   loginOut: {
@@ -3745,7 +3751,7 @@ length: {
     permissionsChanged: '角色/权限已被变更',
     passwordModified: '密码已被修改',
     accountExpired: '账号已过期',
-    sessionOverLimit: '会话超限'
+    sessionOverLimit: '会话超限',
   },
   //会话管理
   session: {
@@ -3782,7 +3788,7 @@ length: {
     emailTips: '邮箱地址不填写，将无法通过邮箱重置密码哦',
     regMaxSessionNum: '请输入0-100的整数',
     regMaxSessionNum2: '请输入0-2000的整数',
-    pleaseControls: '请输入会话控制数'
+    pleaseControls: '请输入会话控制数',
   },
 
   behavior: {
@@ -3796,7 +3802,7 @@ length: {
     operateTime: '操作时间',
     state: '授权状态',
     deletePrompt: '此操作将删除该记录, 是否继续?',
-    deletePrompt1: '此操作将删除选中的{num}条记录, 是否继续?'
+    deletePrompt1: '此操作将删除选中的{num}条记录, 是否继续?',
   },
 
   //系统公告
@@ -3863,7 +3869,7 @@ length: {
     audit: '审核中',
     pending: '进行中',
     rejected: '已驳回',
-    ended: '已结束'
+    ended: '已结束',
   },
 
   // 镜头静态转码任务(2021/10/26)
@@ -3890,8 +3896,7 @@ length: {
     resolution: '分辨率',
     templateId: '转码模板',
     encodeTypeTips: '视频编码格式为H265不建议使用透传模板',
-    resolutionTips:
-      '转码源视频流分辨率超过1080消耗资源过多，暂不支持2K以及2K以上的分辨率镜头进行转码',
+    resolutionTips: '转码源视频流分辨率超过1080消耗资源过多，暂不支持2K以及2K以上的分辨率镜头进行转码',
     errorTitle: '创建静态转码任务失败的设备列表',
     nochooseTemplate: '存在没有选择转码模板',
     //修改+详情
@@ -3913,8 +3918,7 @@ length: {
     cpuValue: 'CPU',
     memoryValue: '内存',
     diskValue: '磁盘',
-    loadValueTips:
-      '负载值最优（绿色）：0-60% 负载值一般（橙色）：60%-80% 负载值较差（红色）：80%及以上',
+    loadValueTips: '负载值最优（绿色）：0-60% 负载值一般（橙色）：60%-80% 负载值较差（红色）：80%及以上',
     batchTasks: '批量创建静态转码任务',
     lens: '镜头',
     setTranscodingTemplate: '批量设置转码模板',
@@ -3932,7 +3936,7 @@ length: {
     selectCamera: '选择摄像机',
     caemraCantEmpty: '摄像机不能为空',
     //20220718
-    chooseTranscodeNode: '选择转码节点'
+    chooseTranscodeNode: '选择转码节点',
   },
   // 全媒体
   allmedia: {
@@ -4108,7 +4112,7 @@ length: {
     usageNumber: '使用次数',
     times: '次',
     date: '日期',
-    liveUsageTrend: '直播间使用个数趋势'
+    liveUsageTrend: '直播间使用个数趋势',
   },
   //20220718
   messageTemplate: {
@@ -4132,7 +4136,7 @@ length: {
     deleteTemplateWarning: '此操作将该模板删除,是否继续?',
     addSuccess: '添加成功',
     modifySuccess: '修改成功',
-    deleteSuccess: '删除成功'
+    deleteSuccess: '删除成功',
   },
   recordReport: {
     operationDate: '时间范围',
@@ -4158,7 +4162,7 @@ length: {
     chooseOperationDate: '请选择时间范围',
     chooseCurrentTime: '结束时间不能大于当前时间',
     chooseCamera: '请选择设备',
-    search: '查询'
+    search: '查询',
   },
   menuPerm: {
     clickSave: '修改完成请点击保存',
@@ -4203,7 +4207,7 @@ length: {
     permNameEn: '权限英文名称',
     inputPermNameEn: '请输入权限英文名称',
     permDevType: '权限所属设备类型',
-    choosePermDevType: '请选择权限所属设备类型'
+    choosePermDevType: '请选择权限所属设备类型',
   },
   //系统水印
   systemTatermarkManage: {
@@ -4309,7 +4313,7 @@ length: {
     pleaseInputCameraName: '请输入镜头名称',
     platId: '所属平台',
     interconnectionCoding: '互联编码',
-    cameraStatus: '镜头状态'
+    cameraStatus: '镜头状态',
   },
   //图像信息
   imageInformation: {
@@ -4336,7 +4340,7 @@ length: {
     pleaseRetentionalarmDatabase: '请输入行为分析告警数据库留存期',
     retentionlibrary: '行为分析告警文件库留存期',
     pleaseRetentionlibrary: '请输入行为分析告警文件库留存期',
-    savingSucceeded: '保存成功'
+    savingSucceeded: '保存成功',
   },
   shareDevice: {
     tips: '提示：可多次同时共享操作，选择共享的设备，选择准备共享的用户，点击共享。',
@@ -4360,7 +4364,7 @@ length: {
     max500User: '最多选择500个用户',
     pleaseOrg: '请选择组织或设备',
     max500Dev: '最多选择500个设备',
-    pleasePreShare: '请先预共享'
+    pleasePreShare: '请先预共享',
   },
   tips: {
     fileName: '文件名称长度不能超过64个字符',

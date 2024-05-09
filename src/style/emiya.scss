@@ -1,0 +1,35 @@
+.text-white {
+  color: #fff;
+}
+
+.text-14 {
+  font-size: 14px;
+}
+
+.text-18 {
+  font-size: 18px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.el-select__tags .el-tag,
+.el-input__count-inner,
+.el-picker-panel {
+  background-color: #051b2c !important;
+}
+
+.el-date-editor {
+  background-color: #051b2c !important;
+  color: #fff;
+}
+
+.el-range-input,
+.el-range-separator {
+  color: #fff !important;
+}

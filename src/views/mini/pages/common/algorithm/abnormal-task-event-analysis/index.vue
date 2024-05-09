@@ -1,6 +1,13 @@
 <template>
   <div
-    style="margin-left: 0; margin-right: 0; padding: 0 calc((100% - 1700px) / 2); overflow-y: auto; width: 100%"
+    style="
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      padding: 18px calc((100% - 1700px) / 2);
+      overflow-y: auto;
+      width: 100%;
+    "
     id="intelligent-task"
     class="base"
     v-if="isRouterAlive"

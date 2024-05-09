@@ -2,9 +2,9 @@
   <span>
     <slot :onClick="open" />
     <el-dialog
-      title="添加算法"
+      :title="`${!readonly ? '添加' : '查看'}算法`"
       :visible.sync="visible"
-      width="600px"
+      width="300px"
       top="10vh"
       append-to-body
       modal-append-to-body
@@ -16,7 +16,7 @@
       <el-form
         ref="form"
         :model="formData"
-        :rules="formRules"
+        :rules="readonly ? {} : formRules"
         class="addForm"
         label-suffix="："
         label-position="right"
@@ -29,7 +29,9 @@
           <el-input v-model="formData.type"> </el-input>
         </el-form-item>
         <el-form-item label="算法平台" prop="platform">
-          <el-input v-model="formData.platform"> </el-input>
+          <el-select clearable :popper-append-to-body="false" v-model="formData.platform">
+            <el-option :label="$t('public.all')" value></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <template #footer v-if="!readonly">
@@ -88,6 +90,11 @@ export default {
       this.visible = false
     },
     open() {
+      if (this.value) {
+        this.formData.name = '测试'
+        this.formData.type = '演示'
+        this.formData.platform = ''
+      }
       this.visible = true
     },
   },

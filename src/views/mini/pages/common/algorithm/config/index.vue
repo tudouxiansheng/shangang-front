@@ -1,6 +1,13 @@
 <template>
   <div
-    style="margin-left: 0; margin-right: 0; padding: 0 calc((100% - 1700px) / 2); overflow-y: auto; width: 100%"
+    style="
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      padding: 18px calc((100% - 1700px) / 2);
+      overflow-y: auto;
+      width: 100%;
+    "
     id="intelligent-task"
     class="base"
     v-if="isRouterAlive"
@@ -61,14 +68,14 @@
           </div>
 
           <div style="margin: 20px 0 20px" v-if="selectedTreeNodeType === 'area'">
-            <AddAlgorithm>
+            <AlgorithmEditor>
               <template #default="{ onClick }">
                 <el-button icon="el-icon-plus" type="primary" @click="onClick"> 添加算法 </el-button>
               </template>
-            </AddAlgorithm>
+            </AlgorithmEditor>
           </div>
 
-          <div style="height: 600px; margin-top: 80px" v-loading="loading" :element-loading-text="$t('public.loading')">
+          <div style="height: 600px; margin-top: 18px" v-loading="loading" :element-loading-text="$t('public.loading')">
             <div v-if="!loading && !tableData.length" class="tableNOdata">
               <img src="../../../../../../assets/img/common/NOdata.png" alt />
               <p>{{ $t('public.noData') }}</p>
@@ -100,7 +107,7 @@
               <el-table-column label="创建时间" min-width="110" show-overflow-tooltip prop="mainDevName" />
               <el-table-column :label="$t('public.operating')" min-width="150">
                 <template #default="{ row }">
-                  <CameraTaskDetail :value="row">
+                  <AlgorithmEditor readonly :value="row">
                     <template #default="{ onClick }">
                       <span
                         :value="row"
@@ -110,13 +117,17 @@
                         详情
                       </span>
                     </template>
-                  </CameraTaskDetail>
-                  <span
-                    style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
-                    @click="editItem(row)"
-                  >
-                    算法参数模板
-                  </span>
+                  </AlgorithmEditor>
+                  <AlgorithmTemplatesEditor :value="row">
+                    <template #default="{ onClick }">
+                      <span
+                        style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                        @click="onClick"
+                      >
+                        算法参数模板
+                      </span>
+                    </template>
+                  </AlgorithmTemplatesEditor>
                   <span
                     v-if="row.status == 2"
                     style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
@@ -299,11 +310,13 @@ import tableCopy from '@/mixin/tableCopy.js'
 import judgeWindow from '@/mixin/judgeWindow'
 import IndexAdd from '@views/mini/pages/common/algorithm/intelligent-task/index-add.vue'
 import CameraTaskDetail from '@views/mini/pages/common/algorithm/intelligent-task/components/CameraTaskDetail/index.vue'
-import AddAlgorithm from '@views/mini/pages/common/algorithm/config/components/AddAlgorithm.vue'
+import AlgorithmEditor from '@views/mini/pages/common/algorithm/config/components/AlgorithmEditor.vue'
+import AlgorithmTemplatesEditor from '@views/mini/pages/common/algorithm/config/components/AlgorithmTemplatesEditor/index.vue'
 
 export default {
   components: {
-    AddAlgorithm,
+    AlgorithmTemplatesEditor,
+    AlgorithmEditor,
     CameraTaskDetail,
     IndexAdd,
     'base-info': baseInfo,
@@ -512,13 +525,13 @@ export default {
   },
   methods: {
     async start(row) {
-      await this.$confirm(`确认启动“${row.mainDevName}"分析任务吗？`, this.$t('public.prompt'), {
+      await this.$confirm(`确认启用“${row.mainDevName}"算法吗？`, this.$t('public.prompt'), {
         confirmButtonText: this.$t('public.confirm'),
         cancelButtonText: this.$t('public.cancel'),
       })
     },
     async stop(row) {
-      await this.$confirm(`确认停止“${row.mainDevName}"分析任务吗？`, this.$t('public.prompt'), {
+      await this.$confirm(`确认停用“${row.mainDevName}"算法吗？`, this.$t('public.prompt'), {
         confirmButtonText: this.$t('public.confirm'),
         cancelButtonText: this.$t('public.cancel'),
       })

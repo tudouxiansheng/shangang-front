@@ -60,6 +60,7 @@ const editData = () => ({
       ],
       algorithmId: 2,
       algorithmTemplateId: 22,
+      customTemplates: { 22: { json: '{id:4}123123123' } },
     },
     {
       id: '00000024022714010301000000000038',

@@ -30,7 +30,7 @@
           style="margin-top: 38px"
           v-if="currentCamera"
           :value="currentCamera"
-          @input="currentCamera = { ...$event }"
+          @input="onCurrentCameraChange"
         />
       </div>
       <div style="flex: 1; padding-left: 88px">
@@ -77,6 +77,10 @@ export default {
   },
   async created() {},
   methods: {
+    onCurrentCameraChange(ev) {
+      this.currentCamera = ev
+      this.$refs.camera.updateOption(ev)
+    },
     async loadLiveImage() {
       return (await this.$api.getCameraLiveCover({ cameraId: this.currentCamera.id })).base64
     },

@@ -58,6 +58,7 @@ export default {
     onCustomTemplatesChange(ev) {
       this.value.customTemplates = ev
       this.$emit('input', { ...this.value })
+      console.log('this.value', this.value)
     },
     onTemplateChange(algorithm, tmpl) {
       algorithm.selectedTemplateId = tmpl.id

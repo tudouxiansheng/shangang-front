@@ -198,6 +198,13 @@ export default {
     // }
   },
   methods: {
+    updateOption(record) {
+      const found = this.selectedOptions.find((a) => a.id === record.id)
+      Object.keys(found)
+        .filter((a) => !Object.keys(record).includes(a))
+        .forEach((a) => delete found[a])
+      Object.assign(found, record)
+    },
     focusItem(item) {
       this.$emit('update:focusedItem', item)
     },

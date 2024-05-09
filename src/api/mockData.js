@@ -849,6 +849,17 @@ export const mockData = {
             microPrefix: '',
           },
           {
+            menuId: 104111,
+            menuName: '分析任务异常事件',
+            menuNameEn: 'Abnormal Task Event Analysis',
+            parentId: 10400,
+            type: 2,
+            cuType: 4,
+            path: '/algorithm/abnormal-task-event-analysis',
+            icon: '',
+            microPrefix: '',
+          },
+          {
             menuId: 10320,
             menuName: '算法仓库',
             menuNameEn: 'Algorithm Model Management',

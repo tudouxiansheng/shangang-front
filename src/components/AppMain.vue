@@ -77,6 +77,7 @@ export default {
   computed: {
     isShowMap() {
       let noShowMap = [
+        '/algorithm/abnormal-task-event-analysis',
         '/algorithm/intelligent-task',
         '/algorithm/config',
         '/carpage',

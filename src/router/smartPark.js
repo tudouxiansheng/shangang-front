@@ -10,6 +10,16 @@ export default [
   },
   //智能应用
   {
+    path: '/algorithm/config',
+    name: '算法仓库',
+    component: () => import('@/views/mini/pages/common/algorithm/config/index.vue'),
+  },
+  {
+    path: '/algorithm/abnormal-task-event-analysis',
+    name: '分析任务异常事件',
+    component: () => import('@/views/mini/pages/common/algorithm/abnormal-task-event-analysis/index.vue'),
+  },
+  {
     path: '/algorithm/intelligent-task',
     name: '智能分析任务',
     component: () => import('@/views/mini/pages/common/algorithm/intelligent-task/index.vue'),

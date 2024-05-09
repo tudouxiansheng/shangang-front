@@ -66,7 +66,7 @@ export default {
     },
     async confirm() {
       await this.$refs.form.validate()
-      if (this.value.json !== this.formData.json) {
+      if (JSON.stringify(this.value.json) !== JSON.stringify(this.formData.json)) {
         const customTemplates = { ...(this.customTemplates || {}) }
         customTemplates[this.value.id] = { json: this.formData.json }
         this.$emit('update:customTemplates', customTemplates)

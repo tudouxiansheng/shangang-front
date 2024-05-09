@@ -24,7 +24,7 @@ export default {
   getLoginUserInfo: (data) => postFetch('/uas/v1/api/udc/login/user', data),
   // selectMenus: (data) => postFetch('/uas/v1/api/ais/management/menus', data),
   //获取系统信息
-  getSysInfo: (data) => postFetch('/uas/v1/api/scs/system/info/get', data),
+  getSysInfo: (data) => mockRequest(() => postFetch('/uas/v1/api/scs/system/info/get', data), {}),
   //获取局点信息
   getFlavor: (data) => postFetch('/uas/v1/api/udc/assist/flavor', data),
   showTraffic: (data) => postFetch('/uas/v1/api/scs/traffic/show/info', data),

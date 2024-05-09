@@ -15,7 +15,8 @@
       style="margin: 0 18px 18px 0"
       v-for="a in options"
       :key="a.id"
-      :customTemplates.sync="value.customTemplates"
+      :customTemplates="value.customTemplates || {}"
+      @update:customTemplates="onCustomTemplatesChange"
       :metadata="a"
       :highlight="a.id === value.algorithmId"
       :templateId="value.algorithmTemplateId"
@@ -54,6 +55,10 @@ export default {
     }
   },
   methods: {
+    onCustomTemplatesChange(ev) {
+      this.value.customTemplates = ev
+      this.$emit('input', { ...this.value })
+    },
     onTemplateChange(algorithm, tmpl) {
       algorithm.selectedTemplateId = tmpl.id
       this.options = this.options.map((a) => (a === algorithm ? { ...algorithm } : a))

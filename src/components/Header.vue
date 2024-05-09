@@ -395,7 +395,7 @@ export default {
     },
     //获取名字和title位置
     getName() {
-      this.$fetch('/uas/v1/api/scs/system/info/get', { systemType: 2 }).then((res) => {
+      this.$api.getSysInfo({ systemType: 2 }).then((res) => {
         if (res.resultCode === 0) {
           this.logoUrl = res.logoUrl
           this.systemName = res.systemName

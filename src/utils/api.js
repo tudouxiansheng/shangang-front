@@ -14,7 +14,7 @@ export const getDictionary = (data) => fetch('/uas/v1/api/udc/assist/dictionary'
 //获取局点信息
 export const getFlavor = (data) => fetch('/uas/v1/api/udc/assist/flavor', data)
 
-export const getName = (data) => fetch('/uas/v1/api/scs/system/info/get', data)
+export const getName = (data) => mockRequest(() => fetch('/uas/v1/api/scs/system/info/get', data), {})
 // 登录
 // export const login = (data) => digestFetch('/uas/v1/api/user/login', data);
 // 获取token

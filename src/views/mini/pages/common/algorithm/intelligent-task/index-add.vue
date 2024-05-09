@@ -30,7 +30,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="摄像机范围" prop="cameraScope">
-        <CameraAlgorithmEditor v-model="formData.cameraScope" />
+        <CameraAlgorithmEditor :availableAlgorithmIds="formData.type || []" v-model="formData.cameraScope" />
       </el-form-item>
       <el-form-item label="任务时间" prop="date">
         <el-date-picker
@@ -127,7 +127,7 @@ export default {
     this.formData = this.defaultValue || {}
     this.loading = true
     try {
-      this.algorithmOptions = await this.$api.getAlgorithmOptions().data
+      this.algorithmOptions = (await this.$api.getAlgorithmOptions()).data
     } finally {
       this.loading = false
     }

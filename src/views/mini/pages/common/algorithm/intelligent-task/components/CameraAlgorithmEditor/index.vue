@@ -27,6 +27,7 @@
           :platType="is1800 ? 14 : 16"
         ></CameraTree1>
         <AlgorithmSelect
+          :availableAlgorithmIds="availableAlgorithmIds"
           style="margin-top: 38px"
           v-if="currentCamera"
           :value="currentCamera"
@@ -56,6 +57,7 @@ export default {
     CameraTree1,
   },
   props: {
+    availableAlgorithmIds: {},
     value: {
       type: Array,
       default: () => [],

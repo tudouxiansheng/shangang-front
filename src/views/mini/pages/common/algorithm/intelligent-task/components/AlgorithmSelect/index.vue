@@ -14,7 +14,7 @@
     <Item
       :readonly="readonly"
       style="margin: 0 18px 18px 0"
-      v-for="a in options"
+      v-for="a in options.filter((b) => !availableAlgorithmIds || availableAlgorithmIds.includes(b.id))"
       :key="a.id"
       :customTemplates="value.customTemplates || {}"
       @update:customTemplates="onCustomTemplatesChange"
@@ -35,6 +35,7 @@ export default {
     Item,
   },
   props: {
+    availableAlgorithmIds: {},
     readonly: { type: Boolean },
     value: {},
   },

@@ -38,7 +38,7 @@
               label-position="left"
             >
               <div class="flexstart">
-                <el-form-item :label="'智能分析任务名称' + ' ：'" :class="screenFlag ? 'screenthree' : 'flex-item'">
+                <el-form-item :label="'算法名称' + ' ：'" :class="screenFlag ? 'screenthree' : 'flex-item'">
                   <el-input
                     v-model="searchForm.taskName"
                     auto-complete="off"
@@ -47,14 +47,6 @@
                     maxlength="128"
                     @change="search_change"
                   />
-                </el-form-item>
-                <el-form-item :label="'发生时间' + ' ：'" :class="screenFlag ? 'screenthree' : 'flex-item'">
-                  <el-date-picker
-                    style="width: 187px"
-                    v-model="searchForm.createdAt"
-                    type="date"
-                    @change="search_change"
-                  ></el-date-picker>
                 </el-form-item>
               </div>
 
@@ -68,20 +60,13 @@
             </el-form>
           </div>
 
-          <!--          <div style="margin: 20px 0 20px" v-if="selectedTreeNodeType === 'area'">-->
-          <!--            <el-button icon="el-icon-plus" type="primary" @click="addItem">-->
-          <!--              {{ $t('algorithm.addTask') }}-->
-          <!--            </el-button>-->
-          <!--            <el-button style="margin-left: 10px" type="primary" @click="handleBatchStart">-->
-          <!--              {{ $t('algorithm.batchStart') }}-->
-          <!--            </el-button>-->
-          <!--            <el-button style="margin-left: 10px" type="primary" @click="handleBatchStop">-->
-          <!--              {{ $t('algorithm.batchStop') }}-->
-          <!--            </el-button>-->
-          <!--            <el-button type="danger" @click="handleDel" :disabled="delShow" v-if="PermissionDelete">-->
-          <!--              {{ $t('public.batchDeletion') }}-->
-          <!--            </el-button>-->
-          <!--          </div>-->
+          <div style="margin: 20px 0 20px" v-if="selectedTreeNodeType === 'area'">
+            <AddAlgorithm>
+              <template #default="{ onClick }">
+                <el-button icon="el-icon-plus" type="primary" @click="onClick"> 添加算法 </el-button>
+              </template>
+            </AddAlgorithm>
+          </div>
 
           <div style="height: 600px; margin-top: 80px" v-loading="loading" :element-loading-text="$t('public.loading')">
             <div v-if="!loading && !tableData.length" class="tableNOdata">
@@ -109,20 +94,51 @@
                   <span>{{ $index + 1 }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="智能分析任务名称" min-width="110" show-overflow-tooltip prop="mainDevName" />
-              <el-table-column label="异常状态" min-width="60" show-overflow-tooltip prop="status">
+              <el-table-column label="算法名称" min-width="110" show-overflow-tooltip prop="mainDevName" />
+              <el-table-column label="算法类型" min-width="60" show-overflow-tooltip prop="status"></el-table-column>
+              <el-table-column label="算法平台名称" min-width="110" show-overflow-tooltip prop="mainDevName" />
+              <el-table-column label="创建时间" min-width="110" show-overflow-tooltip prop="mainDevName" />
+              <el-table-column :label="$t('public.operating')" min-width="150">
                 <template #default="{ row }">
+                  <CameraTaskDetail :value="row">
+                    <template #default="{ onClick }">
+                      <span
+                        :value="row"
+                        style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                        @click="onClick"
+                      >
+                        详情
+                      </span>
+                    </template>
+                  </CameraTaskDetail>
                   <span
-                    :class="
-                      row.status == '0' ? 'warning' : row.status == '1' ? 'success' : row.status == '2' ? 'danger' : ''
-                    "
+                    style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                    @click="editItem(row)"
                   >
-                    {{ row.status == '1' ? '运行中' : row.status == '2' ? '停止' : '' }}
+                    算法参数模板
+                  </span>
+                  <span
+                    v-if="row.status == 2"
+                    style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                    @click="start(row)"
+                  >
+                    启用
+                  </span>
+                  <span
+                    v-if="row.status == 1"
+                    style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                    @click="stop(row)"
+                  >
+                    停用
+                  </span>
+                  <span
+                    style="margin-right: 7px; color: #f56c6c; cursor: pointer; word-break: break-word"
+                    @click="handleDelete(row)"
+                  >
+                    {{ $t('public.delete') }}
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column label="异常原因" min-width="110" show-overflow-tooltip prop="mainDevName" />
-              <el-table-column label="发生时间" min-width="110" show-overflow-tooltip prop="mainDevName" />
             </el-table>
 
             <!--分页-->
@@ -283,9 +299,11 @@ import tableCopy from '@/mixin/tableCopy.js'
 import judgeWindow from '@/mixin/judgeWindow'
 import IndexAdd from '@views/mini/pages/common/algorithm/intelligent-task/index-add.vue'
 import CameraTaskDetail from '@views/mini/pages/common/algorithm/intelligent-task/components/CameraTaskDetail/index.vue'
+import AddAlgorithm from '@views/mini/pages/common/algorithm/config/components/AddAlgorithm.vue'
 
 export default {
   components: {
+    AddAlgorithm,
     CameraTaskDetail,
     IndexAdd,
     'base-info': baseInfo,

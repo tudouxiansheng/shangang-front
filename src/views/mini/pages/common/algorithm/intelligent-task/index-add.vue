@@ -18,15 +18,15 @@
     >
       <el-form-item label="算法平台名称" prop="platformId">
         <el-select clearable :popper-append-to-body="false" v-model="formData.platformId">
-          <el-option :label="$t('public.all')" value></el-option>
+          <el-option :label="$t('public.all')" value="1"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="任务名称" prop="name">
         <el-input style="width: 860px" v-model="formData.name"></el-input>
       </el-form-item>
       <el-form-item label="算法类型" prop="type">
-        <el-select clearable :popper-append-to-body="false" v-model="formData.platformId">
-          <el-option :label="$t('public.all')" value></el-option>
+        <el-select clearable :popper-append-to-body="false" v-model="formData.type">
+          <el-option :label="$t('public.all')" value="1"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="摄像机范围" prop="cameraScope">
@@ -75,7 +75,50 @@ export default {
   data() {
     return {
       formData: {},
-      formRules: {},
+      formRules: {
+        platformId: [
+          {
+            required: true,
+            message: `请选择算法平台名称`,
+            trigger: 'blur',
+          },
+        ],
+        name: [
+          {
+            required: true,
+            message: `请输入任务名称`,
+            trigger: 'blur',
+          },
+        ],
+        type: [
+          {
+            required: true,
+            message: `请选择算法类型`,
+            trigger: 'blur',
+          },
+        ],
+        cameraScope: [
+          {
+            required: true,
+            message: `请选择摄像机范围`,
+            trigger: 'blur',
+          },
+        ],
+        date: [
+          {
+            required: true,
+            message: `请选择任务时间`,
+            trigger: 'blur',
+          },
+        ],
+        schedule: [
+          {
+            required: true,
+            message: `请设置任务计划`,
+            trigger: 'blur',
+          },
+        ],
+      },
       loading: false,
     }
   },
@@ -87,6 +130,7 @@ export default {
       this.$emit('close')
     },
     async confirm() {
+      await this.$refs.form.validate()
       console.log(this.formData, JSON.stringify(this.formData))
       this.onClose()
     },

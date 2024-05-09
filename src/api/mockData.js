@@ -2,7 +2,8 @@ import cctv from '@/views/mini/pages/common/algorithm/assets/024-cctv.svg'
 import cctv1 from '@/views/mini/pages/common/algorithm/assets/023-cctv-1.svg'
 
 const editData = () => ({
-  platformId: '',
+  platformId: '1',
+  type: '1',
   name: '测试',
   cameraScope: [
     {
@@ -60,7 +61,7 @@ const editData = () => ({
       ],
       algorithmId: 2,
       algorithmTemplateId: 22,
-      customTemplates: { 22: { json: '{id:4}123123123' } },
+      customTemplates: { 22: { json: '{"id":83}' } },
     },
     {
       id: '00000024022714010301000000000038',
@@ -154,7 +155,7 @@ export const mockData = {
             templateName: '算法1',
             id: 11,
             name: '模板11',
-            json: '{id:1}',
+            json: '{"id":1}',
             isDefault: true,
           },
           {
@@ -162,7 +163,7 @@ export const mockData = {
             templateName: '算法1',
             id: 12,
             name: '模板12',
-            json: '{id:2}',
+            json: '{"id":2}',
           },
         ],
       },
@@ -175,14 +176,14 @@ export const mockData = {
             templateName: '算法2',
             id: 21,
             name: '模板21',
-            json: '{id:3}',
+            json: '{"id":3}',
           },
           {
             templateId: 2,
             templateName: '算法2',
             id: 22,
             name: '模板22',
-            json: '{id:4}',
+            json: '{"id":4}',
             isDefault: true,
           },
         ],

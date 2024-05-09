@@ -61,18 +61,21 @@ export default {
         name: [
           {
             required: true,
+            message: `请输入算法名称`,
             trigger: 'blur',
           },
         ],
         type: [
           {
             required: true,
+            message: `请输入算法类型`,
             trigger: 'blur',
           },
         ],
         platform: [
           {
             required: true,
+            message: `请选择算法平台`,
             trigger: 'blur',
           },
         ],

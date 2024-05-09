@@ -62,6 +62,18 @@ export default {
         json: [
           {
             required: true,
+            validator: (rule, value, callback) => {
+              if (!value?.trim()) {
+                callback(new Error('请输入JSON模板'))
+              } else {
+                try {
+                  if (typeof JSON.parse(value) !== 'object') throw new Error()
+                  callback()
+                } catch (e) {
+                  callback(new Error('无效的JSON模板'))
+                }
+              }
+            },
             trigger: 'blur',
           },
         ],
